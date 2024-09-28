@@ -1,0 +1,151 @@
+Justice Barrett delivered the opinion of the Court. 
+
+Deborah  Laufer  has  sued  hundreds  of  hotels  whose  web-
+sites  failed  to  state  whether  they  have  rooms  accessible  to 
+the disabled.  As the sheer number of lawsuits suggests, she 
+does  not  focus  her  efforts  on  hotels  where  she  has  any 
+thought  of  staying,  much  less  booking  a  room.  Instead, 
+Laufer  systematically  searches  the  web  to  ﬁnd  hotels  that 
+fail  to  provide  accessibility  information  and  sues  to  force 
+compliance with the Americans with Disabilities Act of 1990 
+(ADA),  104  Stat.  327,  42  U. S. C.  § 12101  et  seq.  Ordinarily, 
+the hotels settle her claims and pay her attorney’s fees.  But 
+some  have  resisted,  arguing  that  Laufer  is  not  injured  by 
+the  absence  of  information  about  rooms  she  has  no  plans  to 
+reserve.  Only  plaintiffs  who  allege  a  concrete  injury  have 
+standing  to  sue  in  federal  court.  Laufer,  these  hotels  have 
+argued,  is  suing  to  enforce  the  law  rather  than  to  remedy 
+her own harms. 
+Page Proof Pending Publication
+Laufer  has  singlehandedly  generated  a  circuit  split.  The 
+Second,  Fifth,  and  Tenth  Circuits  have  held  that  she  lacks 
+standing; the First, Fourth, and Eleventh Circuits have held 
+that she has it.  We took this case from the First Circuit to 
+resolve  the  split.  50  F.  4th  259  (2022);  598  U. S.  –––  (2023). 
+Though Acheson Hotels, LLC, ﬁled the petition, Laufer sup-
+ported the grant. 
+
+After  we  granted  review,  the  case  took  an  unusual  turn. 
+In  July,  the  United  States  District  Court  for  the  District  of 
+Maryland suspended Laufer’s lawyer, Tristan Gillespie, from 
+the practice of law for defrauding hotels by lying in fee peti-
+
+David  C.  Kravitz,  Deputy  State  Solicitor,  and  Ann  E.  Lynch  and  David 
+R. Rangaviz, Assistant Attorneys General, and by the Attorneys General 
+for their respective jurisdictions as follows: William Tong of Connecticut, 
+Brian  L.  Schwalb  of  the  District  of  Columbia,  Kwame  Raoul  of  Illinois, 
+Anthony G. Brown of Maryland, Matthew J. Platkin of New Jersey, Leti-
+tia  James  of  New  York,  Ellen  F.  Rosenblum  of  Oregon,  and  Robert  W. 
+Ferguson of Washington; and for the National Association of Home Build-
+ers of the United States by Jeffrey B. Augello, Thomas J. Ward, and Feli-
+cia K. Watson. 
+
+4 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Opinion of the Court 
+
+tions  and  during  settlement  negotiations.  See  Order  in  In 
+re  Gillespie,  No.  1:21–mc–14  (July  5,  2023),  ECF  Doc.  14. 
+It  based  the  suspension  on  a  report  ﬁnding  that  Gillespie 
+demanded $10,000 in attorney’s fees per case even though he 
+used  “boilerplate  complaints.”  Report  and  Recommenda-
+tion  in  No.  1:21–mc–14  (June  30,  2023),  ECF  Doc.  13,  pp.  5, 
+26.  In addition, Gillespie funneled six-ﬁgure sums to the fa-
+ther  of  Laufer’s  grandchild  for  investigatory  work  that  he 
+never  performed,  raising  the  prospect  that  either  Gillespie 
+or  Laufer  (or  both)  got  a  cut  of  the  money.  Id.,  at  28,  30. 
+Making  matters  still  worse,  the  sanctions  order  against  Gil-
+lespie  also  implicated  Laufer’s  former  counsel  of  record  be-
+fore this Court, Thomas Bacon.  Id., at 30–31.* 
+
+Following  these  revelations,  Laufer  voluntarily  dismissed 
+her  pending  suits  with  prejudice,  including  her  complaint 
+against Acheson in the District of Maine.  See Notice of Vol-
+untary  Dismissal  in  No.  2:20–cv–00344  (July  20,  2023),  ECF 
+Page Proof Pending Publication
+Doc.  45.  She  then  ﬁled  a  suggestion  of  mootness  in  this 
+Court.  At this point, Acheson had already ﬁled its principal 
+brief  on  the  standing  issue,  and  we  deferred  a  decision  on 
+mootness until after oral argument. 
+
+Laufer  does  not  argue  that  we  must  dismiss  her  suit  for 
+mootness.  She  acknowledges  that  we  can  address  jurisdic-
+tional  issues in  any order  we  choose, see  Sinochem Int’l  Co. 
+v.  Malaysia  Int’l  Shipping  Corp.,  549  U. S.  422,  431  (2007), 
+and  so  have  authority  to  resolve  the  standing  issue.  But 
+mootness  is  easy  and  standing  is  hard,  Laufer  says.  She 
+urges  us  to  refrain  from  resolving  a  difﬁcult  question  in  a 
+case that is otherwise over. 
+
+*On November 14th, the Fourth Circuit vacated and remanded the sus-
+pension  order,  holding  that  the  District  Court  gave  Gillespie  insufﬁcient 
+notice that it might sanction him not only for dishonesty to opposing coun-
+sel,  but  also  for  failing  to  communicate  with  his  clients.  In  re  Gillespie, 
+No.  23–1819 (2023)  (per curiam).  Disciplinary  proceedings remain  pend-
+ing in the District Court. 
+
+Cite as:  601 U. S. 1 (2023) 
+
+5 
+
+Opinion of the Court 
+
+Acheson,  on  the  other  hand,  stresses  that  the  difﬁcult 
+standing  issue  is  the  reason  we  took  this  case.  Though 
+Laufer’s  case  is  dead,  the  circuit  split  is  very  much  alive. 
+This  Court  has  received  briefs  and  heard  oral  argument. 
+For  efﬁciency’s  sake,  Acheson  insists  that  we  should  settle 
+the  issue  now  rather  than  repeating  the  work  later.  More-
+over,  Acheson  warns  that  if  we  dismiss  this  case  for  moot-
+ness,  the  standing  issue  might  not  come  back  anytime  soon. 
+While  Laufer  has  disavowed  the  intention  to  ﬁle  any  more 
+ADA  tester  suits,  Tr.  of  Oral  Arg.  70,  others  will  ﬁle  in  the 
+circuits that sided with her, and hotels will settle, regarding 
+it  as  pointless  to  challenge  circuit  precedent  in  this  Court. 
+Why  would  any  hotel  take  a  case  this  far,  Acheson  asks,  if 
+the respondent can evade our review by abandoning a claim 
+rather than risking a loss? 
+
+We  are  sensitive  to  Acheson’s  concern  about  litigants  ma-
+nipulating  the  jurisdiction  of  this  Court.  We  are  not  con-
+vinced, however, that Laufer abandoned her case in an effort 
+Page Proof Pending Publication
+to evade our review.  She voluntarily dismissed her pending 
+ADA  cases  after  a  lower  court  sanctioned  her  lawyer.  She 
+represented  to  this  Court  that  she  will  not  ﬁle  any  others. 
+Laufer’s  case  against  Acheson  is  moot,  and  we  dismiss  it  on 
+that  ground.  We  emphasize,  however,  that  we  might  exer-
+cise our discretion differently in a future case. 
+
+*
+
+*
+
+* 
+
+The judgment is vacated, and the case is remanded to the 
+United States Court of Appeals for the First Circuit with in-
+structions to dismiss the case as moot.  See United States v. 
+Munsingwear, Inc., 340 U. S. 36 (1950).  Justice Jackson ob-
+jects to this disposition, urging us to instead leave the First 
+Circuit’s judgment in place.  Post, at 16–20 (opinion concur-
+ring  in  judgment).  Our  Munsingwear  practice  is  well  set-
+tled.  See,  e. g.,  United  States  v.  Microsoft  Corp.,  584  U. S. 
+236, 240 (2018) (per curiam); Great Western Sugar Co. v. Nel-
+
+6 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Thomas, J., concurring in judgment 
+
+son, 442 U. S. 92, 93–94 (1979) (per curiam); Duke Power Co. v. 
+Greenwood County, 299 U. S. 259, 267 (1936) (per curiam); see 
+also S. Shapiro, K. Geller, T. Bishop, E. Hartnett, & D. Him-
+melfarb, Supreme Court Practice § 19.5 (11th ed. 2019).  We 
+decline Justice Jackson’s invitation to reconsider it. 
+
+It is so ordered. 
+

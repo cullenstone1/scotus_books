@@ -1,0 +1,729 @@
+CASES ADJUDGED 
+IN THE 
+SUPREME COURT OF THE UNITED STATES 
+AT 
+OCTOBER TERM, 2023 
+2 
+ACHESON HOTELS, LLC v. LAUFER 
+Syllabus 
+joined.  Thomas,  J.,  post,  p.  6,  and  Jackson,  J.,  post,  p.  14,  ﬁled  opinions 
+concurring in the judgment. 
+Adam  G.  Unikowsky  argued  the  cause  for  petitioner. 
+With him on the briefs were Lindsay C. Harrison, Sally A. 
+Morris, and Andrianna D. Kastanek. 
+Erica  L.  Ross  argued  the  cause  for  the  United  States  as 
+amicus curiae urging reversal.  With her on the brief were 
+Solicitor  General  Prelogar,  Assistant  Attorney  General 
+Clarke, Deputy Solicitor General Fletcher, Bonnie I. Robin-
+Vergeer, and Yael Bortnick. 
+Kelsi  Brown  Corkran  argued  the  cause  for  respondent. 
+With  her  on  the  briefs  were  Rupa  Bhattacharyya,  Amy  L. 
+Marshak, and Joseph W. Mead.* 
+Cite as:  601 U. S. 1 (2023) 
+3 
+Opinion of the Court 
+Justice Barrett delivered the opinion of the Court. 
+Deborah  Laufer  has  sued  hundreds  of  hotels  whose  web-
+sites  failed  to  state  whether  they  have  rooms  accessible  to 
+the disabled.  As the sheer number of lawsuits suggests, she 
+does  not  focus  her  efforts  on  hotels  where  she  has  any 
+thought  of  staying,  much  less  booking  a  room.  Instead, 
+Laufer  systematically  searches  the  web  to  ﬁnd  hotels  that 
+fail  to  provide  accessibility  information  and  sues  to  force 
+compliance with the Americans with Disabilities Act of 1990 
+(ADA),  104  Stat.  327,  42  U. S. C.  § 12101  et  seq.  Ordinarily, 
+the hotels settle her claims and pay her attorney’s fees.  But 
+some  have  resisted,  arguing  that  Laufer  is  not  injured  by 
+the  absence  of  information  about  rooms  she  has  no  plans  to 
+reserve.  Only  plaintiffs  who  allege  a  concrete  injury  have 
+standing  to  sue  in  federal  court.  Laufer,  these  hotels  have 
+argued,  is  suing  to  enforce  the  law  rather  than  to  remedy 
+her own harms. 
+Page Proof Pending Publication
+Laufer  has  singlehandedly  generated  a  circuit  split.  The 
+Second,  Fifth,  and  Tenth  Circuits  have  held  that  she  lacks 
+standing; the First, Fourth, and Eleventh Circuits have held 
+that she has it.  We took this case from the First Circuit to 
+resolve  the  split.  50  F.  4th  259  (2022);  598  U. S.  –––  (2023). 
+Though Acheson Hotels, LLC, ﬁled the petition, Laufer sup-
+ported the grant. 
+After  we  granted  review,  the  case  took  an  unusual  turn. 
+In  July,  the  United  States  District  Court  for  the  District  of 
+Maryland suspended Laufer’s lawyer, Tristan Gillespie, from 
+the practice of law for defrauding hotels by lying in fee peti-
+4 
+ACHESON HOTELS, LLC v. LAUFER 
+Opinion of the Court 
+tions  and  during  settlement  negotiations.  See  Order  in  In 
+re  Gillespie,  No.  1:21–mc–14  (July  5,  2023),  ECF  Doc.  14. 
+It  based  the  suspension  on  a  report  ﬁnding  that  Gillespie 
+demanded $10,000 in attorney’s fees per case even though he 
+used  “boilerplate  complaints.”  Report  and  Recommenda-
+tion  in  No.  1:21–mc–14  (June  30,  2023),  ECF  Doc.  13,  pp.  5, 
+26.  In addition, Gillespie funneled six-ﬁgure sums to the fa-
+ther  of  Laufer’s  grandchild  for  investigatory  work  that  he 
+never  performed,  raising  the  prospect  that  either  Gillespie 
+or  Laufer  (or  both)  got  a  cut  of  the  money.  Id.,  at  28,  30. 
+Making  matters  still  worse,  the  sanctions  order  against  Gil-
+lespie  also  implicated  Laufer’s  former  counsel  of  record  be-
+fore this Court, Thomas Bacon.  Id., at 30–31.* 
+Following  these  revelations,  Laufer  voluntarily  dismissed 
+her  pending  suits  with  prejudice,  including  her  complaint 
+against Acheson in the District of Maine.  See Notice of Vol-
+untary  Dismissal  in  No.  2:20–cv–00344  (July  20,  2023),  ECF 
+Page Proof Pending Publication
+Doc.  45.  She  then  ﬁled  a  suggestion  of  mootness  in  this 
+Court.  At this point, Acheson had already ﬁled its principal 
+brief  on  the  standing  issue,  and  we  deferred  a  decision  on 
+mootness until after oral argument. 
+Laufer  does  not  argue  that  we  must  dismiss  her  suit  for 
+mootness.  She  acknowledges  that  we  can  address  jurisdic-
+tional  issues in  any order  we  choose, see  Sinochem Int’l  Co. 
+v.  Malaysia  Int’l  Shipping  Corp.,  549  U. S.  422,  431  (2007), 
+and  so  have  authority  to  resolve  the  standing  issue.  But 
+mootness  is  easy  and  standing  is  hard,  Laufer  says.  She 
+urges  us  to  refrain  from  resolving  a  difﬁcult  question  in  a 
+case that is otherwise over. 
+Cite as:  601 U. S. 1 (2023) 
+5 
+Opinion of the Court 
+Acheson,  on  the  other  hand,  stresses  that  the  difﬁcult 
+standing  issue  is  the  reason  we  took  this  case.  Though 
+Laufer’s  case  is  dead,  the  circuit  split  is  very  much  alive. 
+This  Court  has  received  briefs  and  heard  oral  argument. 
+For  efﬁciency’s  sake,  Acheson  insists  that  we  should  settle 
+the  issue  now  rather  than  repeating  the  work  later.  More-
+over,  Acheson  warns  that  if  we  dismiss  this  case  for  moot-
+ness,  the  standing  issue  might  not  come  back  anytime  soon. 
+While  Laufer  has  disavowed  the  intention  to  ﬁle  any  more 
+ADA  tester  suits,  Tr.  of  Oral  Arg.  70,  others  will  ﬁle  in  the 
+circuits that sided with her, and hotels will settle, regarding 
+it  as  pointless  to  challenge  circuit  precedent  in  this  Court. 
+Why  would  any  hotel  take  a  case  this  far,  Acheson  asks,  if 
+the respondent can evade our review by abandoning a claim 
+rather than risking a loss? 
+We  are  sensitive  to  Acheson’s  concern  about  litigants  ma-
+nipulating  the  jurisdiction  of  this  Court.  We  are  not  con-
+vinced, however, that Laufer abandoned her case in an effort 
+Page Proof Pending Publication
+to evade our review.  She voluntarily dismissed her pending 
+ADA  cases  after  a  lower  court  sanctioned  her  lawyer.  She 
+represented  to  this  Court  that  she  will  not  ﬁle  any  others. 
+Laufer’s  case  against  Acheson  is  moot,  and  we  dismiss  it  on 
+that  ground.  We  emphasize,  however,  that  we  might  exer-
+cise our discretion differently in a future case. 
+*
+*
+* 
+The judgment is vacated, and the case is remanded to the 
+United States Court of Appeals for the First Circuit with in-
+structions to dismiss the case as moot.  See United States v. 
+Munsingwear, Inc., 340 U. S. 36 (1950).  Justice Jackson ob-
+jects to this disposition, urging us to instead leave the First 
+Circuit’s judgment in place.  Post, at 16–20 (opinion concur-
+ring  in  judgment).  Our  Munsingwear  practice  is  well  set-
+tled.  See,  e. g.,  United  States  v.  Microsoft  Corp.,  584  U. S. 
+236, 240 (2018) (per curiam); Great Western Sugar Co. v. Nel-
+6 
+ACHESON HOTELS, LLC v. LAUFER 
+Thomas, J., concurring in judgment 
+son, 442 U. S. 92, 93–94 (1979) (per curiam); Duke Power Co. v. 
+Greenwood County, 299 U. S. 259, 267 (1936) (per curiam); see 
+also S. Shapiro, K. Geller, T. Bishop, E. Hartnett, & D. Him-
+melfarb, Supreme Court Practice § 19.5 (11th ed. 2019).  We 
+decline Justice Jackson’s invitation to reconsider it. 
+It is so ordered. 
+Justice Thomas, concurring in the judgment. 
+Deborah Laufer has ﬁled hundreds of lawsuits against ho-
+tels she has no intention of visiting, claiming that their web-
+sites  lack  accessibility  information  mandated  by  a  federal 
+regulation.  At  both  parties’  request,  this  Court  agreed  to 
+answer  a  question  that  has  divided  the  Courts  of  Appeals: 
+whether  plaintiffs  like  Laufer  have  standing  to  bring  these 
+claims.  The  Court  decides  not  to  decide  that  question  be-
+cause, after brieﬁng began, Laufer voluntarily dismissed her 
+claim in the District Court.  I would answer this important 
+Page Proof Pending Publication
+and recurring question, which, as all agree, we have the au-
+thority  to  do.  And,  I  conclude  that  Laufer  lacks  standing. 
+I 
+Title  III  of  the  Americans  with  Disabilities  Act  of  1990 
+(ADA)  prohibits  discrimination  “on  the  basis  of  disability 
+in the full and equal enjoyment of the goods, services, facili-
+ties, privileges, advantages, or accommodations of any place 
+of  public  accommodation,”  such  as  a  hotel.  42  U. S. C. 
+§§ 12182(a),  12181(7)(A).  Title  III  deﬁnes  discrimination  to 
+include  “a  failure  to  make  reasonable  modiﬁcations”  when 
+“necessary  to  afford  .  .  .  services  .  .  .  or  accommodations  to 
+individuals  with  disabilities.”  § 12182(b)(2)(A)(ii).  To  en-
+force  the  ADA’s  prohibition  on  discrimination,  Title  III  cre-
+ates  a private  cause of  action that  permits “any  person who 
+is being subjected to discrimination on the basis of disability” 
+to  sue  for  violations.  § 12188(a)(1).  Only  injunctive  relief 
+and  attorney’s  fees  are  available  to  private  litigants.  Ibid.; 
+see  also  §§ 12205,  2000a–3(a).  The  Attorney  General,  how-
+Cite as:  601 U. S. 1 (2023) 
+7 
+Thomas, J., concurring in judgment 
+ever,  may  obtain  damages  or  assess  civil  penalties. 
+§ 12188(b)(2). 
+The  Department  of  Justice  promulgated  a  regulation 
+known as the Reservation Rule to aid in the implementation 
+of  the  ADA’s  prohibition  on  discrimination.  The  rule  re-
+quires  hotels  to  “[i]dentify  and  describe  accessible  features 
+.  .  .  in  enough  detail  to  reasonably  permit  individuals  with 
+disabilities to assess independently whether a given hotel or 
+guest  room  meets  his  or  her  accessibility  needs.”  28  CFR 
+§ 36.302(e)(1)(ii)  (2022).  The  rule  also  applies  to  reserva-
+tions made “through a third party.”  Ibid. 
+Laufer,  who  is  wheelchair  bound,  is  a  self-described  “tes-
+ter”  of  compliance  with  the  Reservation  Rule.  From  her 
+home  in  Florida,  Laufer  scours  the  internet  for  hotel  web-
+sites  that  do  not  contain  the  required  accessibility  informa-
+tion.  When she ﬁnds a deﬁcient website, she sues the hotel. 
+She  often  offers  to  settle  immediately  for  $10,000  in  attor-
+Page Proof Pending Publication
+ney’s  fees  and  corrective  action.  See  Report  and  Recom-
+mendation  in  In  re  Gillespie,  No.  1:21–mc–14  (D  Md.,  June 
+30,  2023),  ECF  Doc.  13,  p.  5;  No.  1:21–mc–14  (July  5,  2023), 
+ECF Doc. 14, p. 1, vacated on other grounds by In re Gilles-
+pie,  No.  23–1819  (CA4,  Nov.  14,  2023)  (per  curiam).  In  the 
+past  ﬁve  years,  Laufer  has  ﬁled  over  600  lawsuits  against 
+hotels. 
+In this case, Laufer visited the website of a bed and break-
+fast  located  in  Maine,  the  Coast  Village  Inn.  She  ﬁled  suit 
+against  the  Coast  Village  Inn’s  owner,  Acheson  Hotels,  for 
+failing  to  provide  sufﬁcient  accessibility  information.  She 
+also contended that 13 third-party booking websites, such as 
+Expedia,  failed  to  provide  accessibility  information  for  the 
+Coast  Village  Inn.  Laufer  initially  alleged  that  she  was 
+planning  to  visit  the  Coast  Village  Inn  as  part  of  a  cross-
+country  trip  from  Florida  to  Maine  to  Colorado.  But  she 
+later  disclaimed  any  intent  to  travel  to  Maine  (or  the  Coast 
+Village  Inn).  50  F.  4th  259,  267,  n.  3  (CA1  2022);  see  also 
+Brief for Appellant in No. 21–1410 (CA1), p. 4, n. 1. 
+8 
+ACHESON HOTELS, LLC v. LAUFER 
+Thomas, J., concurring in judgment 
+The District Court concluded that Laufer lacked standing 
+and  dismissed  her  complaint.  The  First  Circuit  reversed, 
+relying  primarily  on  this  Court’s  holding  in  Havens  Realty 
+Corp.  v.  Coleman,  455  U. S.  363  (1982),  that  a  tester  had 
+standing to sue under the Fair Housing Act.  When Acheson 
+Hotels  petitioned  for  certiorari,  Laufer  agreed.  She  high-
+lighted  that  the  Circuits  were  split  as  to  her  standing  and 
+argued that “clarity from this Court is badly needed.”  Brief 
+in  Opposition  1.  After  we  granted  certiorari  and  set  the 
+case for argument, Laufer ﬁled a notice in the District Court 
+of her voluntary dismissal of her claim with prejudice.  And, 
+even though Acheson Hotels (and several amici) had already 
+ﬁled  briefs,  Laufer  requested  that  we  dismiss  this  case  as 
+moot.  We  denied  her  request  at  that  time,  but  agreed  to 
+consider  it  at  oral  argument.  The  case  has  been  fully 
+briefed  and  the  Court  has  heard  argument  on  the  merits. 
+Today,  however,  the  majority  opts  to  resolve  this  case  on 
+mootness.  We  can—and  should—address  the  question  on 
+Page Proof Pending Publication
+which we granted certiorari. 
+II 
+I  would  not  dismiss  this  case  as  moot.  There  is  no  ques-
+tion  that  we  have  authority  to  address  Laufer’s  standing. 
+Standing and mootness are both jurisdictional doctrines that 
+ﬂow from Article III.  And, there is no mandatory “sequenc-
+ing  of  jurisdictional  issues.”  Ruhrgas  AG  v.  Marathon  Oil 
+Co.,  526  U. S.  574,  584  (1999).  Indeed,  as  the  majority  and 
+Laufer herself acknowledge, we have the discretion to deter-
+mine  either  “ ‘threshold  groun[d]  for  denying  audience  to  a 
+case  on  the  merits.’ ”  Sinochem  Int’l  Co.  v.  Malaysia  Int’l 
+Shipping  Corp.,  549  U. S.  422,  431  (2007)  (quoting  Ruhrgas, 
+526  U. S.,  at  585);  ante,  at  4;  Suggestion  of  Mootness  9 
+(“[T]his  Court  has  discretion  to  resolve  either  issue  ﬁrst”). 
+We  should  address  Laufer’s  standing,  rather  than  resolve 
+this  case  on  mootness.  As  an  analytical  matter,  whether 
+Laufer  had  standing  the  day  she  ﬁled  her  suit  is  logically 
+Cite as:  601 U. S. 1 (2023) 
+9 
+Thomas, J., concurring in judgment 
+antecedent  to  whether  her  later  actions  mooted  the  case. 
+More importantly, whether Laufer has standing to bring her 
+Reservation  Rule  claims  is  a  recurring  question  that  only 
+this  Court  can  deﬁnitively  resolve.  As  the  majority  ex-
+plains, “Laufer  has singlehandedly generated  a circuit split” 
+on  her  standing.  Ante,  at  3.  And  Laufer  is  far  from  the 
+only Reservation Rule tester.  See, e.g., Harty v. West Point 
+Realty, Inc., 28 F. 4th 435 (CA2 2022); Love v. Marriott Own-
+ership Resorts, Inc., No. 20–cv–7523 (ND Cal., Mar. 29, 2021); 
+Sarwar  v.  Om  Sai,  LLC,  No.  2:20–cv–483  (D  Me.,  May  18, 
+2021).  Beyond  answering  this  question  for  our  colleagues 
+on  the  Courts  of  Appeal  and  District  Courts,  we  should  an-
+swer it for Acheson Hotels, which has spent signiﬁcant time 
+and  resources  fully  brieﬁng  a  question  that  will  now  go 
+unanswered. 
+What  is  more,  the  circumstances  strongly  suggest  strate-
+gic behavior on Laufer’s part.  After this case was well un-
+Page Proof Pending Publication
+derway in this Court, Laufer ﬁled a notice with the District 
+Court voluntarily dismissing her claim with prejudice, osten-
+sibly  because  another  court  sanctioned  one  of  her  attorneys 
+for misconduct related to some of Laufer’s ADA cases.  But 
+the  attorney  in  question  had  nothing  to  do  with  the  case 
+before  us.  Suggestion  of  Mootness  3  (acknowledging  at-
+issue  attorney  “had  no  involvement  in  the  present  case  be-
+fore  this  Court”).  Laufer’s  logic  is  thus  that  she  dismissed 
+her claim—and the Court should no longer address whether 
+she  had  standing—because  an  attorney  she  hired  in  an  en-
+tirely  different  case  engaged  in  misconduct.  An  unrelated 
+attorney’s  conduct  does  nothing  to  change  the  analysis  re-
+quired to determine a plaintiff’s standing.  Laufer admits as 
+much,  arguing  only  that  the  alleged  misconduct  “could  dis-
+tract from the merits of her ADA claims and everything she 
+has  sought  to  achieve  for  persons  with  disabilities  like  her-
+self.”  Id.,  at  4.  I  would  not  reward  Laufer’s  transparent 
+tactic for evading our review.  Although the majority leaves 
+the  door  open  to  “exercise  [its]  discretion  differently  in  a 
+10 
+ACHESON HOTELS, LLC v. LAUFER 
+Thomas, J., concurring in judgment 
+future  case,”  we  have  needlessly  invited  litigants  to  follow 
+Laufer’s  path  to  manipulate  our  docket.  Ante,  at  5.  We 
+should not resolve this case about standing based upon moot-
+ness of Laufer’s own making.1 
+III 
+Turning  to  the  question  presented,  Laufer  lacks  standing 
+to  bring  her  ADA  claims.  Article  III  of  the  Constitution 
+extends the “judicial Power” to all “Cases” and “Controver-
+sies.”  Standing  doctrine  serves  to  “limi[t]  the  ‘judicial 
+power’  to  ‘ “cases  and  controversies  of  the  sort  traditionally 
+amenable  to,  and  resolved  by,  the  judicial  process.” ’ ” 
+Spokeo, Inc. v. Robins, 578 U. S. 330, 343 (2016) (Thomas, J., 
+concurring) (quoting Vermont Agency of Natural Resources 
+v.  United  States  ex  rel.  Stevens,  529  U. S.  765,  774  (2000)). 
+In  doing  so,  standing  “preserve[s]  separation  of  powers  by 
+preventing the Judiciary’s entanglement in disputes that are 
+Page Proof Pending Publication
+primarily political in nature.”  Spokeo, 578 U. S., at 344. 
+As I have previously explained, “[t]he mere ﬁling of a com-
+plaint  in  federal  court  .  .  .  does  not  a  case  (or  controversy) 
+make.”  TransUnion  LLC  v.  Ramirez,  594  U. S.  413,  446 
+(2021)  (Thomas,  J.,  dissenting).  Our  “judicial  power  [does 
+not  extend]  to  every  violation  of  the  constitution  [or  law] 
+which  may  possibly  take  place,  but  to  ‘a  case  in  law  or  eq-
+uity,’ in which a right, under such law, is asserted in a Court 
+of  justice.”  Cohens  v.  Virginia,  6  Wheat.  264,  405  (1821). 
+To  have  standing,  a  plaintiff  must  assert  a  violation  of  his 
+rights.  See  Lujan  v.  Defenders  of  Wildlife,  504  U. S.  555, 
+563  (1992)  (“[T]he  party  seeking  review  [must]  be  himself 
+among  the  injured”  (internal  quotation  marks  omitted)). 
+After  all,  “[t]he  province  of  the  court  is,  solely,  to  decide  on 
+the  rights  of  individuals.”  Marbury  v.  Madison,  1  Cranch 
+137,  170  (1803).  It  is  not  to  address  a  plaintiff’s  claim  of 
+Cite as:  601 U. S. 1 (2023) 
+11 
+Thomas, J., concurring in judgment 
+“only harm to his and every citizen’s interest in proper appli-
+cation of the . . . laws.”  Lujan, 504 U. S., at 573.2 
+Laufer lacks standing because her claim does not assert a 
+violation  of a  right  under  the ADA,  much  less  a violation  of 
+her  rights.  Her  claim  alleges  that  Acheson  Hotels  violated 
+the ADA by failing to include on its website the accessibility 
+information  that  the  Reservation  Rule  requires.  Yet,  the 
+ADA  provides  that  “[n]o  individual  shall  be  discriminated 
+against on the basis of disability in the full and equal enjoy-
+ment of the . . . services . . . of any place of public accommoda-
+tion.”  42 U. S. C. § 12182(a).  In other words, the ADA pro-
+hibits  only  discrimination  based  on  disability—it  does  not 
+create a right to information. 
+Laufer’s  ADA  claim  is  thus  different  from  the  tester’s 
+claim  under  the  Fair  Housing  Act  that  the  Court  addressed 
+12 
+ACHESON HOTELS, LLC v. LAUFER 
+Thomas, J., concurring in judgment 
+in  Havens  Realty  Corp.  v.  Coleman,  455  U. S.  363.  In  con-
+trast  to  the  ADA,  the  Fair  Housing  Act  explicitly  prohibits 
+“represent[ing]  to  any  person  because  of  race  .  .  .  that  any 
+dwelling  is  not  available  for inspection,  sale,  or  rental  when 
+such  dwelling  is  in  fact  so  available.”  § 3604(d).  Accord-
+ingly, when Havens Realty told a black tester that no apart-
+ments  were  available  but  told  a  white  tester  that  it  had  va-
+cancies,  the  Court  found  that  the  black  tester  had  standing 
+to  sue.  The  Court  explained  that  the  statute  created  “a 
+legal  right  to  truthful  information  about  available  housing.” 
+Id.,  at  373.  The  black  tester  had  been  personally  denied 
+that  truthful  information,  so  she  had  standing  to  bring  her 
+claim.  Havens  Realty  thus  has  no  bearing  on  Laufer’s 
+standing as a tester of compliance with the ADA, which pro-
+vides no such statutory right to information. 
+Laufer points to the Reservation Rule, alleging that it cre-
+ates  an  entitlement  to  accessibility  information.  But  even 
+Page Proof Pending Publication
+assuming  a  regulation  could—and  did—create  such  a  right, 
+Laufer asserts no violation of her own rights with regard to 
+that information.  Laufer does not even harbor “ ‘some day’ 
+intentions”  of  traveling  to  Maine  to  visit  the  Coast  Village 
+Inn.  Lujan,  504  U. S.,  at  564.  Her  lack  of  intent  to  visit 
+the hotel or even book a hotel room elsewhere in Maine evis-
+cerates any connection to her purported legal interest in the 
+accessibility  information  required  by  the  Reservation  Rule. 
+To put it in the “more pedestrian terms” used by then-Judge 
+Scalia, standing asks “ ‘What’s it to you?’ ”  The Doctrine of 
+Standing as an Essential Element of the Separation of Pow-
+ers,  17  Suffolk  U.  L.  Rev.  881,  882  (1983).  Acheson  Hotels’ 
+failure  to  provide  accessibility  information  on  its  website  is 
+nothing to Laufer, because she disclaimed any intent to visit 
+the hotel. 
+Rather  than  assert  a  violation  of  her  own  rights,  Laufer 
+casts herself in the role of a private attorney general, surﬁng 
+the  web  to  ensure  hotels’  compliance  with  the  Reservation 
+Rule.  Laufer  has  described  herself  as  “an  advocate  on  be-
+Cite as:  601 U. S. 1 (2023) 
+13 
+Thomas, J., concurring in judgment 
+half  of  both  [her]self  and  other  similarly  situated  disabled 
+persons.”  App.  17a.  She  admits  that,  “[a]s  a  tester,  [she] 
+visit[s] hotel online reservation services to ascertain whether 
+they are in compliance with the Americans with Disabilities 
+Act.”  Ibid.  As a public ofﬁcial would do, Laufer even mon-
+itors  those  hotel  websites  she  has  found  lacking.  She  uses 
+“a  system”  to  track  each  of  the  hundreds  of  hotels  she  has 
+sued.  Id., at 19a.  “Once a case is settled, [she] mark[s] the 
+date . . . when the defendant has agreed to ﬁx its websites,” 
+and  on  that  date,  she  “revisit[s]”  the  website  to  ensure  the 
+hotel has complied.  Id., at 19a–20a. 
+Laufer sues “not to enforce speciﬁc legal obligations whose 
+violation works a direct harm” on her, but to force hotels to 
+comply  with  the  Reservation  Rule.  Allen  v.  Wright,  468 
+U. S. 737, 761 (1984).  “Vindicating the public interest . . . is 
+the function of Congress and the Chief Executive,” however, 
+not private plaintiffs.  Lujan, 504  U. S., at 576.  The Presi-
+Page Proof Pending Publication
+dent is tasked with the duty to “take Care that the Laws be 
+faithfully executed,” U. S. Const., Art. II, § 3, and Executive 
+Branch  ofﬁcials  have  discretion  to  choose  whether  and  how 
+to enforce the law, see Heckler v. Chaney, 470 U. S. 821, 831– 
+832 (1985).  Yet, as Judge Newsom has explained, “[t]esters 
+exercise  the  sort  of  proactive  enforcement  discretion  prop-
+erly  reserved  to  the  Executive  Branch,”  with  none  of  the 
+corresponding  accountability.  Laufer  v.  Arpan,  LLC,  29 
+F. 4th 1268, 1291 (CA11 2022) (concurring opinion). 
+This case exempliﬁes the dangers.  An ofﬁcial could have 
+informed  Acheson  Hotels  that  its  website  failed  to  comply 
+with  the  Reservation  Rule,  and  Acheson  Hotels  could  have 
+updated  its  website  to  explain  it  had  no  accessible  rooms. 
+Laufer,  however,  chose  to  “enforce”  each  technical  violation 
+of the ADA she could uncover with a lawsuit.  Because she 
+is a private plaintiff, no discretion was required or exercised. 
+And,  of  course,  Laufer  has  been  willing  to  forgo  her  suits  if 
+a hotel pays up, even though the ADA provides for no dam-
+ages  for  private  litigants.  Laufer’s  aggressive  efforts  to 
+14 
+ACHESON HOTELS, LLC v. LAUFER 
+Jackson, J., concurring in judgment 
+personally  impose  ﬁnancial  penalties  for  violations  of  the 
+Reservation Rule go far beyond the role that Congress envi-
+sioned for private plaintiffs under the ADA.  Without a vio-
+lation of her own rights, Laufer lacks standing to sue hotels 
+under the ADA.  Ensuring and monitoring compliance with 
+the  law  is  a  function  of  a  Government  ofﬁcial,  not  a  private 
+person who does not assert a violation of her own rights. 
+IV 
+Standing  ensures  that  courts  decide  disputes  over  viola-
+tions  of  a  person’s  rights,  not  a  defendant’s  compliance  with 
+the law in the abstract.  Because Laufer has not asserted a 
+violation of a right owed to her, she has no standing to bring 
+her  Reservation  Rule  claims.  The  Court  should  not  have 
+avoided  reaching  that  conclusion  due  to  Laufer’s  eleventh-
+hour tactics.  I respectfully concur in the judgment because 
+I  would vacate  and remand,  with instructions  to dismiss  for 
+Page Proof Pending Publication
+lack of standing. 
+Justice Jackson, concurring in the judgment. 
+I  agree  with  the  Court  that  this  case  is  moot  and  that  it 
+should  be  resolved  on  that  basis.  But  the  Court  goes  fur-
+ther,  ordering  vacatur  of  the  judgment  of  the  Court  of  Ap-
+peals under United States v. Munsingwear, Inc., 340 U. S. 36 
+(1950).  See ante, at 5–6.  In my view, when mootness ends 
+an appeal,  the question  of what  to do  with the lower  court’s 
+judgment,  if  anything,  raises  a  separate  issue  that  must  be 
+addressed separately. 
+I 
+Mootness  and  vacatur  are  distinct  concepts.  Start  with 
+mootness.  The doctrine of mootness stems from Article III 
+of  the  Constitution,  which  permits  federal  courts  to  adjudi-
+cate  only  “Cases”  and  “Controversies.”  “Simply  stated,  a 
+case is moot when the issues presented are no longer ‘live’ or 
+the parties lack a legally cognizable interest in the outcome.” 
+Powell  v.  McCormack,  395  U. S.  486,  496  (1969).  If  a  case 
+Cite as:  601 U. S. 1 (2023) 
+15 
+Jackson, J., concurring in judgment 
+becomes moot, “the existence of a case or controversy” is at 
+an  end,  and  there  is  therefore  no  basis  for  “the  exercise  of 
+judicial power.”  Liner v. Jafco, Inc., 375 U. S. 301, 306, n. 3 
+(1964);  see  also  Chapman  v.  Doe,  598  U. S.  –––,  –––  (2023) 
+(Jackson,  J.,  dissenting).  Mootness  thus  justiﬁes  only  dis-
+missal.  Barring  some  other  justiﬁcation,  we  can  go  no 
+further. 
+Vacatur  is  a  different  animal  entirely.  Vacatur  is  a  rem-
+edy that erases a judgment that has already been rendered. 
+Here,  the  Court  invokes  a  so-called  Munsingwear  vacatur, 
+see ante, at 5–6, a species of vacatur that we have sometimes 
+applied  to  judgments  in  civil  cases  that  have  “become  moot 
+while on [their] way here or pending our decision on the mer-
+its,” 340 U. S., at 39. 
+The  precise  origins  of  vacatur,  both  as  a  general  matter 
+and  in  its  Munsingwear  form,  are  uncertain.  In  fact,  some 
+have described the power of a court to vacate a judgment as 
+Page Proof Pending Publication
+“shrouded in ancient lore and mystery.”  Advisory Commit-
+tee’s  Note  on  Fed.  Rule  Civ.  Proc.  60(b),  28  U. S. C.  App., 
+p.  289.1  It  seems  plausible  that  our  authority  to  vacate  a 
+lower court’s judgment under Munsingwear arises from our 
+“supervisory  appellate  power”  to  “make  such  disposition  of 
+the  case  as  justice  requires.”  Walling  v.  James  V.  Reuter, 
+Inc.,  321  U. S.  671,  676  (1944);  see  also  U. S.  Bancorp  Mort-
+gage  Co.  v.  Bonner  Mall  Partnership,  513  U. S.  18,  21–22 
+(1994).  All  agree,  however,  that  vacatur  extends  from  the 
+historical practice of equity, which for centuries has provided 
+courts with the power “to protect all rights and do justice to 
+all  concerned.”  Rubber  Co.  v.  Goodyear,  9  Wall.  805,  807 
+16 
+ACHESON HOTELS, LLC v. LAUFER 
+Jackson, J., concurring in judgment 
+(1870).  The  Munsingwear  remedy,  like  its  vacatur  kin,  de-
+veloped from “this equitable tradition.”  Bancorp, 513 U. S., 
+at 25. 
+As an equitable remedy, vacatur “is not granted as a mat-
+ter  of  course.”  Salazar  v.  Buono,  559  U. S.  700,  714  (2010) 
+(opinion of Kennedy, J.).  Instead, precisely “[b]ecause [vaca-
+tur] is rooted in equity, the decision whether to vacate turns 
+on ‘the conditions and circumstances of the particular case.’ ” 
+Azar v. Garza, 584 U. S. 726, 729 (2018) (per curiam) (quoting 
+United  States  v.  Hamburg-Amerikanische  Packetfahrt-Ac-
+tien  Gesellschaft,  239  U. S.  466,  478  (1916)).  Per  historical 
+tradition,  a  court  that  is  asked  to  exercise  its  equitable  au-
+thority  to  vacate  a  lower  court’s  judgment  must  determine, 
+in  essence,  whether  it  is  “most  consonant  to  justice”  for  the 
+judgment  to  “remain  undisturbed”  or  be  vacated.  South 
+Spring Hill Gold Mining Co. v. Amador Medean Gold Min-
+ing Co., 145 U. S. 300, 301–302 (1892) (emphasis deleted). 
+Page Proof Pending Publication
+II 
+Because mootness and vacatur involve different legal anal-
+yses,  see  Part  I,  supra,  I  think  courts  should  address  them 
+separately.  Moreover,  at  least  in  theory  if  not  in  practice, 
+vacatur  does  not—and  cannot—automatically  follow  from 
+mootness. 
+For one thing, automatic vacatur plainly ﬂouts the require-
+ment of an individualized, circumstance-driven fairness eval-
+uation, which, as I have explained, is the hallmark of an equi-
+table  remedy.  “The  essence  of  equity  jurisdiction  has  been 
+the  power  .  .  .  to  do  equity  and  to  mould  each  decree  to  the 
+necessities of the particular case.”  Hecht Co. v. Bowles, 321 
+U. S. 321, 329 (1944).  Vacatur is an “extraordinary” exercise 
+of  an  appellate  court’s  “equitable”  authority.  Bancorp,  513 
+U. S.,  at  26.  As  such,  it  simply  cannot  be  a  one-size-ﬁts-all 
+solution. 
+Second,  and  perhaps  even  more  fundamentally,  automatic 
+vacatur  is  ﬂatly  inconsistent  with  our  common-law  tradition 
+Cite as:  601 U. S. 1 (2023) 
+17 
+Jackson, J., concurring in judgment 
+of case-by-case adjudication, which “assumes that judicial de-
+cisions  are  valuable  and  should  not  be  cast  aside  lightly.” 
+Chapman, 598 U. S., at –––.  Our legal system rests not only 
+on the holdings of this Court, but also on the reasoned deci-
+sions of duly authorized lower court judges.  Jurists presid-
+ing  over  cases  at  every  level  have  a  duty  “to  say  what  the 
+law  is.”  Marbury  v.  Madison,  1  Cranch  137,  177  (1803). 
+That mootness can sometimes leave parties unable to appeal 
+does not bear on the continued validity of those lower court 
+opinions in any respect. 
+We do not consider a court’s judgment to be any less bind-
+ing  on  the  parties  simply  because  there  is  not  an  appeal; 
+appeal  or  not,  lower  court  rulings  are  still  law.  And  it  is 
+not  as  if  a  decision  rendered  by  a  lower  court  is  less  than 
+ﬁnal, or is not perfected, unless and until it receives the im-
+primatur of this Court.  Indeed, many lower court determi-
+nations  are  not  even  appealable  as  a  matter  of  law.  See, 
+Page Proof Pending Publication
+e. g., 28 U. S. C. § 1447(d) (providing that, with limited excep-
+tions,  “[a]n  order  remanding  a  case  to  the  State  court  from 
+which  it  was  removed  is  not  reviewable  on  appeal  or  other-
+wise”); cf. § 1292(a) (authorizing appeals of only certain kinds 
+of interlocutory orders).  Our legal system regards those de-
+cisions as pronouncements of law nevertheless. 
+In other  words, even if  a party  cannot appeal, or  opts not 
+to  do  so,  lower  court  judgments  are  binding  and  presump-
+tively valid.  And the lack of an appeal, on its own, does not 
+sufﬁce  to  rebut  that  presumption.  Any  suggestion  to  the 
+contrary  misunderstands  the  scope  of  the  authority  that  all 
+federal  judges  have  pursuant  to  Article  III,  and  disrespects 
+the time and talent of the jurists who have previously under-
+taken to assess the merits of the matter. 
+Nor  is  the  validity  of  a  lower  court’s  judgment  cast  into 
+doubt as a result of the case’s subsequent mootness.  We do 
+not  erase  past  precedents  just  because  those  cases  cease  to 
+be live, litigated matters.  Every federal case fades to black 
+at some point, yet in our common-law system of case-by-case 
+18 
+ACHESON HOTELS, LLC v. LAUFER 
+Jackson, J., concurring in judgment 
+adjudication, the rulings that Article III judges have issued 
+in  those  cases  remain  good  law.  “[T]here  is  no  particular 
+reason  to  assume  that  a  decision,  later  mooted,  is  any  less 
+valid as precedent than any  other opinion of a court.”  Ma-
+honey v. Babbitt, 113 F. 3d 219, 222 (CADC 1997). 
+III 
+A 
+Why, then, does the possibility of nullifying a lower court’s 
+judgment  by  ordering  Munsingwear  vacatur  exist?  I  sub-
+mit  that  it  serves  a  speciﬁc,  equitable  function:  to  address 
+any unjust circumstances or unfairness that might stem from 
+the inability to appeal a particular lower court decision, not-
+withstanding its presumptive validity.  And just as in Mun-
+singwear  itself,  “the  party  seeking  relief  from  the  status 
+quo of the appellate judgment” bears the burden of establish-
+ing  “equitable  entitlement  to  [this]  extraordinary  remedy.” 
+Page Proof Pending Publication
+Bancorp, 513 U. S., at 26.2 
+Thus,  in  my  view,  sound  vacatur  arguments  must  be 
+rooted  in  fairness.  Likewise,  I  believe  that  a  court’s  Mun-
+singwear  determination  should  involve  a  particularized  as-
+sessment  of  whether  “the  conditions  and  circumstances  of 
+the  particular  case”  warrant  vacatur  of  the  lower  court’s 
+judgment.  Garza,  584  U. S.,  at  729  (internal  quotation 
+marks omitted). 
+Cite as:  601 U. S. 1 (2023) 
+19 
+Jackson, J., concurring in judgment 
+It  is,  of  course,  impossible  to  catalog  all  of  the  potential 
+circumstances  that  might  justify  vacatur  of  a  lower  court’s 
+judgment on fairness grounds, so I will not attempt to do so 
+here.  As a general matter, I believe that a party who claims 
+equitable  entitlement  to  vacatur  must  explain  what  harm— 
+other than having to accept the law as the lower court stated 
+it—ﬂows  from  the  inability  to  appeal  the  lower  court  deci-
+sion.  The procedural history of Munsingwear provides one 
+example  of  the  kind  of  harm  that  might  warrant  vacatur. 
+See  n.  2,  supra.  Another  stems  from  the  fact  that  courts 
+“must also take account of the public interest” when making 
+a  vacatur  determination,  Bancorp,  513  U. S.,  at  26,  which 
+raises broader fairness concerns—such as “the orderly oper-
+ation  of  the  federal  judicial  system,”  id.,  at  27.  For  that 
+reason,  I  think  that  the  Court’s  “sensitiv[ity]  to  Acheson’s 
+concern  about  litigants  manipulating  the  jurisdiction  of  this 
+Court,” ante, at 5, could be a relevant vacatur consideration, 
+Page Proof Pending Publication
+and  is  likewise  reﬂected  in  our  prior  observation  that  it 
+would  be  “strange”  to  “permit  a  plaintiff  to  obtain  a  favor-
+able judgment, take voluntary action that moots the dispute, 
+and  then  retain  the  beneﬁt  of  the  judgment.”  Garza,  584 
+U. S., at 729 (internal quotation marks omitted).3 
+It  sufﬁces  for  now  to  say  that  “[f]lexibility  rather  than 
+rigidity has distinguished” a court’s equitable power and the 
+potential reasons  for exercising it.  Hecht, 321  U. S., at 329. 
+Still, it bears repeating that the reason for a vacatur remedy 
+must  be  more  than  “mere  disagreement  with  the  decision 
+that one seeks to have vacated.”  Chapman, 598 U. S., at –––. 
+20 
+ACHESON HOTELS, LLC v. LAUFER 
+Jackson, J., concurring in judgment 
+Every  lower  court  loser  would,  of  course,  prefer  that  the 
+lower court’s opinion not exist.  But  in each and every case 
+in our adversarial justice system, one side loses—and gener-
+ally must accept that outcome. 
+To me, such ﬁrst principles about the nature of the vacatur 
+remedy, the design of our common-law system, and the scope 
+of appellate authority best inform how this Court, and other 
+Courts  of Appeals,  should  proceed when  addressing a  Mun-
+singwear  motion.  Mindful  that  vacatur  of  a  lower  court’s 
+judgment  is  an  extraordinary  equitable  remedy  designed  to 
+ensure fairness, and fully cognizant of the danger of uproot-
+ing  presumptively  valid  legal  precedents—contributions  to 
+the common law that belong to all who are governed by the 
+rule of law in our constitutional system, not just the parties 
+in the particular case—we should carefully evaluate the pur-
+ported  need  for  vacatur,  in  terms  of  the  harms  it  would 
+avert.  And  in  the  absence  of  any  demonstrated  harm-
+related  justiﬁcation  for  vacating  a  lower  court’s  opinion,  we 
+Page Proof Pending Publication
+should  conclude  that  “[t]he  ‘public  interest’  .  .  .  is  generally 
+better  served  by  leaving  appellate  judgments  intact.”  Al-
+varez v. Smith, 558 U. S. 87, 98 (2009) (Stevens, J., concurring 
+in part and dissenting in part). 
+B 
+All  that  said,  I  am  aware  that  a  party  who  is  deprived  of 
+the  opportunity  to  appeal  due  to  mootness  (like  Acheson) 
+might  feel  that  loss  acutely.  It  might  even  experience  the 
+thwarting  of  its  chance  to  obtain  a  reversal  on  appeal  as  a 
+grave injustice, on par with any other fairness-based justiﬁ-
+cation  for  vacatur  of  the  lower  court’s  ruling.  I  also  recog-
+nize  that  this  Court  has  previously  expressed  sympathy  for 
+that  view.  See,  e.g.,  Camreta  v.  Greene,  563  U. S.  692,  713 
+(2011)  (suggesting  that  the  inability  to  challenge  “a  legally 
+consequential  decision”  warrants  vacatur).  But  I  disagree. 
+There is nothing inherently inequitable about not being able 
+to pursue an appeal. 
+Cite as:  601 U. S. 1 (2023) 
+21 
+Jackson, J., concurring in judgment 
+To reiterate the basic bottom line: The lack of jurisdiction 
+that  prevents  an  appeal  and  the  set  of  circumstances  that 
+relate to whether the lower court’s judgment should be per-
+mitted to stand are entirely distinct.  The lower court issued 
+its  ruling  while  the  case  was  alive.  And  so  rendered,  that 
+ruling is precedent—“presumptively correct and valuable to 
+the legal community as a whole.”  Bancorp, 513 U. S., at 26. 
+The observation that “what is done is done” is thus the start-
+ing  point  for  assessing  any  response  to  mootness  beyond 
+mere dismissal of the appeal. 
+It  is  true  that  the  losing  party  would  ordinarily  have  the 
+right  to  challenge  a  lower  court’s  decision  by  pursuing  an 
+appeal.  But that right is not absolute or inviolate.  Wanted 
+appeals sometimes cannot proceed for a host of reasons,4  and 
+in such instances, the losing party is normally stuck with the 
+outcome  that  the  lower  court  announced  after  its  consider-
+ation of the matter in dispute.  We do not consider the pro-
+posers  of  unrequited  requests  for  appellate  review  to  have 
+Page Proof Pending Publication
+been unjustly wronged. 
+To  be  sure,  in  the  instant  case,  there  is  another  wrinkle: 
+We not only granted Acheson’s petition for certiorari, but we 
+also  heard  oral  argument  related  to  the  merits  of  its  claim 
+that  the  lower  court’s  judgment  was  erroneous.  Thus, 
+Acheson  had  a  better  opportunity  than  most  to  achieve  the 
+requested reversal of the Court of Appeals’ unfavorable deci-
+sion.  But  this  Court’s  demonstrated  interest  in  reviewing 
+Acheson’s  challenge  to  respondent’s  moot  legal  action  does 
+not add anything to the fairness equation.  Now that its ap-
+peal  has  been  mooted,  Acheson  is  in  no  different  position 
+than  the  multitude  of  other  litigants  who  suffered  defeat  in 
+the Courts of Appeals and will not get a review of their case 
+on the merits from this Court.  To sustain a request for va-
+22 
+ACHESON HOTELS, LLC v. LAUFER 
+Jackson, J., concurring in judgment 
+catur, Acheson needs to rely on something more than its own 
+abject disappointment. 
+*
+*
+* 
+The  parties  in  this  case  have  not  provided  any  equitable 
+basis for vacatur of the Court of Appeals’ judgment, nor has 
+the  majority  described  any,  beyond  its  reference  to  the 
+Court’s  past  practices  and  a  citation  to  Munsingwear.  See 
+ante, at 5–6.  For the reasons explained above, I would ordi-
+narily  not  agree  to  the  imposition  of  a  vacatur  remedy  that 
+was not fully discussed, much less established.  But I recog-
+nize  that  this  Court’s  vacatur  ruling  is  consistent  with  our 
+“established practice” of vacating the judgment of the Court 
+of  Appeals  below  “when  mootness  occurs  through  .  .  .  the 
+unilateral  action  of  the  party  who  prevailed  in  the  lower 
+court.”  Arizonans  for  Ofﬁcial  English  v.  Arizona,  520 
+U. S. 43, 70–71 (1997) (internal quotation marks omitted); see 
+also Garza, 584 U. S., at 729; supra, at 19, and n. 3.  I concur 
+Page Proof Pending Publication
+in  the  judgment  on  the  basis  of  that  precedent,  despite  my 
+own  views  of  this  practice,  because  respondent’s  voluntary 
+dismissal is the sort of “unilateral action” that we have pre-
+viously deemed adequate for vacatur. 

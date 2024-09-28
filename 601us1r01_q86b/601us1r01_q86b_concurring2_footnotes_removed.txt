@@ -1,0 +1,405 @@
+Justice Jackson, concurring in the judgment. 
+I  agree  with  the  Court  that  this  case  is  moot  and  that  it 
+should  be  resolved  on  that  basis.  But  the  Court  goes  fur-
+ther,  ordering  vacatur  of  the  judgment  of  the  Court  of  Ap-
+peals under United States v. Munsingwear, Inc., 340 U. S. 36 
+(1950).  See ante, at 5–6.  In my view, when mootness ends 
+an appeal,  the question  of what  to do  with the lower  court’s 
+judgment,  if  anything,  raises  a  separate  issue  that  must  be 
+addressed separately. 
+
+I 
+
+Mootness  and  vacatur  are  distinct  concepts.  Start  with 
+mootness.  The doctrine of mootness stems from Article III 
+of  the  Constitution,  which  permits  federal  courts  to  adjudi-
+cate  only  “Cases”  and  “Controversies.”  “Simply  stated,  a 
+case is moot when the issues presented are no longer ‘live’ or 
+the parties lack a legally cognizable interest in the outcome.” 
+Powell  v.  McCormack,  395  U. S.  486,  496  (1969).  If  a  case 
+
+Cite as:  601 U. S. 1 (2023) 
+
+15 
+
+Jackson, J., concurring in judgment 
+
+becomes moot, “the existence of a case or controversy” is at 
+an  end,  and  there  is  therefore  no  basis  for  “the  exercise  of 
+judicial power.”  Liner v. Jafco, Inc., 375 U. S. 301, 306, n. 3 
+(1964);  see  also  Chapman  v.  Doe,  598  U. S.  –––,  –––  (2023) 
+(Jackson,  J.,  dissenting).  Mootness  thus  justiﬁes  only  dis-
+missal.  Barring  some  other  justiﬁcation,  we  can  go  no 
+further. 
+
+Vacatur  is  a  different  animal  entirely.  Vacatur  is  a  rem-
+edy that erases a judgment that has already been rendered. 
+Here,  the  Court  invokes  a  so-called  Munsingwear  vacatur, 
+see ante, at 5–6, a species of vacatur that we have sometimes 
+applied  to  judgments  in  civil  cases  that  have  “become  moot 
+while on [their] way here or pending our decision on the mer-
+its,” 340 U. S., at 39. 
+
+The  precise  origins  of  vacatur,  both  as  a  general  matter 
+and  in  its  Munsingwear  form,  are  uncertain.  In  fact,  some 
+have described the power of a court to vacate a judgment as 
+Page Proof Pending Publication
+“shrouded in ancient lore and mystery.”  Advisory Commit-
+tee’s  Note  on  Fed.  Rule  Civ.  Proc.  60(b),  28  U. S. C.  App., 
+p.  289.1  It  seems  plausible  that  our  authority  to  vacate  a 
+lower court’s judgment under Munsingwear arises from our 
+“supervisory  appellate  power”  to  “make  such  disposition  of 
+the  case  as  justice  requires.”  Walling  v.  James  V.  Reuter, 
+Inc.,  321  U. S.  671,  676  (1944);  see  also  U. S.  Bancorp  Mort-
+gage  Co.  v.  Bonner  Mall  Partnership,  513  U. S.  18,  21–22 
+(1994).  All  agree,  however,  that  vacatur  extends  from  the 
+historical practice of equity, which for centuries has provided 
+courts with the power “to protect all rights and do justice to 
+all  concerned.”  Rubber  Co.  v.  Goodyear,  9  Wall.  805,  807 
+
+1 We have sometimes invoked 28 U. S. C. § 2106 as the source of our vaca-
+tur authority after mootness arises, see, e. g., Camreta v. Greene, 563 U. S. 
+692,  712  (2011),  but  that  statute  provides  only  that  we  may  “direct  the 
+entry of such appropriate judgment, decree, or order, or require such fur-
+ther  proceedings  to  be  had  as  may  be  just  under  the  circumstances.” 
+§ 2106.  And, of course, that statutory provision cannot confer jurisdiction 
+in excess of Article III, from which the limitation of mootness derives. 
+
+16 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Jackson, J., concurring in judgment 
+
+(1870).  The  Munsingwear  remedy,  like  its  vacatur  kin,  de-
+veloped from “this equitable tradition.”  Bancorp, 513 U. S., 
+at 25. 
+
+As an equitable remedy, vacatur “is not granted as a mat-
+ter  of  course.”  Salazar  v.  Buono,  559  U. S.  700,  714  (2010) 
+(opinion of Kennedy, J.).  Instead, precisely “[b]ecause [vaca-
+tur] is rooted in equity, the decision whether to vacate turns 
+on ‘the conditions and circumstances of the particular case.’ ” 
+Azar v. Garza, 584 U. S. 726, 729 (2018) (per curiam) (quoting 
+United  States  v.  Hamburg-Amerikanische  Packetfahrt-Ac-
+tien  Gesellschaft,  239  U. S.  466,  478  (1916)).  Per  historical 
+tradition,  a  court  that  is  asked  to  exercise  its  equitable  au-
+thority  to  vacate  a  lower  court’s  judgment  must  determine, 
+in  essence,  whether  it  is  “most  consonant  to  justice”  for  the 
+judgment  to  “remain  undisturbed”  or  be  vacated.  South 
+Spring Hill Gold Mining Co. v. Amador Medean Gold Min-
+ing Co., 145 U. S. 300, 301–302 (1892) (emphasis deleted). 
+Page Proof Pending Publication
+II 
+Because mootness and vacatur involve different legal anal-
+yses,  see  Part  I,  supra,  I  think  courts  should  address  them 
+separately.  Moreover,  at  least  in  theory  if  not  in  practice, 
+vacatur  does  not—and  cannot—automatically  follow  from 
+mootness. 
+
+For one thing, automatic vacatur plainly ﬂouts the require-
+ment of an individualized, circumstance-driven fairness eval-
+uation, which, as I have explained, is the hallmark of an equi-
+table  remedy.  “The  essence  of  equity  jurisdiction  has  been 
+the  power  .  .  .  to  do  equity  and  to  mould  each  decree  to  the 
+necessities of the particular case.”  Hecht Co. v. Bowles, 321 
+U. S. 321, 329 (1944).  Vacatur is an “extraordinary” exercise 
+of  an  appellate  court’s  “equitable”  authority.  Bancorp,  513 
+U. S.,  at  26.  As  such,  it  simply  cannot  be  a  one-size-ﬁts-all 
+solution. 
+
+Second,  and  perhaps  even  more  fundamentally,  automatic 
+vacatur  is  ﬂatly  inconsistent  with  our  common-law  tradition 
+
+Cite as:  601 U. S. 1 (2023) 
+
+17 
+
+Jackson, J., concurring in judgment 
+
+of case-by-case adjudication, which “assumes that judicial de-
+cisions  are  valuable  and  should  not  be  cast  aside  lightly.” 
+Chapman, 598 U. S., at –––.  Our legal system rests not only 
+on the holdings of this Court, but also on the reasoned deci-
+sions of duly authorized lower court judges.  Jurists presid-
+ing  over  cases  at  every  level  have  a  duty  “to  say  what  the 
+law  is.”  Marbury  v.  Madison,  1  Cranch  137,  177  (1803). 
+That mootness can sometimes leave parties unable to appeal 
+does not bear on the continued validity of those lower court 
+opinions in any respect. 
+
+We do not consider a court’s judgment to be any less bind-
+ing  on  the  parties  simply  because  there  is  not  an  appeal; 
+appeal  or  not,  lower  court  rulings  are  still  law.  And  it  is 
+not  as  if  a  decision  rendered  by  a  lower  court  is  less  than 
+ﬁnal, or is not perfected, unless and until it receives the im-
+primatur of this Court.  Indeed, many lower court determi-
+nations  are  not  even  appealable  as  a  matter  of  law.  See, 
+Page Proof Pending Publication
+e. g., 28 U. S. C. § 1447(d) (providing that, with limited excep-
+tions,  “[a]n  order  remanding  a  case  to  the  State  court  from 
+which  it  was  removed  is  not  reviewable  on  appeal  or  other-
+wise”); cf. § 1292(a) (authorizing appeals of only certain kinds 
+of interlocutory orders).  Our legal system regards those de-
+cisions as pronouncements of law nevertheless. 
+
+In other  words, even if  a party  cannot appeal, or  opts not 
+to  do  so,  lower  court  judgments  are  binding  and  presump-
+tively valid.  And the lack of an appeal, on its own, does not 
+sufﬁce  to  rebut  that  presumption.  Any  suggestion  to  the 
+contrary  misunderstands  the  scope  of  the  authority  that  all 
+federal  judges  have  pursuant  to  Article  III,  and  disrespects 
+the time and talent of the jurists who have previously under-
+taken to assess the merits of the matter. 
+
+Nor  is  the  validity  of  a  lower  court’s  judgment  cast  into 
+doubt as a result of the case’s subsequent mootness.  We do 
+not  erase  past  precedents  just  because  those  cases  cease  to 
+be live, litigated matters.  Every federal case fades to black 
+at some point, yet in our common-law system of case-by-case 
+
+18 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Jackson, J., concurring in judgment 
+
+adjudication, the rulings that Article III judges have issued 
+in  those  cases  remain  good  law.  “[T]here  is  no  particular 
+reason  to  assume  that  a  decision,  later  mooted,  is  any  less 
+valid as precedent than any  other opinion of a court.”  Ma-
+honey v. Babbitt, 113 F. 3d 219, 222 (CADC 1997). 
+
+III 
+
+A 
+
+Why, then, does the possibility of nullifying a lower court’s 
+judgment  by  ordering  Munsingwear  vacatur  exist?  I  sub-
+mit  that  it  serves  a  speciﬁc,  equitable  function:  to  address 
+any unjust circumstances or unfairness that might stem from 
+the inability to appeal a particular lower court decision, not-
+withstanding its presumptive validity.  And just as in Mun-
+singwear  itself,  “the  party  seeking  relief  from  the  status 
+quo of the appellate judgment” bears the burden of establish-
+ing  “equitable  entitlement  to  [this]  extraordinary  remedy.” 
+Page Proof Pending Publication
+Bancorp, 513 U. S., at 26.2 
+Thus,  in  my  view,  sound  vacatur  arguments  must  be 
+rooted  in  fairness.  Likewise,  I  believe  that  a  court’s  Mun-
+singwear  determination  should  involve  a  particularized  as-
+sessment  of  whether  “the  conditions  and  circumstances  of 
+the  particular  case”  warrant  vacatur  of  the  lower  court’s 
+judgment.  Garza,  584  U. S.,  at  729  (internal  quotation 
+marks omitted). 
+
+2 In United States v. Munsingwear, Inc., 340 U. S. 36 (1950), the Federal 
+Government, as plaintiff, had brought both an injunctive claim and a dam-
+ages claim; it lost the injunctive claim ﬁrst and was unable to appeal that 
+lower  court  determination  because  of  intervening  mootness.  Id.,  at  37. 
+The  unappealable  lower  court  judgment  with  respect  to  the  injunctive 
+claim then precluded the Government from litigating the merits of its dam-
+ages  claim.  Ibid.  This  Court  noted  that  a  vacatur  request  had  been 
+available to the Government to avert this unfairness, but that the Govern-
+ment  had  “slept  on  its  rights”  in  failing  to  seek  that  particular  remedy. 
+Id., at 40–41. 
+
+Cite as:  601 U. S. 1 (2023) 
+
+19 
+
+Jackson, J., concurring in judgment 
+
+It  is,  of  course,  impossible  to  catalog  all  of  the  potential 
+circumstances  that  might  justify  vacatur  of  a  lower  court’s 
+judgment on fairness grounds, so I will not attempt to do so 
+here.  As a general matter, I believe that a party who claims 
+equitable  entitlement  to  vacatur  must  explain  what  harm— 
+other than having to accept the law as the lower court stated 
+it—ﬂows  from  the  inability  to  appeal  the  lower  court  deci-
+sion.  The procedural history of Munsingwear provides one 
+example  of  the  kind  of  harm  that  might  warrant  vacatur. 
+See  n.  2,  supra.  Another  stems  from  the  fact  that  courts 
+“must also take account of the public interest” when making 
+a  vacatur  determination,  Bancorp,  513  U. S.,  at  26,  which 
+raises broader fairness concerns—such as “the orderly oper-
+ation  of  the  federal  judicial  system,”  id.,  at  27.  For  that 
+reason,  I  think  that  the  Court’s  “sensitiv[ity]  to  Acheson’s 
+concern  about  litigants  manipulating  the  jurisdiction  of  this 
+Court,” ante, at 5, could be a relevant vacatur consideration, 
+Page Proof Pending Publication
+and  is  likewise  reﬂected  in  our  prior  observation  that  it 
+would  be  “strange”  to  “permit  a  plaintiff  to  obtain  a  favor-
+able judgment, take voluntary action that moots the dispute, 
+and  then  retain  the  beneﬁt  of  the  judgment.”  Garza,  584 
+U. S., at 729 (internal quotation marks omitted).3 
+
+It  sufﬁces  for  now  to  say  that  “[f]lexibility  rather  than 
+rigidity has distinguished” a court’s equitable power and the 
+potential reasons  for exercising it.  Hecht, 321  U. S., at 329. 
+Still, it bears repeating that the reason for a vacatur remedy 
+must  be  more  than  “mere  disagreement  with  the  decision 
+that one seeks to have vacated.”  Chapman, 598 U. S., at –––. 
+
+3 The  Court  has  accepted  respondent’s  claim  that  she  voluntarily  dis-
+missed  her  suit  for  legitimate  reasons,  see  ante,  at  5,  and  to  be  clear,  I 
+concur  with  that  conclusion.  My  only  point  is  that  any  perception  that 
+mootness has been procured tactically, based on its timing (here, the moot-
+ness occurred after we granted review, oral argument was scheduled, and 
+brieﬁng  had  begun)  or  otherwise,  would  be  relevant  to  determining 
+whether the equitable vacatur remedy is warranted. 
+
+20 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Jackson, J., concurring in judgment 
+
+Every  lower  court  loser  would,  of  course,  prefer  that  the 
+lower court’s opinion not exist.  But  in each and every case 
+in our adversarial justice system, one side loses—and gener-
+ally must accept that outcome. 
+
+To me, such ﬁrst principles about the nature of the vacatur 
+remedy, the design of our common-law system, and the scope 
+of appellate authority best inform how this Court, and other 
+Courts  of Appeals,  should  proceed when  addressing a  Mun-
+singwear  motion.  Mindful  that  vacatur  of  a  lower  court’s 
+judgment  is  an  extraordinary  equitable  remedy  designed  to 
+ensure fairness, and fully cognizant of the danger of uproot-
+ing  presumptively  valid  legal  precedents—contributions  to 
+the common law that belong to all who are governed by the 
+rule of law in our constitutional system, not just the parties 
+in the particular case—we should carefully evaluate the pur-
+ported  need  for  vacatur,  in  terms  of  the  harms  it  would 
+avert.  And  in  the  absence  of  any  demonstrated  harm-
+related  justiﬁcation  for  vacating  a  lower  court’s  opinion,  we 
+Page Proof Pending Publication
+should  conclude  that  “[t]he  ‘public  interest’  .  .  .  is  generally 
+better  served  by  leaving  appellate  judgments  intact.”  Al-
+varez v. Smith, 558 U. S. 87, 98 (2009) (Stevens, J., concurring 
+in part and dissenting in part). 
+
+B 
+
+All  that  said,  I  am  aware  that  a  party  who  is  deprived  of 
+the  opportunity  to  appeal  due  to  mootness  (like  Acheson) 
+might  feel  that  loss  acutely.  It  might  even  experience  the 
+thwarting  of  its  chance  to  obtain  a  reversal  on  appeal  as  a 
+grave injustice, on par with any other fairness-based justiﬁ-
+cation  for  vacatur  of  the  lower  court’s  ruling.  I  also  recog-
+nize  that  this  Court  has  previously  expressed  sympathy  for 
+that  view.  See,  e.g.,  Camreta  v.  Greene,  563  U. S.  692,  713 
+(2011)  (suggesting  that  the  inability  to  challenge  “a  legally 
+consequential  decision”  warrants  vacatur).  But  I  disagree. 
+There is nothing inherently inequitable about not being able 
+to pursue an appeal. 
+
+Cite as:  601 U. S. 1 (2023) 
+
+21 
+
+Jackson, J., concurring in judgment 
+
+To reiterate the basic bottom line: The lack of jurisdiction 
+that  prevents  an  appeal  and  the  set  of  circumstances  that 
+relate to whether the lower court’s judgment should be per-
+mitted to stand are entirely distinct.  The lower court issued 
+its  ruling  while  the  case  was  alive.  And  so  rendered,  that 
+ruling is precedent—“presumptively correct and valuable to 
+the legal community as a whole.”  Bancorp, 513 U. S., at 26. 
+The observation that “what is done is done” is thus the start-
+ing  point  for  assessing  any  response  to  mootness  beyond 
+mere dismissal of the appeal. 
+
+It  is  true  that  the  losing  party  would  ordinarily  have  the 
+right  to  challenge  a  lower  court’s  decision  by  pursuing  an 
+appeal.  But that right is not absolute or inviolate.  Wanted 
+appeals sometimes cannot proceed for a host of reasons,4  and 
+in such instances, the losing party is normally stuck with the 
+outcome  that  the  lower  court  announced  after  its  consider-
+ation of the matter in dispute.  We do not consider the pro-
+posers  of  unrequited  requests  for  appellate  review  to  have 
+Page Proof Pending Publication
+been unjustly wronged. 
+To  be  sure,  in  the  instant  case,  there  is  another  wrinkle: 
+We not only granted Acheson’s petition for certiorari, but we 
+also  heard  oral  argument  related  to  the  merits  of  its  claim 
+that  the  lower  court’s  judgment  was  erroneous.  Thus, 
+Acheson  had  a  better  opportunity  than  most  to  achieve  the 
+requested reversal of the Court of Appeals’ unfavorable deci-
+sion.  But  this  Court’s  demonstrated  interest  in  reviewing 
+Acheson’s  challenge  to  respondent’s  moot  legal  action  does 
+not add anything to the fairness equation.  Now that its ap-
+peal  has  been  mooted,  Acheson  is  in  no  different  position 
+than  the  multitude  of  other  litigants  who  suffered  defeat  in 
+the Courts of Appeals and will not get a review of their case 
+on the merits from this Court.  To sustain a request for va-
+
+4 Our  Court  might  decide  not  to  grant  a  would-be  petitioner’s  request 
+for certiorari, for example.  Or, even after granting review, we might dis-
+miss  the  petition  after  determining  that  certiorari  was  improvidently 
+granted. 
+
+22 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Jackson, J., concurring in judgment 
+
+catur, Acheson needs to rely on something more than its own 
+abject disappointment. 
+
+*
+
+*
+
+* 
+
+The  parties  in  this  case  have  not  provided  any  equitable 
+basis for vacatur of the Court of Appeals’ judgment, nor has 
+the  majority  described  any,  beyond  its  reference  to  the 
+Court’s  past  practices  and  a  citation  to  Munsingwear.  See 
+ante, at 5–6.  For the reasons explained above, I would ordi-
+narily  not  agree  to  the  imposition  of  a  vacatur  remedy  that 
+was not fully discussed, much less established.  But I recog-
+nize  that  this  Court’s  vacatur  ruling  is  consistent  with  our 
+“established practice” of vacating the judgment of the Court 
+of  Appeals  below  “when  mootness  occurs  through  .  .  .  the 
+unilateral  action  of  the  party  who  prevailed  in  the  lower 
+court.”  Arizonans  for  Ofﬁcial  English  v.  Arizona,  520 
+U. S. 43, 70–71 (1997) (internal quotation marks omitted); see 
+also Garza, 584 U. S., at 729; supra, at 19, and n. 3.  I concur 
+Page Proof Pending Publication
+in  the  judgment  on  the  basis  of  that  precedent,  despite  my 
+own  views  of  this  practice,  because  respondent’s  voluntary 
+dismissal is the sort of “unilateral action” that we have pre-
+viously deemed adequate for vacatur. 
+
+Reporter’s Note 
+
+The  attached  opinion  has  been  revised  to  reﬂect  the  usual  publication 
+and  citation  style  of  the  United  States  Reports.  The  revised  pagination 
+makes  available  the  ofﬁcial  United  States  Reports  citation  in  advance  of 
+publication.  The syllabus has been prepared by the Reporter of Decisions 
+for the convenience of the reader and constitutes no part of the opinion of 
+the  Court.  A  list  of  counsel  who  argued  or  ﬁled  briefs  in  this  case,  and 
+who  were  members  of  the  bar  of  this  Court  at  the  time  this  case  was 
+argued,  has  been  inserted  following  the  syllabus.  Other  revisions  may 
+include adjustments to formatting, captions, citation form, and any errant 
+punctuation.  The following additional edits were made: 
+
+Page Proof Pending Publication
+
+p. 4, n., line 5: “(per curiam)” is inserted after “(2023)” 
+p. 5, line 4 from bottom: “Post, at 16–20 (opinion concurring in judgment)” 
+
+is inserted after “place” 
+
+p. 10, line 10 from bottom: “in” is deleted 
+p. 16, line 5: “(opinion of Kennedy, J.)” is inserted after “(2010)” 
+p. 19, line 16: “manipulating this Court’s jurisdiction” is replaced with “ma-
+
+nipulating the jurisdiction of this Court” 
+
+

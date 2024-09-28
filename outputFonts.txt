@@ -1,0 +1,11 @@
+AAAAAB+Century-BoldItalic
+AAAAAC+CenturyExpandedSC-Regular
+AAAAAD+ArialMT
+AAAAAE+CenturyExpanded
+AAAAAF+Century-Bold
+AAAAAG+CenturyExpanded
+AAAAAH+CenturyExpanded-Italic
+AAAAAI+CenturyExpandedSC-Regular
+AAAAAK+CenturyExpandedSC-Regular
+AAAAAL+CenturyExpanded
+AAAAAM+CenturyExpanded-Italic

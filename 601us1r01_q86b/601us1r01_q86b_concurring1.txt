@@ -1,0 +1,385 @@
+Justice Thomas, concurring in the judgment. 
+Deborah Laufer has ﬁled hundreds of lawsuits against ho-
+tels she has no intention of visiting, claiming that their web-
+sites  lack  accessibility  information  mandated  by  a  federal 
+regulation.  At  both  parties’  request,  this  Court  agreed  to 
+answer  a  question  that  has  divided  the  Courts  of  Appeals: 
+whether  plaintiffs  like  Laufer  have  standing  to  bring  these 
+claims.  The  Court  decides  not  to  decide  that  question  be-
+cause, after brieﬁng began, Laufer voluntarily dismissed her 
+claim in the District Court.  I would answer this important 
+Page Proof Pending Publication
+and recurring question, which, as all agree, we have the au-
+thority  to  do.  And,  I  conclude  that  Laufer  lacks  standing. 
+
+I 
+
+Title  III  of  the  Americans  with  Disabilities  Act  of  1990 
+(ADA)  prohibits  discrimination  “on  the  basis  of  disability 
+in the full and equal enjoyment of the goods, services, facili-
+ties, privileges, advantages, or accommodations of any place 
+of  public  accommodation,”  such  as  a  hotel.  42  U. S. C. 
+§§ 12182(a),  12181(7)(A).  Title  III  deﬁnes  discrimination  to 
+include  “a  failure  to  make  reasonable  modiﬁcations”  when 
+“necessary  to  afford  .  .  .  services  .  .  .  or  accommodations  to 
+individuals  with  disabilities.”  § 12182(b)(2)(A)(ii).  To  en-
+force  the  ADA’s  prohibition  on  discrimination,  Title  III  cre-
+ates  a private  cause of  action that  permits “any  person who 
+is being subjected to discrimination on the basis of disability” 
+to  sue  for  violations.  § 12188(a)(1).  Only  injunctive  relief 
+and  attorney’s  fees  are  available  to  private  litigants.  Ibid.; 
+see  also  §§ 12205,  2000a–3(a).  The  Attorney  General,  how-
+
+Cite as:  601 U. S. 1 (2023) 
+
+7 
+
+Thomas, J., concurring in judgment 
+
+ever,  may  obtain  damages  or  assess  civil  penalties. 
+§ 12188(b)(2). 
+
+The  Department  of  Justice  promulgated  a  regulation 
+known as the Reservation Rule to aid in the implementation 
+of  the  ADA’s  prohibition  on  discrimination.  The  rule  re-
+quires  hotels  to  “[i]dentify  and  describe  accessible  features 
+.  .  .  in  enough  detail  to  reasonably  permit  individuals  with 
+disabilities to assess independently whether a given hotel or 
+guest  room  meets  his  or  her  accessibility  needs.”  28  CFR 
+§ 36.302(e)(1)(ii)  (2022).  The  rule  also  applies  to  reserva-
+tions made “through a third party.”  Ibid. 
+
+Laufer,  who  is  wheelchair  bound,  is  a  self-described  “tes-
+ter”  of  compliance  with  the  Reservation  Rule.  From  her 
+home  in  Florida,  Laufer  scours  the  internet  for  hotel  web-
+sites  that  do  not  contain  the  required  accessibility  informa-
+tion.  When she ﬁnds a deﬁcient website, she sues the hotel. 
+She  often  offers  to  settle  immediately  for  $10,000  in  attor-
+Page Proof Pending Publication
+ney’s  fees  and  corrective  action.  See  Report  and  Recom-
+mendation  in  In  re  Gillespie,  No.  1:21–mc–14  (D  Md.,  June 
+30,  2023),  ECF  Doc.  13,  p.  5;  No.  1:21–mc–14  (July  5,  2023), 
+ECF Doc. 14, p. 1, vacated on other grounds by In re Gilles-
+pie,  No.  23–1819  (CA4,  Nov.  14,  2023)  (per  curiam).  In  the 
+past  ﬁve  years,  Laufer  has  ﬁled  over  600  lawsuits  against 
+hotels. 
+
+In this case, Laufer visited the website of a bed and break-
+fast  located  in  Maine,  the  Coast  Village  Inn.  She  ﬁled  suit 
+against  the  Coast  Village  Inn’s  owner,  Acheson  Hotels,  for 
+failing  to  provide  sufﬁcient  accessibility  information.  She 
+also contended that 13 third-party booking websites, such as 
+Expedia,  failed  to  provide  accessibility  information  for  the 
+Coast  Village  Inn.  Laufer  initially  alleged  that  she  was 
+planning  to  visit  the  Coast  Village  Inn  as  part  of  a  cross-
+country  trip  from  Florida  to  Maine  to  Colorado.  But  she 
+later  disclaimed  any  intent  to  travel  to  Maine  (or  the  Coast 
+Village  Inn).  50  F.  4th  259,  267,  n.  3  (CA1  2022);  see  also 
+Brief for Appellant in No. 21–1410 (CA1), p. 4, n. 1. 
+
+8 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Thomas, J., concurring in judgment 
+
+The District Court concluded that Laufer lacked standing 
+and  dismissed  her  complaint.  The  First  Circuit  reversed, 
+relying  primarily  on  this  Court’s  holding  in  Havens  Realty 
+Corp.  v.  Coleman,  455  U. S.  363  (1982),  that  a  tester  had 
+standing to sue under the Fair Housing Act.  When Acheson 
+Hotels  petitioned  for  certiorari,  Laufer  agreed.  She  high-
+lighted  that  the  Circuits  were  split  as  to  her  standing  and 
+argued that “clarity from this Court is badly needed.”  Brief 
+in  Opposition  1.  After  we  granted  certiorari  and  set  the 
+case for argument, Laufer ﬁled a notice in the District Court 
+of her voluntary dismissal of her claim with prejudice.  And, 
+even though Acheson Hotels (and several amici) had already 
+ﬁled  briefs,  Laufer  requested  that  we  dismiss  this  case  as 
+moot.  We  denied  her  request  at  that  time,  but  agreed  to 
+consider  it  at  oral  argument.  The  case  has  been  fully 
+briefed  and  the  Court  has  heard  argument  on  the  merits. 
+Today,  however,  the  majority  opts  to  resolve  this  case  on 
+mootness.  We  can—and  should—address  the  question  on 
+Page Proof Pending Publication
+which we granted certiorari. 
+
+II 
+
+I  would  not  dismiss  this  case  as  moot.  There  is  no  ques-
+tion  that  we  have  authority  to  address  Laufer’s  standing. 
+Standing and mootness are both jurisdictional doctrines that 
+ﬂow from Article III.  And, there is no mandatory “sequenc-
+ing  of  jurisdictional  issues.”  Ruhrgas  AG  v.  Marathon  Oil 
+Co.,  526  U. S.  574,  584  (1999).  Indeed,  as  the  majority  and 
+Laufer herself acknowledge, we have the discretion to deter-
+mine  either  “ ‘threshold  groun[d]  for  denying  audience  to  a 
+case  on  the  merits.’ ”  Sinochem  Int’l  Co.  v.  Malaysia  Int’l 
+Shipping  Corp.,  549  U. S.  422,  431  (2007)  (quoting  Ruhrgas, 
+526  U. S.,  at  585);  ante,  at  4;  Suggestion  of  Mootness  9 
+(“[T]his  Court  has  discretion  to  resolve  either  issue  ﬁrst”). 
+We  should  address  Laufer’s  standing,  rather  than  resolve 
+this  case  on  mootness.  As  an  analytical  matter,  whether 
+Laufer  had  standing  the  day  she  ﬁled  her  suit  is  logically 
+
+Cite as:  601 U. S. 1 (2023) 
+
+9 
+
+Thomas, J., concurring in judgment 
+
+antecedent  to  whether  her  later  actions  mooted  the  case. 
+More importantly, whether Laufer has standing to bring her 
+Reservation  Rule  claims  is  a  recurring  question  that  only 
+this  Court  can  deﬁnitively  resolve.  As  the  majority  ex-
+plains, “Laufer  has singlehandedly generated  a circuit split” 
+on  her  standing.  Ante,  at  3.  And  Laufer  is  far  from  the 
+only Reservation Rule tester.  See, e.g., Harty v. West Point 
+Realty, Inc., 28 F. 4th 435 (CA2 2022); Love v. Marriott Own-
+ership Resorts, Inc., No. 20–cv–7523 (ND Cal., Mar. 29, 2021); 
+Sarwar  v.  Om  Sai,  LLC,  No.  2:20–cv–483  (D  Me.,  May  18, 
+2021).  Beyond  answering  this  question  for  our  colleagues 
+on  the  Courts  of  Appeal  and  District  Courts,  we  should  an-
+swer it for Acheson Hotels, which has spent signiﬁcant time 
+and  resources  fully  brieﬁng  a  question  that  will  now  go 
+unanswered. 
+
+What  is  more,  the  circumstances  strongly  suggest  strate-
+gic behavior on Laufer’s part.  After this case was well un-
+Page Proof Pending Publication
+derway in this Court, Laufer ﬁled a notice with the District 
+Court voluntarily dismissing her claim with prejudice, osten-
+sibly  because  another  court  sanctioned  one  of  her  attorneys 
+for misconduct related to some of Laufer’s ADA cases.  But 
+the  attorney  in  question  had  nothing  to  do  with  the  case 
+before  us.  Suggestion  of  Mootness  3  (acknowledging  at-
+issue  attorney  “had  no  involvement  in  the  present  case  be-
+fore  this  Court”).  Laufer’s  logic  is  thus  that  she  dismissed 
+her claim—and the Court should no longer address whether 
+she  had  standing—because  an  attorney  she  hired  in  an  en-
+tirely  different  case  engaged  in  misconduct.  An  unrelated 
+attorney’s  conduct  does  nothing  to  change  the  analysis  re-
+quired to determine a plaintiff’s standing.  Laufer admits as 
+much,  arguing  only  that  the  alleged  misconduct  “could  dis-
+tract from the merits of her ADA claims and everything she 
+has  sought  to  achieve  for  persons  with  disabilities  like  her-
+self.”  Id.,  at  4.  I  would  not  reward  Laufer’s  transparent 
+tactic for evading our review.  Although the majority leaves 
+the  door  open  to  “exercise  [its]  discretion  differently  in  a 
+
+10 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Thomas, J., concurring in judgment 
+
+future  case,”  we  have  needlessly  invited  litigants  to  follow 
+Laufer’s  path  to  manipulate  our  docket.  Ante,  at  5.  We 
+should not resolve this case about standing based upon moot-
+ness of Laufer’s own making.1 
+
+III 
+
+Turning  to  the  question  presented,  Laufer  lacks  standing 
+to  bring  her  ADA  claims.  Article  III  of  the  Constitution 
+extends the “judicial Power” to all “Cases” and “Controver-
+sies.”  Standing  doctrine  serves  to  “limi[t]  the  ‘judicial 
+power’  to  ‘ “cases  and  controversies  of  the  sort  traditionally 
+amenable  to,  and  resolved  by,  the  judicial  process.” ’ ” 
+Spokeo, Inc. v. Robins, 578 U. S. 330, 343 (2016) (Thomas, J., 
+concurring) (quoting Vermont Agency of Natural Resources 
+v.  United  States  ex  rel.  Stevens,  529  U. S.  765,  774  (2000)). 
+In  doing  so,  standing  “preserve[s]  separation  of  powers  by 
+preventing the Judiciary’s entanglement in disputes that are 
+Page Proof Pending Publication
+primarily political in nature.”  Spokeo, 578 U. S., at 344. 
+As I have previously explained, “[t]he mere ﬁling of a com-
+plaint  in  federal  court  .  .  .  does  not  a  case  (or  controversy) 
+make.”  TransUnion  LLC  v.  Ramirez,  594  U. S.  413,  446 
+(2021)  (Thomas,  J.,  dissenting).  Our  “judicial  power  [does 
+not  extend]  to  every  violation  of  the  constitution  [or  law] 
+which  may  possibly  take  place,  but  to  ‘a  case  in  law  or  eq-
+uity,’ in which a right, under such law, is asserted in a Court 
+of  justice.”  Cohens  v.  Virginia,  6  Wheat.  264,  405  (1821). 
+To  have  standing,  a  plaintiff  must  assert  a  violation  of  his 
+rights.  See  Lujan  v.  Defenders  of  Wildlife,  504  U. S.  555, 
+563  (1992)  (“[T]he  party  seeking  review  [must]  be  himself 
+among  the  injured”  (internal  quotation  marks  omitted)). 
+After  all,  “[t]he  province  of  the  court  is,  solely,  to  decide  on 
+the  rights  of  individuals.”  Marbury  v.  Madison,  1  Cranch 
+137,  170  (1803).  It  is  not  to  address  a  plaintiff’s  claim  of 
+
+1 The  majority  vacates  the  opinion  below  in  Laufer’s  favor,  and  rightly 
+
+so.  See United States v. Munsingwear, Inc., 340 U. S. 36 (1950). 
+
+Cite as:  601 U. S. 1 (2023) 
+
+11 
+
+Thomas, J., concurring in judgment 
+
+“only harm to his and every citizen’s interest in proper appli-
+cation of the . . . laws.”  Lujan, 504 U. S., at 573.2 
+
+Laufer lacks standing because her claim does not assert a 
+violation  of a  right  under  the ADA,  much  less  a violation  of 
+her  rights.  Her  claim  alleges  that  Acheson  Hotels  violated 
+the ADA by failing to include on its website the accessibility 
+information  that  the  Reservation  Rule  requires.  Yet,  the 
+ADA  provides  that  “[n]o  individual  shall  be  discriminated 
+against on the basis of disability in the full and equal enjoy-
+ment of the . . . services . . . of any place of public accommoda-
+tion.”  42 U. S. C. § 12182(a).  In other words, the ADA pro-
+hibits  only  discrimination  based  on  disability—it  does  not 
+create a right to information. 
+
+Laufer’s  ADA  claim  is  thus  different  from  the  tester’s 
+claim  under  the  Fair  Housing  Act  that  the  Court  addressed 
+
+Page Proof Pending Publication
+
+2 The  traditional  distinction  between  public  and  private  rights  shapes 
+the  contours  of  the  judicial  power.  See  Spokeo,  Inc.  v.  Robins,  578  U. S. 
+330,  344  (2016)  (opinion  of  Thomas,  J.);  Wellness  Int’l  Network,  Ltd.  v. 
+Sharif, 575 U. S. 665, 713 (2015) (Thomas, J., dissenting).  Private rights, 
+such  as  the  classic  rights  to  life,  liberty,  and  property,  were  “so  called 
+because  they  ‘appertain[ed]  and  belong[ed]  to  particular  men  .  .  .  merely 
+as individuals,’ not ‘to them as members of society [or] standing in various 
+relations  to  each  other’—that  is,  not  dependent  upon  the  will  of  the  gov-
+ernment.”  Id.,  at  713  (quoting  1  W.  Blackstone,  Commentaries  on  the 
+Laws  of  England  119  (1765)).  By  contrast,  public  rights  “belon[g]  to  the 
+public  as  a  whole.”  B&B  Hardware,  Inc.  v.  Hargis  Industries,  Inc.,  575 
+U. S. 138, 171 (2015) (Thomas, J., dissenting); see also 4 Blackstone, Com-
+mentaries 5 (1772).  And “quasi-private rights, or statutory entitlements, 
+are those ‘ “privileges” ’ or ‘ “franchises” ’ that are bestowed by the govern-
+ment  on  individuals.”  B&B  Hardware,  575  U. S.,  at  171.  We  need  not 
+classify Laufer’s legal interests because, regardless of which type of right 
+a plaintiff asserts, he must allege “the violation of his private legal right” 
+or his own injury based on a violation of a public right.  Spokeo, 578 U. S., 
+at 344 (opinion of Thomas, J.) (emphasis added); see also A. Woolhandler & 
+C. Nelson, Does History Defeat Standing Doctrine? 102 Mich. L. Rev. 689, 
+723 (2004);  C. Nelson, Vested Rights,  “Franchises,” and the  Separation of 
+Powers, 169 U. Pa. L. Rev. 1429, 1433, 1437–1438 (2021).  For the reasons 
+provided,  Laufer  has  not  alleged  a  violation  of  her  rights  or  a  cognizable 
+injury to herself. 
+
+12 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Thomas, J., concurring in judgment 
+
+in  Havens  Realty  Corp.  v.  Coleman,  455  U. S.  363.  In  con-
+trast  to  the  ADA,  the  Fair  Housing  Act  explicitly  prohibits 
+“represent[ing]  to  any  person  because  of  race  .  .  .  that  any 
+dwelling  is  not  available  for inspection,  sale,  or  rental  when 
+such  dwelling  is  in  fact  so  available.”  § 3604(d).  Accord-
+ingly, when Havens Realty told a black tester that no apart-
+ments  were  available  but  told  a  white  tester  that  it  had  va-
+cancies,  the  Court  found  that  the  black  tester  had  standing 
+to  sue.  The  Court  explained  that  the  statute  created  “a 
+legal  right  to  truthful  information  about  available  housing.” 
+Id.,  at  373.  The  black  tester  had  been  personally  denied 
+that  truthful  information,  so  she  had  standing  to  bring  her 
+claim.  Havens  Realty  thus  has  no  bearing  on  Laufer’s 
+standing as a tester of compliance with the ADA, which pro-
+vides no such statutory right to information. 
+
+Laufer points to the Reservation Rule, alleging that it cre-
+ates  an  entitlement  to  accessibility  information.  But  even 
+Page Proof Pending Publication
+assuming  a  regulation  could—and  did—create  such  a  right, 
+Laufer asserts no violation of her own rights with regard to 
+that information.  Laufer does not even harbor “ ‘some day’ 
+intentions”  of  traveling  to  Maine  to  visit  the  Coast  Village 
+Inn.  Lujan,  504  U. S.,  at  564.  Her  lack  of  intent  to  visit 
+the hotel or even book a hotel room elsewhere in Maine evis-
+cerates any connection to her purported legal interest in the 
+accessibility  information  required  by  the  Reservation  Rule. 
+To put it in the “more pedestrian terms” used by then-Judge 
+Scalia, standing asks “ ‘What’s it to you?’ ”  The Doctrine of 
+Standing as an Essential Element of the Separation of Pow-
+ers,  17  Suffolk  U.  L.  Rev.  881,  882  (1983).  Acheson  Hotels’ 
+failure  to  provide  accessibility  information  on  its  website  is 
+nothing to Laufer, because she disclaimed any intent to visit 
+the hotel. 
+
+Rather  than  assert  a  violation  of  her  own  rights,  Laufer 
+casts herself in the role of a private attorney general, surﬁng 
+the  web  to  ensure  hotels’  compliance  with  the  Reservation 
+Rule.  Laufer  has  described  herself  as  “an  advocate  on  be-
+
+Cite as:  601 U. S. 1 (2023) 
+
+13 
+
+Thomas, J., concurring in judgment 
+
+half  of  both  [her]self  and  other  similarly  situated  disabled 
+persons.”  App.  17a.  She  admits  that,  “[a]s  a  tester,  [she] 
+visit[s] hotel online reservation services to ascertain whether 
+they are in compliance with the Americans with Disabilities 
+Act.”  Ibid.  As a public ofﬁcial would do, Laufer even mon-
+itors  those  hotel  websites  she  has  found  lacking.  She  uses 
+“a  system”  to  track  each  of  the  hundreds  of  hotels  she  has 
+sued.  Id., at 19a.  “Once a case is settled, [she] mark[s] the 
+date . . . when the defendant has agreed to ﬁx its websites,” 
+and  on  that  date,  she  “revisit[s]”  the  website  to  ensure  the 
+hotel has complied.  Id., at 19a–20a. 
+
+Laufer sues “not to enforce speciﬁc legal obligations whose 
+violation works a direct harm” on her, but to force hotels to 
+comply  with  the  Reservation  Rule.  Allen  v.  Wright,  468 
+U. S. 737, 761 (1984).  “Vindicating the public interest . . . is 
+the function of Congress and the Chief Executive,” however, 
+not private plaintiffs.  Lujan, 504  U. S., at 576.  The Presi-
+Page Proof Pending Publication
+dent is tasked with the duty to “take Care that the Laws be 
+faithfully executed,” U. S. Const., Art. II, § 3, and Executive 
+Branch  ofﬁcials  have  discretion  to  choose  whether  and  how 
+to enforce the law, see Heckler v. Chaney, 470 U. S. 821, 831– 
+832 (1985).  Yet, as Judge Newsom has explained, “[t]esters 
+exercise  the  sort  of  proactive  enforcement  discretion  prop-
+erly  reserved  to  the  Executive  Branch,”  with  none  of  the 
+corresponding  accountability.  Laufer  v.  Arpan,  LLC,  29 
+F. 4th 1268, 1291 (CA11 2022) (concurring opinion). 
+
+This case exempliﬁes the dangers.  An ofﬁcial could have 
+informed  Acheson  Hotels  that  its  website  failed  to  comply 
+with  the  Reservation  Rule,  and  Acheson  Hotels  could  have 
+updated  its  website  to  explain  it  had  no  accessible  rooms. 
+Laufer,  however,  chose  to  “enforce”  each  technical  violation 
+of the ADA she could uncover with a lawsuit.  Because she 
+is a private plaintiff, no discretion was required or exercised. 
+And,  of  course,  Laufer  has  been  willing  to  forgo  her  suits  if 
+a hotel pays up, even though the ADA provides for no dam-
+ages  for  private  litigants.  Laufer’s  aggressive  efforts  to 
+
+14 
+
+ACHESON HOTELS, LLC v. LAUFER 
+
+Jackson, J., concurring in judgment 
+
+personally  impose  ﬁnancial  penalties  for  violations  of  the 
+Reservation Rule go far beyond the role that Congress envi-
+sioned for private plaintiffs under the ADA.  Without a vio-
+lation of her own rights, Laufer lacks standing to sue hotels 
+under the ADA.  Ensuring and monitoring compliance with 
+the  law  is  a  function  of  a  Government  ofﬁcial,  not  a  private 
+person who does not assert a violation of her own rights. 
+
+IV 
+
+Standing  ensures  that  courts  decide  disputes  over  viola-
+tions  of  a  person’s  rights,  not  a  defendant’s  compliance  with 
+the law in the abstract.  Because Laufer has not asserted a 
+violation of a right owed to her, she has no standing to bring 
+her  Reservation  Rule  claims.  The  Court  should  not  have 
+avoided  reaching  that  conclusion  due  to  Laufer’s  eleventh-
+hour tactics.  I respectfully concur in the judgment because 
+I  would vacate  and remand,  with instructions  to dismiss  for 
+Page Proof Pending Publication
+lack of standing. 
+
