@@ -79,6 +79,14 @@ def section_author(title):
     return m.group(1).lower().replace("’", "'") if m else None
 
 
+def justice_title(title):
+    """"Chief Justice" or "Justice", from how the section heading itself names its author.
+    The Court styles the sitting Chief as "CHIEF JUSTICE X", so this follows whoever holds the office,
+    and an earlier opinion by a later Chief (written as an Associate Justice) correctly stays "Justice"."""
+    import re
+    return "Chief Justice" if re.match(r"\s*chief\s+justice\b", title, re.IGNORECASE) else "Justice"
+
+
 def kind_label(kind, title):
     t = title.lower()
     if "concurring" in t and "dissenting" in t:
@@ -104,7 +112,7 @@ def section_card(out_png, case_name, kind, title, spoken_title=None):
     y = 290
     if author:
         name = names.get(author, author.title())
-        prefix = "Chief Justice" if author == "roberts" or "chief justice" in title.lower() else "Justice"
+        prefix = justice_title(title)
         for size in (96, 84, 72, 62):
             f = _font("NotoSerif-Bold.ttf", size)
             lines = _wrap(f"{prefix} {name}", f, text_w)

@@ -33,8 +33,11 @@ LETTERS = {
     "S": "ɛs", "T": "tiː", "U": "juː", "V": "viː", "W": "dʌbəljuː", "X": "ɛks", "Y": "waɪ", "Z": "ziː",
 }
 # Words espeak gets wrong. Keys are lowercase; values are the phonemes to use.
+# Possessives ("Kagan's") are handled automatically.
 LEXICON = {
     "syllabus": "sˈɪləbəs",
+    "kagan": "kˈeɪɡən",                # "KAY-gun"; espeak says "KAH-gun"
+    "sotomayor": "sˌoʊtoʊmaɪˈɔːɹ",     # "SOH-toh-my-OR"; espeak says "SAW-duh-may-er"
     "certiorari": "sˌɜːʃioʊɹˈɑːɹi",     # "sur-shee-oh-RAR-ee"; espeak says "sur-tih-RAR-ee"
     "syllabi": "sˈɪləbaɪ",
 }
@@ -78,14 +81,15 @@ class Synth:
     def phonemes(self, text):
         """espeak phonemes, with {INITIALISMS} spelled out and LEXICON words replaced."""
         out = []
-        for part in re.split(r"(\{[A-Z]+\}|\b(?:%s)\b)" % "|".join(LEXICON), text, flags=re.IGNORECASE):
+        for part in re.split(r"(\{[A-Z]+\}|\b(?:%s)(?:[’']s)?\b)" % "|".join(LEXICON), text, flags=re.IGNORECASE):
             if not part:
                 continue
             if part.startswith("{"):
                 letters = [LETTERS[c] for c in part[1:-1]]
                 out.append("".join(_stress(p, "ˈ" if i == len(letters) - 1 else "ˌ") for i, p in enumerate(letters)))
-            elif part.lower() in LEXICON:
-                out.append(LEXICON[part.lower()])
+            elif re.sub(r"[’']s$", "", part.lower()) in LEXICON:
+                possessive = re.search(r"[’']s$", part)
+                out.append(LEXICON[re.sub(r"[’']s$", "", part.lower())] + ("z" if possessive else ""))
             elif re.fullmatch(r"\s*[^\w\s]+\s*", part):           # bare punctuation between special tokens
                 out.append(part.strip())
             elif part.strip():

@@ -194,9 +194,13 @@ If the voice says a word wrong, add it to `LEXICON` in `scotus/tts.py` with the 
 ```python
 LEXICON = {
     "syllabus": "sˈɪləbəs",
+    "kagan": "kˈeɪɡən",                # "KAY-gun"
+    "sotomayor": "sˌoʊtoʊmaɪˈɔːɹ",     # "SOH-toh-my-OR"
     "certiorari": "sˌɜːʃioʊɹˈɑːɹi",
 }
 ```
+
+Possessives ("Kagan's") pick up the same pronunciation automatically. `tests/test_pronounce.py` checks each entry; add a line there for new ones.
 
 To see what the voice currently does with a word:
 
@@ -207,6 +211,13 @@ To see what the voice currently does with a word:
 Acronyms are spelled out letter by letter unless they're in `SAID_AS_WORDS` in `scotus/speak.py` (NATO, NASA, NAACP…). Add to that list any acronym that's said as a word.
 
 Audio is cached per sentence in `data/tts_cache/`. After a pronunciation fix, rebuilding re-voices only the sentences that changed.
+
+### When a new Justice joins
+
+- **Portrait:** add `assets/justices/<surname>.jpg` (a public-domain official portrait, about 800 px wide) and a line in `assets/justices/sources.tsv` with the surname, full name and source. Without one, that Justice's cards show the name only.
+- **Pronunciation:** if the voice gets the name wrong, add it to `LEXICON` (see above).
+- **Spoken names in the syllabus:** for slip opinions, add the surname to `JUSTICES` in `scotus/speak.py`, so headings set in capitals ("JUSTICE SMITH") are read as names.
+- **Chief Justice:** nothing to do. Cards and chapter titles say "Chief Justice" whenever the opinion's own heading does ("CHIEF JUSTICE X delivered…"). So a new Chief is labeled correctly from day one, and older opinions they wrote as an Associate Justice still say "Justice".
 
 ---
 
