@@ -8,8 +8,8 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/scotus_books
-# Change --privacy to public once Google approves the API audit (and in scotus-daily.service).
-ExecStart=%h/scotus_books/.venv/bin/python -m scotus.cli daily --new-only --privacy private
+# Upload visibility for this run: public, unlisted or private.
+ExecStart=%h/scotus_books/.venv/bin/python -m scotus.cli daily --new-only --privacy public
 StandardOutput=append:%h/scotus_books/data/logs/daily.log
 StandardError=append:%h/scotus_books/data/logs/daily.log
 TimeoutStartSec=3h

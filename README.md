@@ -51,7 +51,7 @@ Two systemd timers run every day, on New York time:
 
 The two runs share the upload budget and a lock, so they can't overlap or double-upload. If the box was off at a scheduled time, that run happens as soon as it's back on.
 
-**The timers upload as private** (`--privacy private` in their service files) until you switch them; see [Daily timers](#6-daily-timers). Commands run by hand (`next`, `daily`, `scotus.upload`) upload as **public** unless you pass `--privacy private` or `unlisted`.
+**Uploads are public.** The timers pass `--privacy public` in their service files, and commands run by hand default to public too. Pass `--privacy unlisted` or `private` to a command to hold a video back, or change it in the service files (see [Daily timers](#6-daily-timers)).
 
 Check on it:
 
@@ -296,7 +296,7 @@ systemctl --user list-timers 'scotus-*'
 
 The runs push the opinions page to GitHub, so the box's git must be able to push without a prompt: an SSH key with no passphrase that's added to your GitHub account.
 
-**To switch uploads to public** after the audit, change `--privacy private` to `--privacy public` in **both** `~/.config/systemd/user/scotus-daily.service` and `scotus-evening.service` (and in `deploy/` to keep the repo in step), then run `systemctl --user daemon-reload`. Videos already uploaded as private stay private; change those in YouTube Studio.
+**To change the timers' upload visibility** (public, unlisted or private), edit `--privacy` in **both** `~/.config/systemd/user/scotus-daily.service` and `scotus-evening.service` (and in `deploy/` to keep the repo in step), then run `systemctl --user daemon-reload`.
 
 **To pause** uploads: `systemctl --user stop scotus-daily.timer scotus-evening.timer`. To resume: `systemctl --user start scotus-daily.timer scotus-evening.timer`.
 
