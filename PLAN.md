@@ -1,3 +1,5 @@
+> **Status (October 2026):** this was the original plan. The pipeline is built and running; see README.md for how it works and how to operate it.
+
 # scotus_books: review and plan
 
 *Written 2026-10-10.*

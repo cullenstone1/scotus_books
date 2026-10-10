@@ -1,0 +1,11 @@
+# 11:00 New York time, an hour after the Court releases opinions at 10:00.
+[Unit]
+Description=Run SCOTUS Books daily at 11:00 America/New_York
+
+[Timer]
+OnCalendar=*-*-* 11:00:00 America/New_York
+# if the box was off at 11:00, run once when it comes back
+Persistent=true
+
+[Install]
+WantedBy=timers.target

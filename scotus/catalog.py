@@ -24,9 +24,15 @@ CREATE TABLE IF NOT EXISTS opinions (
   extracted   TEXT,
   rendered    TEXT,
   uploaded    TEXT,
-  youtube_id  TEXT
+  youtube_id  TEXT,
+  failures    INTEGER DEFAULT 0,  -- build/upload attempts that raised; daily skips after MAX_FAILURES
+  last_error  TEXT
 );
 """
+MIGRATIONS = {   # columns added after the first release; created on old databases by connect()
+    "failures": "INTEGER DEFAULT 0",
+    "last_error": "TEXT",
+}
 
 
 def now():
@@ -39,6 +45,11 @@ def connect(path=None):
     db = sqlite3.connect(path)
     db.row_factory = sqlite3.Row
     db.executescript(SCHEMA)
+    have = {r["name"] for r in db.execute("PRAGMA table_info(opinions)")}
+    for col, decl in MIGRATIONS.items():
+        if col not in have:
+            db.execute(f"ALTER TABLE opinions ADD COLUMN {col} {decl}")
+    db.commit()
     return db
 
 

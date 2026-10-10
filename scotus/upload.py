@@ -121,7 +121,7 @@ def main(argv=None):
         ap.error("key required")
     db = catalog.connect()
     video_id = upload(DATA / "build" / args.key, args.privacy)
-    catalog.mark(db, args.key, uploaded=now(), youtube_id=video_id)
+    catalog.mark(db, args.key, uploaded=now(), youtube_id=video_id, last_error=None)
     print(f"https://youtu.be/{video_id}")
 
 
