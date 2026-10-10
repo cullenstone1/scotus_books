@@ -77,7 +77,7 @@ def description_for(meta):
     return text.replace("<", "‹").replace(">", "›")[:5000]
 
 
-def upload(build_dir, privacy="private"):
+def upload(build_dir, privacy="public"):
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
     from googleapiclient.http import MediaFileUpload
@@ -125,7 +125,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("key", nargs="?", help="catalog key of a built opinion (data/build/KEY)")
     ap.add_argument("--auth", action="store_true", help="run the one-time OAuth login")
-    ap.add_argument("--privacy", default="private", choices=["private", "unlisted", "public"])
+    ap.add_argument("--privacy", default="public", choices=["private", "unlisted", "public"])
     args = ap.parse_args(argv)
     if args.auth:
         credentials(interactive=True)

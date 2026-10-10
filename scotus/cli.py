@@ -357,9 +357,8 @@ def main(argv=None):
             if name == "daily":
                 p.add_argument("--new-only", action="store_true",
                                help="publish only new releases, never the queue or backfill (the evening run)")
-            p.add_argument("--privacy", default="private", choices=["private", "unlisted", "public"],
-                           help="YouTube visibility for uploads (default private; API uploads stay private until "
-                                "the project passes Google's audit)")
+            p.add_argument("--privacy", default="public", choices=["private", "unlisted", "public"],
+                           help="YouTube visibility for uploads (default public; the timers pass their own setting)")
         p.add_argument("--voice", default="am_michael")
         p.add_argument("--model", help="default: full model on GPU, int8 on CPU")
     p = sub.add_parser("queue")

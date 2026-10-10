@@ -51,7 +51,7 @@ Two systemd timers run every day, on New York time:
 
 The two runs share the upload budget and a lock, so they can't overlap or double-upload. If the box was off at a scheduled time, that run happens as soon as it's back on.
 
-**Uploads are private** until Google approves the API audit (see [YouTube API audit](#youtube-api-audit)). After approval, switch to public as described in [Daily timer](#daily-timer).
+**The timers upload as private** (`--privacy private` in their service files) until you switch them; see [Daily timers](#6-daily-timers). Commands run by hand (`next`, `daily`, `scotus.upload`) upload as **public** unless you pass `--privacy private` or `unlisted`.
 
 Check on it:
 
