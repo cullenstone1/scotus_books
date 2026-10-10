@@ -22,6 +22,14 @@ AUTH_PORT = 8765
 CATEGORY_EDUCATION = "27"
 
 
+class QuotaExceeded(Exception):
+    """YouTube's daily API quota or per-channel upload limit is used up; retry after midnight Pacific."""
+
+
+def _quota_error(e):
+    return any(r in str(e) for r in ("quotaExceeded", "uploadLimitExceeded", "dailyLimitExceeded"))
+
+
 def credentials(interactive=False):
     from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
@@ -71,6 +79,7 @@ def description_for(meta):
 
 def upload(build_dir, privacy="private"):
     from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
     from googleapiclient.http import MediaFileUpload
 
     build_dir = Path(build_dir)
@@ -95,7 +104,12 @@ def upload(build_dir, privacy="private"):
     req = youtube.videos().insert(part="snippet,status", body=body, media_body=media)
     resp = None
     while resp is None:
-        status, resp = req.next_chunk()
+        try:
+            status, resp = req.next_chunk()
+        except HttpError as e:
+            if _quota_error(e):
+                raise QuotaExceeded(str(e)) from e
+            raise
         if status:
             print(f"\rupload {100 * status.progress():5.1f}%", end="", file=sys.stderr, flush=True)
     print(file=sys.stderr)

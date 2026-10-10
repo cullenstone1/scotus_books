@@ -4,8 +4,9 @@
   python -m scotus.cli status                  what's in the catalog and what's been done
   python -m scotus.cli review KEY              extract + clean, write the review report (data/review/)
   python -m scotus.cli build KEY               full pipeline for one opinion: PDF -> audio -> video (no upload)
-  python -m scotus.cli next [--dry-run]        build and upload whatever should go out next (new > queue.txt > backfill)
-  python -m scotus.cli daily                   what the daily timer runs: scrape, then next
+  python -m scotus.cli next [--dry-run]        build and upload one opinion (new release > queue.txt > backfill)
+  python -m scotus.cli daily                   what the daily timer runs: scrape, publish all new releases
+                                               (up to the upload budget), else one from queue.txt / backfill
   python -m scotus.cli queue add KEY ...       add opinions to queue.txt; also: queue list, queue remove KEY
   python -m scotus.cli retry KEY               clear an opinion's failure count so daily tries it again
 
@@ -16,7 +17,8 @@ import fcntl
 import json
 import sys
 import traceback
-from datetime import date, datetime
+from datetime import date, datetime, timezone
+from zoneinfo import ZoneInfo
 
 from . import DATA, ROOT, catalog, scrape
 from .catalog import now
@@ -25,6 +27,8 @@ QUEUE = ROOT / "queue.txt"
 MAX_FAILURES = 2        # after this many failed attempts, daily skips an opinion until `retry`
 OLDEST_TERM = 18        # supremecourt.gov term pages go back to OT2018
 NEW_RELEASE_DAYS = 14   # opinions released this recently jump ahead of the queue
+UPLOADS_PER_DAY = 6     # YouTube's default quota: 10,000 units/day; an upload + thumbnail costs 1,650
+QUOTA_TZ = ZoneInfo("America/Los_Angeles")   # the YouTube quota day starts at midnight Pacific
 
 
 def current_term(today=None):
@@ -71,6 +75,10 @@ def cmd_status(args, db):
     for r in db.execute("""SELECT term, count(*) n, count(extracted) x, count(rendered) r, count(uploaded) u
                            FROM opinions GROUP BY term ORDER BY term DESC"""):
         print(f"OT20{r['term']:02d}: {r['n']:3d} opinions, {r['x']:3d} extracted, {r['r']:3d} rendered, {r['u']:3d} uploaded")
+    print(f"uploads today (since midnight Pacific): {uploads_today(db)} of {UPLOADS_PER_DAY}")
+    releases = new_releases(db)
+    if releases:
+        print(f"new releases waiting: {', '.join(r['key'] for r in releases)}")
     pending = [r for r in queue_refs() if not _uploaded(db, r)]
     print(f"queue.txt: {len(pending)} waiting")
     for r in db.execute("SELECT key, name, failures, last_error FROM opinions WHERE failures >= ? ORDER BY key",
@@ -152,31 +160,54 @@ def _uploaded(db, ref):
     return row is not None and row["uploaded"] is not None
 
 
-def pick_next(db):
-    """What to publish next: recent releases first, then queue.txt in order, then backfill (newest first).
-    Skips anything already uploaded and anything that has failed MAX_FAILURES times."""
-    ok = "uploaded IS NULL AND coalesce(failures, 0) < ?"
-    row = db.execute(f"""SELECT * FROM opinions WHERE {ok} AND date >= date('now', ?)
-                         ORDER BY date, rnum""", (MAX_FAILURES, f"-{NEW_RELEASE_DAYS} days")).fetchone()
-    if row:
-        return row, "new release"
+OK = "uploaded IS NULL AND coalesce(failures, 0) < ?"
+
+
+def new_releases(db):
+    """Recent opinions not yet uploaded, oldest first. Daily publishes all of these."""
+    return db.execute(f"""SELECT * FROM opinions WHERE {OK} AND date >= date('now', ?)
+                          ORDER BY date, rnum""", (MAX_FAILURES, f"-{NEW_RELEASE_DAYS} days")).fetchall()
+
+
+def pick_backlog(db):
+    """One opinion from queue.txt (in order), else backfill (newest first)."""
     for ref in queue_refs():
-        row = db.execute(f"SELECT * FROM opinions WHERE (key = ? OR lower(docket) = lower(?)) AND {ok}",
+        row = db.execute(f"SELECT * FROM opinions WHERE (key = ? OR lower(docket) = lower(?)) AND {OK}",
                          (ref, ref, MAX_FAILURES)).fetchone()
         if row:
             return row, "queue.txt"
-    row = db.execute(f"SELECT * FROM opinions WHERE {ok} ORDER BY date DESC, rnum DESC", (MAX_FAILURES,)).fetchone()
+    row = db.execute(f"SELECT * FROM opinions WHERE {OK} ORDER BY date DESC, rnum DESC", (MAX_FAILURES,)).fetchone()
     return row, "backfill"
 
 
+def pick_next(db):
+    """What to publish next: recent releases first, then queue.txt in order, then backfill (newest first).
+    Skips anything already uploaded and anything that has failed MAX_FAILURES times."""
+    releases = new_releases(db)
+    if releases:
+        return releases[0], "new release"
+    return pick_backlog(db)
+
+
+def uploads_today(db):
+    """Uploads since midnight Pacific, when YouTube's daily quota resets."""
+    start = datetime.now(QUOTA_TZ).replace(hour=0, minute=0, second=0, microsecond=0)
+    since = start.astimezone(timezone.utc).isoformat(timespec="seconds")
+    return db.execute("SELECT count(*) n FROM opinions WHERE uploaded >= ?", (since,)).fetchone()["n"]
+
+
 def publish(db, row, privacy, voice="am_michael", model=None):
-    """Build (unless already built) and upload one opinion. Records failures instead of raising."""
-    from .upload import upload
+    """Build (unless already built) and upload one opinion. Records failures instead of raising,
+    except QuotaExceeded, which isn't the opinion's fault and stops the run."""
+    from .upload import QuotaExceeded, upload
     out = DATA / "build" / row["key"]
     try:
         if not (row["rendered"] and (out / "video.mp4").exists() and (out / "meta.json").exists()):
             out = build(db, row, voice, model)
         video_id = upload(out, privacy)
+    except QuotaExceeded as e:
+        catalog.mark(db, row["key"], last_error=f"QuotaExceeded: {e}"[:500])
+        raise
     except Exception as e:
         catalog.mark(db, row["key"], failures=(row["failures"] or 0) + 1, last_error=f"{type(e).__name__}: {e}"[:500])
         traceback.print_exc()
@@ -185,24 +216,37 @@ def publish(db, row, privacy, voice="am_michael", model=None):
     return video_id
 
 
+def _publish_and_report(db, row, why, args):
+    """Publish one opinion and print the result. Returns True on success."""
+    print(f"next: {row['key']} {row['name']} ({row['date']}) [{why}]", flush=True)
+    if args.dry_run:
+        return True
+    video_id = publish(db, row, args.privacy, args.voice, args.model)
+    if video_id is None:
+        print(f"FAILED: {row['key']} {row['name']}", file=sys.stderr, flush=True)
+        return False
+    print(f"uploaded {row['key']} ({args.privacy}): https://youtu.be/{video_id}", flush=True)
+    return True
+
+
 def cmd_next(args, db):
+    """Publish exactly one opinion, by the same priority daily uses."""
+    from .upload import QuotaExceeded
     row, why = pick_next(db)
     if row is None:
         print("nothing left to publish")
         return 0
-    print(f"next: {row['key']} {row['name']} ({row['date']}) [{why}]", flush=True)
-    if args.dry_run:
-        return 0
-    video_id = publish(db, row, args.privacy, args.voice, args.model)
-    if video_id is None:
-        print(f"FAILED: {row['key']} {row['name']}", file=sys.stderr)
+    try:
+        return 0 if _publish_and_report(db, row, why, args) else 1
+    except QuotaExceeded as e:
+        print(f"YouTube quota used up; try again after midnight Pacific ({e})", file=sys.stderr)
         return 1
-    print(f"uploaded {row['key']} ({args.privacy}): https://youtu.be/{video_id}")
-    return 0
 
 
 def cmd_daily(args, db):
-    """Scrape for new opinions, then publish one. Holds a lock so overlapping runs can't double-upload."""
+    """Scrape, then publish every new release (up to the day's upload budget); on a day with no new
+    releases, publish one opinion from queue.txt or the backfill. Holds a lock so runs can't overlap."""
+    from .upload import QuotaExceeded
     lock = open(DATA / "daily.lock", "w")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -215,14 +259,35 @@ def cmd_daily(args, db):
         cmd_scrape(args, db)
     except Exception:
         traceback.print_exc()   # the site being down shouldn't stop us publishing from the backlog
-    # when the backfill runs dry, reach one term further back
-    while pick_next(db)[0] is None:
-        oldest = db.execute("SELECT min(term) t FROM opinions").fetchone()["t"]
-        if oldest is None or oldest <= OLDEST_TERM:
-            break
-        args.terms = [oldest - 1]
-        cmd_scrape(args, db)
-    return cmd_next(args, db)
+
+    budget = UPLOADS_PER_DAY - uploads_today(db)
+    if budget <= 0:
+        print(f"already uploaded {UPLOADS_PER_DAY} today; nothing more until midnight Pacific")
+        return 0
+    releases = new_releases(db)
+    failed = False
+    try:
+        if releases:
+            print(f"{len(releases)} new release(s); upload budget today: {budget}", flush=True)
+            for row in releases[:budget]:
+                failed |= not _publish_and_report(db, row, "new release", args)
+            for row in releases[budget:]:
+                print(f"carried over to tomorrow: {row['key']} {row['name']}")
+            return 1 if failed else 0
+        # no new releases: one from the queue or backfill; reach one term further back when it runs dry
+        row, why = pick_backlog(db)
+        while row is None:
+            oldest = db.execute("SELECT min(term) t FROM opinions").fetchone()["t"]
+            if oldest is None or oldest <= OLDEST_TERM:
+                print("nothing left to publish")
+                return 0
+            args.terms = [oldest - 1]
+            cmd_scrape(args, db)
+            row, why = pick_backlog(db)
+        return 0 if _publish_and_report(db, row, why, args) else 1
+    except QuotaExceeded as e:
+        print(f"YouTube quota used up; the rest go out tomorrow ({e})", file=sys.stderr)
+        return 1
 
 
 def cmd_retry(args, db):

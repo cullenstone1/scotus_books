@@ -42,8 +42,8 @@ official PDF ──extract──▶ sections & paragraphs ──clean──▶ c
 A systemd timer runs `python -m scotus.cli daily` every day at **11:00 New York time**, an hour after the Court releases opinions. Each run:
 
 1. Scrapes the current and previous term for new or changed opinions.
-2. Picks **one** opinion to publish (see the next section).
-3. Builds it (a few minutes on a GPU) and uploads it.
+2. If the Court has released opinions, publishes **all of them**, up to the day's upload budget. Otherwise it publishes **one** opinion from your queue or the backfill (see the next section).
+3. For each one: builds it (a few minutes on a GPU) and uploads it.
 
 If the box was off at 11:00, the run happens as soon as it's back on.
 
@@ -64,13 +64,22 @@ Run it right now instead of waiting:
 systemctl --user start scotus-daily        # same as the 11:00 run, logged to data/logs/daily.log
 ```
 
-### What gets published next
+### What gets published
 
-Every run publishes the first match from this list, skipping anything already uploaded:
+**On a day the Court releases opinions,** the run publishes every new release, oldest first. "New" means released in the last 14 days and not yet uploaded, so anything that couldn't go out on its release day is picked up the next day, ahead of the backlog.
 
-1. **New releases:** opinions released in the last 14 days, oldest first. If the Court releases three in one day, they go out on three consecutive days.
-2. **Your queue:** `queue.txt`, top to bottom.
-3. **Backfill:** everything else in the catalog, newest first. When the catalog runs out, `daily` scrapes one term further back on its own, down to OT2018, the oldest term page on supremecourt.gov.
+**On any other day,** the run publishes one opinion, the first match from:
+
+1. **Your queue:** `queue.txt`, top to bottom.
+2. **Backfill:** everything else in the catalog, newest first. When the catalog runs out, `daily` scrapes one term further back on its own, down to OT2018, the oldest term page on supremecourt.gov.
+
+Anything already uploaded, or skipped after repeated failures, is passed over.
+
+### Upload budget
+
+YouTube's default API quota is 10,000 units a day, and each upload with its thumbnail costs 1,650, so the run stops at **6 uploads a day** (`UPLOADS_PER_DAY` in `scotus/cli.py`). The quota resets at midnight Pacific time, and the count includes uploads made by hand. On the rare day the Court releases more than 6 opinions, the rest go out the next morning before anything else.
+
+If YouTube reports the quota or the channel's upload limit used up anyway, the run stops cleanly. The opinion isn't counted as a failure and goes out on the next run.
 
 ### The queue
 
@@ -106,11 +115,11 @@ All commands run from `~/scotus_books` as `.venv/bin/python -m scotus.cli <comma
 | Command | What it does |
 |---|---|
 | `scrape [TERM ...]` | Update the catalog from supremecourt.gov. Default: current and previous term. `scrape 22 21` scrapes specific terms. |
-| `status` | Opinions per term, how many are extracted / rendered / uploaded, the queue, failures, and what's next. |
+| `status` | Opinions per term, how many are extracted / rendered / uploaded, uploads today, new releases waiting, the queue, failures, and what's next. |
 | `review KEY` | Extract and clean one opinion and write its review report to `data/review/`. Nothing is rendered. |
 | `build KEY` | Full build of one opinion into `data/build/KEY/` (`video.mp4`, `reading.m4a`, cards, `chapters.txt`, `meta.json`). No upload. |
-| `next [--dry-run] [--privacy P]` | Publish the next opinion (build + upload). `--dry-run` only says what it would pick. |
-| `daily [--privacy P]` | What the timer runs: scrape, then `next`. Holds a lock so two runs can't overlap. |
+| `next [--dry-run] [--privacy P]` | Publish one opinion, by the same priority as `daily` (build + upload). `--dry-run` only says what it would pick. |
+| `daily [--dry-run] [--privacy P]` | What the timer runs: scrape, then publish all new releases (up to the budget), or else one from the queue or backfill. Holds a lock so two runs can't overlap. |
 | `queue add/list/remove` | Manage `queue.txt` (see [The queue](#the-queue)). |
 | `retry KEY` | Clear an opinion's failure count. |
 
@@ -263,7 +272,7 @@ Videos uploaded through the API by a project Google hasn't audited are **locked 
 - the SupremeDork channel
 - a description of the app: it uploads audio readings of Supreme Court opinions to its owner's own channel, about one video a day, and accesses no other users' data
 
-The default quota (10,000 units a day) is plenty: an upload costs 1,600 units and a thumbnail 50.
+The default quota (10,000 units a day) allows 6 uploads a day (see [Upload budget](#upload-budget)). If that's ever too few, the same form can request more.
 
 The channel also needs to stay **verified** (youtube.com/verify, done for SupremeDork). Verification is what allows videos over 15 minutes and custom thumbnails.
 
@@ -281,7 +290,7 @@ It should list `CUDAExecutionProvider` first. If not, make sure `onnxruntime-gpu
 
 **`not authorized; run: python -m scotus.upload --auth`.** The YouTube token is missing or was revoked (e.g. from myaccount.google.com/permissions). Redo [step 5](#5-youtube-credentials).
 
-**`quotaExceeded`.** The daily API quota ran out; it resets at midnight Pacific time. The opinion counts one failure and is retried, without rebuilding, on the next run.
+**"YouTube quota used up".** The daily API quota or the channel's upload limit ran out; the quota resets at midnight Pacific time. Nothing is counted as a failure. The video is already built, so the next run just uploads it.
 
 **An opinion fails twice and gets skipped.** `status` shows the error. Look at it with `review KEY`, fix it, then `retry KEY`.
 
