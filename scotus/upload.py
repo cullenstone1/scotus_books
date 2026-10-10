@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 from . import DATA, catalog
+from .cli import pretty_date
 from .catalog import now
 
 CONFIG = Path.home() / ".config" / "scotus_books"
@@ -51,7 +52,7 @@ def title_for(meta):
 
 def description_for(meta):
     parts = [
-        f"The Supreme Court's opinion in {meta['name']}, No. {meta['docket']}, decided {meta['date']}.",
+        f"The Supreme Court's opinion in {meta['name']}, No. {meta['docket']}, decided {pretty_date(meta['date'])}.",
         meta["author"],
         "",
         meta["summary"],
