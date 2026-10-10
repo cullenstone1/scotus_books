@@ -55,11 +55,17 @@ SECTION_NAMES = {
 
 
 class Synth:
-    def __init__(self, model="kokoro-v1.0.int8.onnx", voice="am_michael", speed=1.0, cache=None):
+    def __init__(self, model=None, voice="am_michael", speed=1.0, cache=None):
         import onnxruntime as ort
         from kokoro_onnx import Kokoro
 
+        ort.set_default_logger_severity(3)
         providers = [p for p in ("CUDAExecutionProvider", "CPUExecutionProvider") if p in ort.get_available_providers()]
+        if "CUDAExecutionProvider" in providers and hasattr(ort, "preload_dlls"):
+            ort.preload_dlls()   # load the CUDA/cuDNN libraries pip installed into the venv
+        if model is None:
+            # full precision is much faster on a GPU; int8 is slower there but fastest on CPU
+            model = "kokoro-v1.0.onnx" if "CUDAExecutionProvider" in providers else "kokoro-v1.0.int8.onnx"
         so = ort.SessionOptions()
         so.intra_op_num_threads = os.cpu_count() or 4
         sess = ort.InferenceSession(str(MODELS / model), so, providers=providers)
@@ -238,7 +244,7 @@ def main(argv=None):
     ap.add_argument("--name", help="case name (default: from catalog or filename)")
     ap.add_argument("--date", default="")
     ap.add_argument("--voice", default="am_michael")
-    ap.add_argument("--model", default="kokoro-v1.0.int8.onnx")
+    ap.add_argument("--model", help="default: full model on GPU, int8 on CPU")
     ap.add_argument("--speed", type=float, default=1.0)
     ap.add_argument("--out", help="output directory (default data/audio/<pdf name>)")
     ap.add_argument("--limit", type=int, help="only the first N script items (for quick tests)")

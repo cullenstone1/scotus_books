@@ -42,6 +42,8 @@ def parse_term(html, term):
         links = name_td.find_all("a")
         if not links:
             continue
+        if not date.get_text(strip=True):   # placeholder rows on a term page with no opinions yet
+            continue
         main = links[0]
         revisions = [urljoin(BASE, a["href"]) for a in links[1:]]
         rnum = rnum.get_text(strip=True)

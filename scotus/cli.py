@@ -77,7 +77,7 @@ def cmd_review(args, db):
     print(f"wrote {DATA / 'review' / pdf.stem}.html and .review.txt")
 
 
-def build(db, row, voice="am_michael", model="kokoro-v1.0.int8.onnx"):
+def build(db, row, voice="am_michael", model=None):
     from .clean import clean_doc
     from .extract import extract
     from .render import section_card, slideshow, title_card
@@ -98,6 +98,7 @@ def build(db, row, voice="am_michael", model="kokoro-v1.0.int8.onnx"):
     items = tts.script(doc, row["name"], when)
     (out / "script.json").write_text(json.dumps(items, indent=1, ensure_ascii=False))
     synth = tts.Synth(model, voice)
+    model = synth.model
     chapters = tts.render(items, synth, out / "reading.wav",
                           log=lambda *a, **k: print(*a, **k, file=sys.stderr, flush=True))
     tts.encode(out / "reading.wav", out / "reading.m4a")
@@ -177,7 +178,7 @@ def main(argv=None):
         else:
             p.add_argument("--dry-run", action="store_true")
         p.add_argument("--voice", default="am_michael")
-        p.add_argument("--model", default="kokoro-v1.0.int8.onnx")
+        p.add_argument("--model", help="default: full model on GPU, int8 on CPU")
     p = sub.add_parser("queue"); p.add_argument("action", choices=["add"]); p.add_argument("ref")
     args = ap.parse_args(argv)
     db = catalog.connect()
