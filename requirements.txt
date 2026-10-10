@@ -1,0 +1,12 @@
+pymupdf
+eyecite
+wordfreq
+requests
+beautifulsoup4
+kokoro-onnx
+soundfile
+numpy
+pillow
+google-api-python-client
+google-auth-oauthlib
+pytest
