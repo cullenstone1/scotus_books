@@ -1,4 +1,4 @@
-# Publishes one opinion a day: scrape supremecourt.gov, then build and upload the next opinion.
+# Morning run: scrape supremecourt.gov, publish new releases (or one opinion from the backlog), refresh the website.
 # Installed as a systemd *user* unit; see README.md "Daily timer".
 [Unit]
 Description=SCOTUS Books daily scrape, build and upload
@@ -8,7 +8,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=%h/scotus_books
-# Change --privacy to public once Google approves the API audit.
+# Change --privacy to public once Google approves the API audit (and in scotus-evening.service).
 ExecStart=%h/scotus_books/.venv/bin/python -m scotus.cli daily --privacy private
 StandardOutput=append:%h/scotus_books/data/logs/daily.log
 StandardError=append:%h/scotus_books/data/logs/daily.log

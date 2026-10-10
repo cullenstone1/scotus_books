@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opinions Read Aloud</title>
+  <meta name="description" content="Every Supreme Court opinion published as an audio reading, with links to the video and the official text.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wide">
+  <nav><a href="./">Home</a><a href="opinions.html">Opinions</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></nav>
+
+  <p class="kicker">SCOTUS Books</p>
+  <h1>Opinions read aloud</h1>
+  <p class="muted">2 readings, newest decision first. Updated October 10, 2026. Videos marked private aren't viewable yet.</p>
+
+  <input id="filter" type="search" placeholder="Search cases, dockets, terms, Justices" aria-label="Search opinions">
+
+  <table id="opinions">
+    <thead><tr><th>Decided</th><th>Case</th><th>Links</th></tr></thead>
+    <tbody>
+      <tr data-search="chatrie v. united states 25-112 ot2025 609 u.s. 605 opinion of the court by justice kagan 2026-06-29">
+        <td class="date"><time datetime="2026-06-29">Jun 29, 2026</time><span class="term">OT2025</span></td>
+        <td class="case"><span class="name">Chatrie v. United States</span><span class="meta">No. 25-112 · Opinion of the Court by Justice Kagan</span></td>
+        <td class="links"><a href="https://youtu.be/IWIhv-_ZZe4">Watch</a> <span class="badge">private</span> <a href="https://www.supremecourt.gov/opinions/25pdf/609us2r64_7mio.pdf">Official text</a></td>
+      </tr>
+      <tr data-search="hamm v. smith 23-167 ot2024 604 u.s. 1 per curiam 2024-11-04">
+        <td class="date"><time datetime="2024-11-04">Nov 4, 2024</time><span class="term">OT2024</span></td>
+        <td class="case"><span class="name">Hamm v. Smith</span><span class="meta">No. 23-167 · Per Curiam</span></td>
+        <td class="links"><a href="https://youtu.be/jmUTX3gB85s">Watch</a> <span class="badge">private</span> <a href="https://www.supremecourt.gov/opinions/24pdf/604us1r01_2dq3.pdf">Official text</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p id="none" class="muted" hidden>No opinions match that search.</p>
+
+  <footer>SCOTUS Books is not affiliated with or endorsed by the Supreme Court of the United States.</footer>
+</main>
+<script>
+  const input = document.getElementById("filter");
+  const rows = [...document.querySelectorAll("#opinions tbody tr[data-search]")];
+  input.addEventListener("input", () => {
+    const words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const row of rows) {
+      const hit = words.every(w => row.dataset.search.includes(w));
+      row.hidden = !hit;
+      shown += hit;
+    }
+    document.getElementById("none").hidden = shown > 0 || rows.length === 0;
+  });
+</script>
+</body>
+</html>

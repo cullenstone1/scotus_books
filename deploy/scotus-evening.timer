@@ -1,0 +1,10 @@
+# 19:00 New York time: catches opinions the Court posts after the 11:00 run.
+[Unit]
+Description=Run SCOTUS Books evening check at 19:00 America/New_York
+
+[Timer]
+OnCalendar=*-*-* 19:00:00 America/New_York
+Persistent=true
+
+[Install]
+WantedBy=timers.target

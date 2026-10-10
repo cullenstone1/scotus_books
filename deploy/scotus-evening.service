@@ -1,0 +1,16 @@
+# Evening run: publish opinions released since the morning run. Never touches the queue or backfill.
+# Installed as a systemd *user* unit; see README.md "Daily timer".
+[Unit]
+Description=SCOTUS Books evening run (new releases only)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/scotus_books
+# Change --privacy to public once Google approves the API audit (and in scotus-daily.service).
+ExecStart=%h/scotus_books/.venv/bin/python -m scotus.cli daily --new-only --privacy private
+StandardOutput=append:%h/scotus_books/data/logs/daily.log
+StandardError=append:%h/scotus_books/data/logs/daily.log
+TimeoutStartSec=3h
+Nice=5

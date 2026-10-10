@@ -5,8 +5,9 @@
   python -m scotus.cli review KEY              extract + clean, write the review report (data/review/)
   python -m scotus.cli build KEY               full pipeline for one opinion: PDF -> audio -> video (no upload)
   python -m scotus.cli next [--dry-run]        build and upload one opinion (new release > queue.txt > backfill)
-  python -m scotus.cli daily                   what the daily timer runs: scrape, publish all new releases
-                                               (up to the upload budget), else one from queue.txt / backfill
+  python -m scotus.cli daily [--new-only]      what the timers run: scrape, publish all new releases (up to
+                                               the upload budget), else one from queue.txt / backfill (unless
+                                               --new-only); then refresh the website's opinions page
   python -m scotus.cli queue add KEY ...       add opinions to queue.txt; also: queue list, queue remove KEY
   python -m scotus.cli retry KEY               clear an opinion's failure count so daily tries it again
 
@@ -245,15 +246,29 @@ def cmd_next(args, db):
 
 def cmd_daily(args, db):
     """Scrape, then publish every new release (up to the day's upload budget); on a day with no new
-    releases, publish one opinion from queue.txt or the backfill. Holds a lock so runs can't overlap."""
-    from .upload import QuotaExceeded
+    releases, publish one opinion from queue.txt or the backfill (unless --new-only). Then refresh the
+    opinions page on the website. Holds a lock so runs can't overlap."""
     lock = open(DATA / "daily.lock", "w")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError:
         print("another daily run is in progress; exiting")
         return 0
-    print(f"=== daily run {datetime.now().isoformat(timespec='seconds')} ===", flush=True)
+    print(f"=== {'evening' if args.new_only else 'daily'} run {datetime.now().isoformat(timespec='seconds')} ===",
+          flush=True)
+    rc = _daily(args, db)
+    if not args.dry_run:
+        try:
+            from . import site
+            site.write(db)
+            site.push()
+        except Exception:
+            traceback.print_exc()   # a stale web page shouldn't fail the run
+    return rc
+
+
+def _daily(args, db):
+    from .upload import QuotaExceeded
     args.terms = []
     try:
         cmd_scrape(args, db)
@@ -274,6 +289,9 @@ def cmd_daily(args, db):
             for row in releases[budget:]:
                 print(f"carried over to tomorrow: {row['key']} {row['name']}")
             return 1 if failed else 0
+        if args.new_only:
+            print("no new releases")
+            return 0
         # no new releases: one from the queue or backfill; reach one term further back when it runs dry
         row, why = pick_backlog(db)
         while row is None:
@@ -336,6 +354,9 @@ def main(argv=None):
             p.add_argument("ref")
         else:
             p.add_argument("--dry-run", action="store_true")
+            if name == "daily":
+                p.add_argument("--new-only", action="store_true",
+                               help="publish only new releases, never the queue or backfill (the evening run)")
             p.add_argument("--privacy", default="private", choices=["private", "unlisted", "public"],
                            help="YouTube visibility for uploads (default private; API uploads stay private until "
                                 "the project passes Google's audit)")

@@ -4,7 +4,7 @@ Supreme Court opinions, read aloud and published to YouTube, one a day.
 
 The program watches supremecourt.gov for new opinions and pulls the text out of the official PDF. It drops the footnotes and legal citations, reads what's left with an open-source voice (Kokoro), and makes a video with a chapter and a title card for each opinion: the syllabus, the opinion of the Court, and each concurrence and dissent. Then it uploads the video to the **SupremeDork** YouTube channel. When there's nothing new, it works through a list you choose and then back through past terms.
 
-Website (privacy policy and terms for Google): https://cullenstone1.github.io/scotus_books/
+Website: https://cullenstone1.github.io/scotus_books/ (with the [list of every published reading](https://cullenstone1.github.io/scotus_books/opinions.html), the privacy policy and the terms)
 
 ---
 
@@ -33,19 +33,23 @@ official PDF ──extract──▶ sections & paragraphs ──clean──▶ c
 | TTS | `scotus/tts.py` | Kokoro text-to-speech, cached per sentence, with pauses between sentences, paragraphs and sections, and pronunciation overrides. |
 | Render | `scotus/render.py` | Title card, plus a card for each section showing the writing Justice's name and official portrait; the video switches cards at each chapter. |
 | Upload | `scotus/upload.py` | YouTube Data API upload with title, description, chapters and custom thumbnail. |
+| Site | `scotus/site.py` | Generates the website's opinions page from the catalog and pushes it to GitHub. |
 | CLI | `scotus/cli.py` | Ties it together; `daily` is what the timer runs. |
 
 ---
 
 ## Daily operation
 
-A systemd timer runs `python -m scotus.cli daily` every day at **11:00 New York time**, an hour after the Court releases opinions. Each run:
+Two systemd timers run every day, on New York time:
 
-1. Scrapes the current and previous term for new or changed opinions.
-2. If the Court has released opinions, publishes **all of them**, up to the day's upload budget. Otherwise it publishes **one** opinion from your queue or the backfill (see the next section).
-3. For each one: builds it (a few minutes on a GPU) and uploads it.
+- **11:00, the morning run** (`daily`), an hour after the Court releases opinions:
+  1. Scrapes the current and previous term for new or changed opinions.
+  2. If the Court has released opinions, publishes **all of them**, up to the day's upload budget. Otherwise it publishes **one** opinion from your queue or the backfill (see the next section).
+  3. For each one: builds it (a few minutes on a GPU) and uploads it.
+  4. Refreshes the website's [opinions page](#the-opinions-page).
+- **19:00, the evening run** (`daily --new-only`) catches anything the Court posted after the morning run, such as emergency-docket rulings. It publishes only new releases, never the queue or backfill, then refreshes the opinions page.
 
-If the box was off at 11:00, the run happens as soon as it's back on.
+The two runs share the upload budget and a lock, so they can't overlap or double-upload. If the box was off at a scheduled time, that run happens as soon as it's back on.
 
 **Uploads are private** until Google approves the API audit (see [YouTube API audit](#youtube-api-audit)). After approval, switch to public as described in [Daily timer](#daily-timer).
 
@@ -55,13 +59,14 @@ Check on it:
 cd ~/scotus_books
 .venv/bin/python -m scotus.cli status      # counts per term, the queue, failures, and what's next
 tail -50 data/logs/daily.log               # what the last runs did
-systemctl --user list-timers scotus-daily  # when it runs next
+systemctl --user list-timers 'scotus-*'   # when the runs are next
 ```
 
 Run it right now instead of waiting:
 
 ```bash
 systemctl --user start scotus-daily        # same as the 11:00 run, logged to data/logs/daily.log
+systemctl --user start scotus-evening      # same as the 19:00 run
 ```
 
 ### What gets published
@@ -96,6 +101,25 @@ Entries stay in the file after they're uploaded and are simply skipped, so the f
 
 **Catalog keys** look like `25-64`: the October Term (OT2025), then the opinion's number on that term's page (the "R-" column on supremecourt.gov). `status` and `queue list` show them; you can also look them up with `sqlite3 data/catalog.db "select key, name from opinions where name like '%Chatrie%'"`.
 
+### The opinions page
+
+[`opinions.html`](https://cullenstone1.github.io/scotus_books/opinions.html) on the website lists every upload, newest decision first. Each entry has:
+
+- the case name, docket number and decision date
+- the term and who wrote the opinion
+- a link to the video and a link to the official text
+
+A search box filters by any of those, e.g. "kagan 2025" or a docket number.
+
+Both runs regenerate the page from the catalog. If anything changed, they commit and push only `docs/opinions.html` to GitHub, and the site updates a minute or two later. A change to the "Updated" date alone isn't committed, so days with no uploads add no commits. Each refresh also asks YouTube for every video's current visibility, so videos switched to public in YouTube Studio lose their "private" marker on the next run.
+
+To refresh it by hand:
+
+```bash
+.venv/bin/python -m scotus.site          # regenerate docs/opinions.html
+.venv/bin/python -m scotus.site --push   # regenerate, then commit and push it if it changed
+```
+
 ### When something fails
 
 If a build or upload fails, the run exits with an error in the log, and that opinion's failure count goes up. The next day it's tried again. After **two** failures it's skipped, so one bad PDF can't block the channel, and `status` lists it with the error. Once fixed:
@@ -119,7 +143,7 @@ All commands run from `~/scotus_books` as `.venv/bin/python -m scotus.cli <comma
 | `review KEY` | Extract and clean one opinion and write its review report to `data/review/`. Nothing is rendered. |
 | `build KEY` | Full build of one opinion into `data/build/KEY/` (`video.mp4`, `reading.m4a`, cards, `chapters.txt`, `meta.json`). No upload. |
 | `next [--dry-run] [--privacy P]` | Publish one opinion, by the same priority as `daily` (build + upload). `--dry-run` only says what it would pick. |
-| `daily [--dry-run] [--privacy P]` | What the timer runs: scrape, then publish all new releases (up to the budget), or else one from the queue or backfill. Holds a lock so two runs can't overlap. |
+| `daily [--new-only] [--dry-run] [--privacy P]` | What the timers run: scrape, then publish all new releases (up to the budget), or else one from the queue or backfill (`--new-only`: new releases only, for the evening run). Then refresh the opinions page. Holds a lock so two runs can't overlap. |
 | `queue add/list/remove` | Manage `queue.txt` (see [The queue](#the-queue)). |
 | `retry KEY` | Clear an opinion's failure count. |
 
@@ -128,6 +152,7 @@ Other entry points:
 ```bash
 .venv/bin/python -m scotus.upload KEY --privacy private   # upload an already-built opinion
 .venv/bin/python -m scotus.upload --auth                  # one-time YouTube sign-in (see Setup)
+.venv/bin/python -m scotus.site --push                    # refresh the website's opinions page
 .venv/bin/python -m scotus.tts PDF --limit 10             # render the first few items of any PDF, for quick voice tests
 .venv/bin/python -m scotus.review PDF                     # review report for any PDF
 .venv/bin/python -m pytest -q tests                       # regression tests
@@ -247,20 +272,22 @@ Google Cloud project with **YouTube Data API v3** enabled. Its OAuth consent scr
 
 The token is saved as `~/.config/scotus_books/token.json` and refreshes itself.
 
-### 6. Daily timer
+### 6. Daily timers
 
 ```bash
 mkdir -p ~/.config/systemd/user data/logs
-cp deploy/scotus-daily.service deploy/scotus-daily.timer ~/.config/systemd/user/
+cp deploy/scotus-*.service deploy/scotus-*.timer ~/.config/systemd/user/
 loginctl enable-linger "$USER"                  # run timers even when you're not logged in
 systemctl --user daemon-reload
-systemctl --user enable --now scotus-daily.timer
-systemctl --user list-timers scotus-daily
+systemctl --user enable --now scotus-daily.timer scotus-evening.timer
+systemctl --user list-timers 'scotus-*'
 ```
 
-**To switch uploads to public** after the audit, edit `--privacy private` to `--privacy public` in `~/.config/systemd/user/scotus-daily.service` (and in `deploy/` to keep the repo in step), then run `systemctl --user daemon-reload`. Videos already uploaded as private stay private; change those in YouTube Studio.
+The runs push the opinions page to GitHub, so the box's git must be able to push without a prompt: an SSH key with no passphrase that's added to your GitHub account.
 
-**To pause** daily uploads: `systemctl --user stop scotus-daily.timer`. To resume: `systemctl --user start scotus-daily.timer`.
+**To switch uploads to public** after the audit, change `--privacy private` to `--privacy public` in **both** `~/.config/systemd/user/scotus-daily.service` and `scotus-evening.service` (and in `deploy/` to keep the repo in step), then run `systemctl --user daemon-reload`. Videos already uploaded as private stay private; change those in YouTube Studio.
+
+**To pause** uploads: `systemctl --user stop scotus-daily.timer scotus-evening.timer`. To resume: `systemctl --user start scotus-daily.timer scotus-evening.timer`.
 
 ---
 
@@ -304,8 +331,8 @@ It should list `CUDAExecutionProvider` first. If not, make sure `onnxruntime-gpu
 scotus/            the pipeline (see "How it works")
 tests/             regression tests for cleaning, speech text and section detection
 assets/justices/   public-domain official portraits; sources.tsv lists where each came from
-deploy/            systemd service and timer for the daily run
-docs/              the project website (GitHub Pages): home, privacy policy, terms
+deploy/            systemd services and timers for the morning and evening runs
+docs/              the project website (GitHub Pages): home, opinions list (generated), privacy policy, terms
 archive/           the original 2024 pdfminer + regex experiments
 PLAN.md            the original plan and research notes
 queue.txt          your publish queue (not in git)

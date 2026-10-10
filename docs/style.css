@@ -23,7 +23,7 @@ body {
 }
 main { max-width: 42rem; margin: 0 auto; padding: 3rem 16px 4rem; }
 nav { font: 14px/1.4 system-ui, sans-serif; margin-bottom: 2.5rem; }
-nav a { margin-right: 1.25rem; }
+nav a { margin-right: 1.25rem; white-space: nowrap; display: inline-block; }
 .kicker {
   font: 600 13px/1 system-ui, sans-serif;
   letter-spacing: .08em;
@@ -45,4 +45,52 @@ footer {
   border-top: 1px solid var(--rule);
   font: 14px/1.5 system-ui, sans-serif;
   color: var(--muted);
+}
+
+/* opinions list */
+main.wide { max-width: 56rem; }
+input[type="search"] {
+  width: 100%;
+  font: 16px/1.4 system-ui, sans-serif;
+  padding: .65rem .8rem;
+  margin: 1rem 0 1.25rem;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+input[type="search"]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  font: 600 12px/1 system-ui, sans-serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 .75rem .6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+td { padding: .8rem .75rem .8rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.date { white-space: nowrap; font: 14px/1.5 system-ui, sans-serif; }
+td .term, td .meta { display: block; color: var(--muted); font: 13px/1.5 system-ui, sans-serif; }
+td .name { font-style: italic; }
+td.links { white-space: nowrap; font: 14px/1.5 system-ui, sans-serif; }
+td.links a { margin-right: .9rem; }
+.badge {
+  font: 600 11px/1 system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: .15rem .35rem;
+  margin: 0 .9rem 0 -.5rem;
+}
+@media (max-width: 640px) {
+  thead { display: none; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  tr { padding: .8rem 0; border-bottom: 1px solid var(--rule); }
+  td { border: 0; padding: .1rem 0; }
+  td.date .term { display: inline; margin-left: .5rem; }
+  td.links { margin-top: .35rem; }
 }
