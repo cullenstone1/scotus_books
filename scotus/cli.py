@@ -80,9 +80,10 @@ def cmd_review(args, db):
 def build(db, row, voice="am_michael", model="kokoro-v1.0.int8.onnx"):
     from .clean import clean_doc
     from .extract import extract
-    from .render import title_card, video
+    from .render import section_card, slideshow, title_card
     from .review import review
     from . import tts
+    from .speak import speakable
 
     pdf = scrape.download(db, row)
     out = DATA / "build" / row["key"]
@@ -104,7 +105,12 @@ def build(db, row, voice="am_michael", model="kokoro-v1.0.int8.onnx"):
     (out / "chapters.txt").write_text(tts.chapters_text(chapters) + "\n")
 
     title_card(out / "card.png", row["name"], [f"No. {row['docket']} · Decided {when}", author_line(doc)])
-    video(out / "card.png", out / "reading.m4a", out / "video.mp4")
+    # one card per chapter: chapter 0 is the introduction, then one per section in order
+    cards = [(out / "card.png", chapters[0][1])]
+    for i, (sec, (_, start)) in enumerate(zip(doc["sections"], chapters[1:]), 1):
+        png = section_card(out / f"card{i}.png", row["name"], sec["kind"], sec["title"], speakable(sec["title"]))
+        cards.append((png, start))
+    slideshow(cards, out / "reading.m4a", out / "video.mp4")
     meta = {
         "key": row["key"], "name": row["name"], "docket": row["docket"], "date": row["date"],
         "summary": row["summary"], "pdf_url": row["pdf_url"], "chapters": tts.chapters_text(chapters),

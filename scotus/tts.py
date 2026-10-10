@@ -24,7 +24,21 @@ from .extract import extract
 from .speak import heading, speakable
 
 SAMPLE_RATE = 24000
-PAUSE = {"sentence": 0.15, "paragraph": 0.6, "heading": 0.8, "section": 2.0}
+PAUSE = {"sentence": 0.15, "paragraph": 0.6, "heading": 0.5, "label": 0.35, "section": 1.5}
+
+# Letter names for spelled-out initialisms ({IQ} in speakable text). Stress marks are added per position.
+LETTERS = {
+    "A": "eɪ", "B": "biː", "C": "siː", "D": "diː", "E": "iː", "F": "ɛf", "G": "dʒiː", "H": "eɪtʃ", "I": "aɪ",
+    "J": "dʒeɪ", "K": "keɪ", "L": "ɛl", "M": "ɛm", "N": "ɛn", "O": "oʊ", "P": "piː", "Q": "kjuː", "R": "ɑːɹ",
+    "S": "ɛs", "T": "tiː", "U": "juː", "V": "viː", "W": "dʌbəljuː", "X": "ɛks", "Y": "waɪ", "Z": "ziː",
+}
+# Words espeak gets wrong. Keys are lowercase; values are the phonemes to use.
+LEXICON = {
+    "syllabus": "sˈɪləbəs",
+    "certiorari": "sˌɜːʃioʊɹˈɑːɹi",     # "sur-shee-oh-RAR-ee"; espeak says "sur-tih-RAR-ee"
+    "syllabi": "sˈɪləbaɪ",
+}
+VOWELS = "aeiouɑɐɒæɔəɘɚɛɜɝɞɤɨɪʉʊʌʏ"
 MAX_CHUNK = 350   # characters; Kokoro handles ~500 phonemes per pass, and shorter chunks cache better
 
 INTRO = ("This is an audio reading of the opinion of the Supreme Court of the United States in {name}, "
@@ -55,18 +69,49 @@ class Synth:
         self.cache.mkdir(parents=True, exist_ok=True)
         self.synth_seconds = 0.0
 
+    def phonemes(self, text):
+        """espeak phonemes, with {INITIALISMS} spelled out and LEXICON words replaced."""
+        out = []
+        for part in re.split(r"(\{[A-Z]+\}|\b(?:%s)\b)" % "|".join(LEXICON), text, flags=re.IGNORECASE):
+            if not part:
+                continue
+            if part.startswith("{"):
+                letters = [LETTERS[c] for c in part[1:-1]]
+                out.append("".join(_stress(p, "ˈ" if i == len(letters) - 1 else "ˌ") for i, p in enumerate(letters)))
+            elif part.lower() in LEXICON:
+                out.append(LEXICON[part.lower()])
+            elif re.fullmatch(r"\s*[^\w\s]+\s*", part):           # bare punctuation between special tokens
+                out.append(part.strip())
+            elif part.strip():
+                ph = self.kokoro.tokenizer.phonemize(part.strip(), "en-us")
+                out.append(ph)
+            if part.endswith(" ") and out:
+                out[-1] += " "
+            if part.startswith(" ") and len(out) > 1 and not out[-2].endswith(" "):
+                out[-2] += " "
+        return re.sub(r"\s{2,}", " ", "".join(out)).strip()
+
     def say(self, text):
-        key = hashlib.sha1(f"{self.model}|{self.voice}|{self.speed}|{text}".encode()).hexdigest()
+        ph = self.phonemes(text)
+        key = hashlib.sha1(f"{self.model}|{self.voice}|{self.speed}|{ph}".encode()).hexdigest()
         path = self.cache / f"{key}.npy"
         if path.exists():
             return np.load(path)
         t0 = time.time()
-        samples, sr = self.kokoro.create(text, voice=self.voice, speed=self.speed, lang="en-us")
+        samples, sr = self.kokoro.create(ph, voice=self.voice, speed=self.speed, lang="en-us", is_phonemes=True)
         self.synth_seconds += time.time() - t0
         assert sr == SAMPLE_RATE
         samples = _trim(samples.astype(np.float32))
         np.save(path, samples)
         return samples
+
+
+def _stress(ph, mark):
+    """Put a stress mark before the first vowel of a letter name: "kjuː" -> "kjˈuː"."""
+    for i, c in enumerate(ph):
+        if c in VOWELS:
+            return ph[:i] + mark + ph[i:]
+    return mark + ph
 
 
 def _trim(x, threshold=0.01):
@@ -104,9 +149,16 @@ def chunks(text):
 
 
 def section_title(sec):
-    if sec["kind"] in SECTION_NAMES and sec["kind"] != "majority":
+    """Short chapter title: "Opinion of the Court (Justice Kagan)", "Justice Alito, dissenting"."""
+    from .render import kind_label, section_author
+    if sec["kind"] in ("syllabus", "per_curiam"):
         return SECTION_NAMES[sec["kind"]]
-    return speakable(sec["title"]).rstrip(".")
+    author = section_author(sec["title"])
+    who = re.match(r"\s*((?:chief\s+)?justice\s+[\w’'-]+)", speakable(sec["title"]), re.IGNORECASE)
+    who = who.group(1) if who else (author or "").title()
+    if sec["kind"] in ("majority", "plurality"):
+        return f"{SECTION_NAMES[sec['kind']]} ({who})"
+    return f"{who}, {kind_label(sec['kind'], sec['title']).lower()}"
 
 
 def script(doc, name, date):
@@ -115,8 +167,7 @@ def script(doc, name, date):
     for sec in doc["sections"]:
         items.append(("chapter", section_title(sec)))
         if sec["kind"] == "syllabus":
-            items.append(("heading", "Syllabus."))
-            items.append(("para", SYLLABUS_NOTE))
+            items.append(("para", "Syllabus. " + SYLLABUS_NOTE))
         else:
             items.append(("heading", speakable(sec["title"])))
         for p in sec["paragraphs"]:
@@ -125,7 +176,12 @@ def script(doc, name, date):
                 if h:
                     items.append(("heading", h + "."))
             elif p["clean"]:
-                items.append(("para", speakable(p["clean"])))
+                text = speakable(p["clean"])
+                held = re.match(r"(Held|Holding)\s*:\s*", text)
+                if held:                                   # read the syllabus label on its own, then a pause
+                    items.append(("label", held.group(1) + "."))
+                    text = text[held.end():]
+                items.append(("para", text))
     return items
 
 
@@ -148,7 +204,7 @@ def render(items, synth, out_wav, log=print):
             t += len(audio) / SAMPLE_RATE
             pieces.append(silence["sentence"])
             t += PAUSE["sentence"]
-        pause = silence["heading"] if kind == "heading" else silence["paragraph"]
+        pause = silence["heading"] if kind == "heading" else silence["label"] if kind == "label" else silence["paragraph"]
         pieces.append(pause)
         t += len(pause) / SAMPLE_RATE
         done += len(text)

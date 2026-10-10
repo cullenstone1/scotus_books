@@ -37,7 +37,7 @@ TITLE_RE = re.compile(
 )
 COUNSEL_RE = re.compile(r"\b(argued the cause|filed a brief|briefs? of amici|were filed for)\b", re.IGNORECASE)
 FIGURE_RE = re.compile(r"^(Figure|Fig\.|Table|Chart|Map)\s+\d+[A-Z]?[.:]\s")   # captions of maps, charts
-HEADING_RE = re.compile(r"^(([IVXL]+|[A-Z]|\d+)([–-]([IVXL]+|[A-Z]|\d+))*|\*\s*\*\s*\*|APPENDIX.*|Appendix.*)$")
+HEADING_RE = re.compile(r"^(([IVXL]+|[A-Za-z]|\d+)([–-]([IVXL]+|[A-Z]|\d+))*|\*(\s*\*)*|APPENDIX.*|Appendix.*)$")
 
 
 @dataclass
@@ -180,7 +180,8 @@ def _fix_ligatures(text):
 
 def _clean_text(t):
     t = _fix_ligatures(t)
-    t = t.replace("­", "")
+    t = t.replace("\u00ad", "")
+    t = re.sub(r"(?<=[.,;:”’)])[*†‡]+", "", t)   # same-size footnote markers
     t = t.replace("`", "‘")             # prelim prints use ` for an opening single quote
     t = re.sub(r"[ \t ]+", " ", t)
     return t.strip()
@@ -192,12 +193,15 @@ def paragraphs(lines):
     if not body:
         return
     # Typical left margin and right edge per page, from the most common line starts/ends.
+    # Syllabus (9pt) and opinion (11pt) text can share a page with different margins,
+    # so measure margins per page and text size.
     margins, rights = {}, {}
-    for p in {l.page for l in body}:
-        xs = [round(l.x0) for l in body if l.page == p]
-        x1s = [round(l.x1) for l in body if l.page == p]
-        margins[p] = max(set(xs), key=xs.count)
-        rights[p] = sorted(x1s)[int(len(x1s) * 0.9)] if x1s else 0
+    for p, size in {(l.page, round(l.size)) for l in body}:
+        same = [l for l in body if l.page == p and round(l.size) == size]
+        xs = [round(l.x0) for l in same]
+        x1s = sorted(round(l.x1) for l in same)
+        margins[p, size] = max(set(xs), key=xs.count)
+        rights[p, size] = x1s[int(len(x1s) * 0.9)]
 
     cur, cur_first = None, None
     prev = None
@@ -209,7 +213,7 @@ def paragraphs(lines):
             yield "section", "", ln
             continue
         text = ln.text
-        margin, right = margins[ln.page], rights[ln.page]
+        margin, right = margins[ln.page, round(ln.size)], rights[ln.page, round(ln.size)]
         centered = abs((ln.x0 + ln.x1) / 2 - (margin + right) / 2) < 15 and ln.x0 > margin + 20
         if centered and HEADING_RE.match(text.strip()):
             if cur:
@@ -217,16 +221,29 @@ def paragraphs(lines):
             cur, prev = None, None
             yield "heading", text.strip(), ln
             continue
-        new_para = (
-            cur is None
-            or ln.x0 > margin + 6          # indented first line (or outdented "Held:" etc.)
-            or ln.x0 < margin - 6
-            or (prev is not None and prev.page == ln.page and prev.x1 < right - 25
-                and not prev.text.rstrip().endswith(("-", "­", "—")))
-            or (prev is not None and prev.page == ln.page and ln.y0 - prev.y0 > 2.2 * ln.size)
-        )
-        # A continuation line can't start a paragraph just because the previous page ended short.
-        if prev is not None and prev.page != ln.page and abs(ln.x0 - margin) <= 6:
+        if cur is None or prev is None:
+            new_para = True
+        elif prev.page == ln.page:
+            first_outdented = prev is cur_first and prev.x0 < margin - 3      # "Held:" hanging indent
+            new_para = (
+                (ln.x0 > prev.x0 + 6 and not first_outdented)                  # first-line indent, block quote start
+                or (ln.x0 < prev.x0 - 6 and prev is not cur_first)            # back out of a block quote
+                or prev.x1 < right - 25                                        # previous line ended short
+                or ln.y0 - prev.y0 > 2.2 * ln.size                             # vertical gap
+                or abs(ln.size - prev.size) > 1                                # caption lines, syllabus -> opinion
+                or ((prev.x0 > margin + 50 or ln.x0 > margin + 50)            # right-set lines: "It is so ordered."
+                    and re.search(r"[.?!:][”’)]?$", prev.text.rstrip()))
+                or (abs(ln.x0 - prev.x0) <= 2 and 8 <= ln.x0 - margin <= 14    # two indented first lines in a row
+                    and re.search(r"[.?!][”’)]?$", prev.text.rstrip()))
+            )
+        else:
+            new_para = ln.x0 > margin + 6                                      # indented at the top of a new page
+        # a right-set line finishing an unfinished sentence ("... Circuits are   Affirmed.") continues it
+        if (prev is not None and ln.x0 > margin + 50 and ln.x1 >= right - 5 and abs(ln.size - prev.size) <= 1
+                and not re.search(r"[.?!:][”’)]?$", prev.text.rstrip())):
+            new_para = False
+        # a line ending in a hyphen never ends a paragraph
+        if cur is not None and prev is not None and re.search(r"[A-Za-z][-\u00ad]$", cur.rstrip()) and ln.size == prev.size:
             new_para = False
         if new_para and cur is not None:
             yield "para", _clean_text(cur), cur_first
@@ -302,11 +319,13 @@ def extract(pdf_path):
         if state == "section" and cur and cur.kind == "syllabus" and COUNSEL_RE.search(text):
             state = "counsel"
             continue
-        if kind == "heading" and text.lower().startswith("appendix"):
+        if (kind == "heading" and text.lower().startswith("appendix")) or (kind == "para" and text.startswith("Reporter’s Note")):
             state = "appendix"
             continue
         if kind == "para" and FIGURE_RE.match(text):
             continue
+        if kind == "para" and len(text) <= 8 and HEADING_RE.match(text):   # off-center headings: "B", "*"
+            kind = "heading"
         if state == "section" and cur is not None:
             cur.paragraphs.append({"type": kind, "text": text})
     return {"meta": meta, "sections": [asdict(s) for s in sections]}

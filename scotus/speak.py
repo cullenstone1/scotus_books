@@ -71,7 +71,7 @@ ROMAN_TOKEN = r"[IVXL]+(?:[–—-][A-Z0-9]+)*"
 def heading(text):
     """Spoken form of a section heading like "II", "B", "III–C" or "* * *"."""
     t = text.strip()
-    if re.fullmatch(r"\*\s*\*\s*\*", t):
+    if re.fullmatch(r"\*(\s*\*)*", t):
         return ""
     if re.fullmatch(ROMAN_TOKEN, t):
         return "Part " + _roman_part(re.match(ROMAN_TOKEN, t))
@@ -93,12 +93,20 @@ def _titlecase_names(t):
 
 
 def _acronyms(t):
-    def fix(m):
+    """Mark letter-by-letter initialisms as {IQ}; tts.py spells them without the pauses periods cause."""
+    def dotted(m):
+        letters = re.sub(r"[.\s]", "", m.group(0))
+        end = "." if m.group(0).endswith(".") and not t[m.end():].strip() else ""   # keep a sentence-final period
+        return "{" + letters + "}" + end if len(letters) > 1 else m.group(0)
+    # dotted forms: "U. S.", "I.Q.", "B. P. J.", "U. S. C."
+    t = re.sub(r"\b(?:[A-Z]\.\s?){2,}(?=[\s,;:)”’]|$)", lambda m: dotted(m) + (" " if m.group(0).endswith(" ") else ""), t)
+
+    def plain(m):
         w = m.group(0)
         if w in SAID_AS_WORDS or w in JUSTICES or w in TITLE_WORDS:
             return w
-        return ".".join(w) + "."
-    return re.sub(r"\b[A-Z]{2,6}\b(?!\.)", fix, t)
+        return "{" + w + "}"
+    return re.sub(r"(?<!\{)\b[A-Z]{2,6}\b(?!\})", plain, t)
 
 
 def speakable(t):
@@ -118,7 +126,6 @@ def speakable(t):
     t = re.sub(r"(\d)-to-(\d)", r"\1 to \2", t)
     t = re.sub(r"\[sic\]", "", t)
     t = t.replace("[", "").replace("]", "")
-    t = re.sub(r"\b([A-Z])\.\s(?=[A-Z]\.)", r"\1.", t)      # "U. S." -> "U.S.", "B. P. J." -> "B.P.J."
     t = _acronyms(t)
     t = re.sub(r"\s{2,}", " ", t)
     return t.strip()
