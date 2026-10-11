@@ -13,6 +13,7 @@ what's left after reserving room for the rest of the day's uploads, and finishes
 import argparse
 import json
 import sys
+import time
 
 from . import DATA, catalog
 from .catalog import now
@@ -100,14 +101,19 @@ class Client:
         self._existing = None
 
     def _call(self, req):
+        """Execute, retrying YouTube's transient errors (a playlist that was just created often answers
+        409 SERVICE_UNAVAILABLE for a few seconds)."""
         from googleapiclient.errors import HttpError
         from .upload import QuotaExceeded, _quota_error
-        try:
-            return req.execute()
-        except HttpError as e:
-            if _quota_error(e):
-                raise QuotaExceeded(str(e)) from e
-            raise
+        for wait in (2, 5, 15, 30, None):
+            try:
+                return req.execute()
+            except HttpError as e:
+                if _quota_error(e):
+                    raise QuotaExceeded(str(e)) from e
+                if wait is None or e.resp.status not in (409, 500, 503):
+                    raise
+                time.sleep(wait)
 
     def find(self, title):
         """Our channel's playlist with this title, if one exists (so a lost database doesn't make duplicates)."""
