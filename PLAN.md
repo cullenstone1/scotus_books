@@ -107,7 +107,7 @@ Each step replaces something that used to be done by hand:
 
 ### Upload (`upload.py`)
 
-- Use the YouTube Data API v3 with a one-time OAuth login and a saved refresh token. The default quota allows about 6 uploads a day, which is plenty.
+- Use the YouTube Data API v3 with a one-time OAuth login and a saved refresh token. The default quota allows about 5 uploads a day (with playlist additions), which is plenty.
 - **Start this early. Videos uploaded from an unaudited API project are locked to private** until Google approves the project, and approval can take weeks. Apply while building everything else.
 - **Policy:**
   - Mark the videos as synthetic/altered content where YouTube asks.

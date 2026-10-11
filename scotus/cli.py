@@ -7,9 +7,11 @@
   python -m scotus.cli next [--dry-run]        build and upload one opinion (new release > queue.txt > backfill)
   python -m scotus.cli daily [--new-only]      what the timers run: scrape, publish all new releases (up to
                                                the upload budget), else one from queue.txt / backfill (unless
-                                               --new-only); then refresh the website's opinions page
+                                               --new-only); then playlists and the website's opinions page
   python -m scotus.cli queue add KEY ...       add opinions to queue.txt; also: queue list, queue remove KEY
   python -m scotus.cli retry KEY               clear an opinion's failure count so daily tries it again
+  python -m scotus.cli playlists [--dry-run]   add uploaded videos to their term / Justice / per curiam
+                                               playlists (daily does this after uploading)
 
 KEY is the catalog key "{term}-{R number}", e.g. 25-64; a docket number like 25-112 also works.
 """
@@ -28,7 +30,8 @@ QUEUE = ROOT / "queue.txt"
 MAX_FAILURES = 2        # after this many failed attempts, daily skips an opinion until `retry`
 OLDEST_TERM = 18        # supremecourt.gov term pages go back to OT2018
 NEW_RELEASE_DAYS = 14   # opinions released this recently jump ahead of the queue
-UPLOADS_PER_DAY = 6     # YouTube's default quota: 10,000 units/day; an upload + thumbnail costs 1,650
+UPLOADS_PER_DAY = 5     # YouTube's default quota: 10,000 units/day; an upload + thumbnail costs 1,650,
+                        # which leaves room for adding each video to its playlists (50 units each)
 QUOTA_TZ = ZoneInfo("America/Los_Angeles")   # the YouTube quota day starts at midnight Pacific
 
 
@@ -80,6 +83,10 @@ def cmd_status(args, db):
     releases = new_releases(db)
     if releases:
         print(f"new releases waiting: {', '.join(r['key'] for r in releases)}")
+    from .playlists import missing
+    adds = missing(db)
+    if adds:
+        print(f"playlist additions waiting: {len(adds)}")
     pending = [r for r in queue_refs() if not _uploaded(db, r)]
     print(f"queue.txt: {len(pending)} waiting")
     for r in db.execute("SELECT key, name, failures, last_error FROM opinions WHERE failures >= ? ORDER BY key",
@@ -190,11 +197,15 @@ def pick_next(db):
     return pick_backlog(db)
 
 
+def quota_day_start():
+    """Midnight Pacific, when YouTube's daily quota resets, as a UTC timestamp like the catalog's."""
+    start = datetime.now(QUOTA_TZ).replace(hour=0, minute=0, second=0, microsecond=0)
+    return start.astimezone(timezone.utc).isoformat(timespec="seconds")
+
+
 def uploads_today(db):
     """Uploads since midnight Pacific, when YouTube's daily quota resets."""
-    start = datetime.now(QUOTA_TZ).replace(hour=0, minute=0, second=0, microsecond=0)
-    since = start.astimezone(timezone.utc).isoformat(timespec="seconds")
-    return db.execute("SELECT count(*) n FROM opinions WHERE uploaded >= ?", (since,)).fetchone()["n"]
+    return db.execute("SELECT count(*) n FROM opinions WHERE uploaded >= ?", (quota_day_start(),)).fetchone()["n"]
 
 
 def publish(db, row, privacy, voice="am_michael", model=None):
@@ -246,8 +257,8 @@ def cmd_next(args, db):
 
 def cmd_daily(args, db):
     """Scrape, then publish every new release (up to the day's upload budget); on a day with no new
-    releases, publish one opinion from queue.txt or the backfill (unless --new-only). Then refresh the
-    opinions page on the website. Holds a lock so runs can't overlap."""
+    releases, publish one opinion from queue.txt or the backfill (unless --new-only). Then add uploaded
+    videos to their playlists and refresh the opinions page on the website. Holds a lock so runs can't overlap."""
     lock = open(DATA / "daily.lock", "w")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -257,6 +268,11 @@ def cmd_daily(args, db):
     print(f"=== {'evening' if args.new_only else 'daily'} run {datetime.now().isoformat(timespec='seconds')} ===",
           flush=True)
     rc = _daily(args, db)
+    try:
+        from .playlists import sync
+        sync(db, args.dry_run)
+    except Exception:
+        traceback.print_exc()   # playlists catch up on the next run
     if not args.dry_run:
         try:
             from . import site
@@ -306,6 +322,12 @@ def _daily(args, db):
     except QuotaExceeded as e:
         print(f"YouTube quota used up; the rest go out tomorrow ({e})", file=sys.stderr)
         return 1
+
+
+def cmd_playlists(args, db):
+    from .playlists import sync
+    sync(db, args.dry_run)
+    return 0
 
 
 def cmd_retry(args, db):
@@ -365,10 +387,12 @@ def main(argv=None):
     p.add_argument("action", choices=["add", "list", "remove"])
     p.add_argument("refs", nargs="*")
     p = sub.add_parser("retry"); p.add_argument("ref")
+    p = sub.add_parser("playlists"); p.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
     db = catalog.connect()
     handler = {"scrape": cmd_scrape, "status": cmd_status, "review": cmd_review, "build": cmd_build,
-               "next": cmd_next, "daily": cmd_daily, "queue": cmd_queue, "retry": cmd_retry}[args.cmd]
+               "next": cmd_next, "daily": cmd_daily, "queue": cmd_queue, "retry": cmd_retry,
+               "playlists": cmd_playlists}[args.cmd]
     sys.exit(handler(args, db) or 0)
 
 

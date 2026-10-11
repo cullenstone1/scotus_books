@@ -33,6 +33,7 @@ official PDF ──extract──▶ sections & paragraphs ──clean──▶ c
 | TTS | `scotus/tts.py` | Kokoro text-to-speech, cached per sentence, with pauses between sentences, paragraphs and sections, and pronunciation overrides. |
 | Render | `scotus/render.py` | Title card, plus a card for each section showing the writing Justice's name and official portrait; the video switches cards at each chapter. |
 | Upload | `scotus/upload.py` | YouTube Data API upload with title, description, chapters and custom thumbnail. |
+| Playlists | `scotus/playlists.py` | Adds each upload to its term's playlist, the playlist of every Justice who wrote part of it, and "Per Curiam Opinions" when the Court's opinion is unsigned. |
 | Site | `scotus/site.py` | Generates the website's opinions page from the catalog and pushes it to GitHub. |
 | CLI | `scotus/cli.py` | Ties it together; `daily` is what the timer runs. |
 
@@ -82,7 +83,7 @@ Anything already uploaded, or skipped after repeated failures, is passed over.
 
 ### Upload budget
 
-YouTube's default API quota is 10,000 units a day, and each upload with its thumbnail costs 1,650, so the run stops at **6 uploads a day** (`UPLOADS_PER_DAY` in `scotus/cli.py`). The quota resets at midnight Pacific time, and the count includes uploads made by hand. On the rare day the Court releases more than 6 opinions, the rest go out the next morning before anything else.
+YouTube's default API quota is 10,000 units a day. Each upload with its thumbnail costs 1,650, and each playlist addition 50, so the run stops at **5 uploads a day** (`UPLOADS_PER_DAY` in `scotus/cli.py`), which leaves room to put each of them in its playlists. The quota resets at midnight Pacific time, and the count includes uploads made by hand. On the rare day the Court releases more than 5 opinions, the rest go out the next morning before anything else.
 
 If YouTube reports the quota or the channel's upload limit used up anyway, the run stops cleanly. The opinion isn't counted as a failure and goes out on the next run.
 
@@ -100,6 +101,25 @@ If YouTube reports the quota or the channel's upload limit used up anyway, the r
 Entries stay in the file after they're uploaded and are simply skipped, so the file doubles as a record of what you picked. A queued opinion has to be in the catalog. For older terms, `scrape` the term first, e.g. `scrape 21`.
 
 **Catalog keys** look like `25-64`: the October Term (OT2025), then the opinion's number on that term's page (the "R-" column on supremecourt.gov). `status` and `queue list` show them; you can also look them up with `sqlite3 data/catalog.db "select key, name from opinions where name like '%Chatrie%'"`.
+
+### Playlists
+
+After uploading, both runs add every uploaded video to the playlists it belongs in, creating a playlist the first time it's needed (all public):
+
+- **October Term 2025 Opinions** (one per term), in order of decision, oldest first
+- **Opinions by Justice Elena Kagan** (one per Justice) for every opinion with a section that Justice wrote: majority, plurality, concurrence or dissent. Joining someone else's opinion doesn't count. The Chief Justice's playlist is titled "Opinions by Chief Justice …". Newest first.
+- **Per Curiam Opinions** for unsigned opinions of the Court, newest first
+
+Videos are inserted at the right position, so playlists stay in date order even though the backfill uploads newest-first. If you reorder a playlist by hand, new videos are simply added at the end.
+
+The catalog records which playlists exist and which videos are in them (`playlists` and `playlist_items` tables). Playlist additions only spend quota left over after reserving room for the rest of the day's uploads, so if there's a backlog (e.g. the first run, which also covers videos uploaded before playlists existed) it finishes over the next runs; `status` shows how many are waiting. To run it by hand:
+
+```bash
+.venv/bin/python -m scotus.cli playlists --dry-run   # what would be added
+.venv/bin/python -m scotus.cli playlists
+```
+
+A playlist that already exists on the channel with the same title is reused rather than duplicated. If you rename one in YouTube Studio, it keeps working (the catalog stores its ID).
 
 ### The opinions page
 
@@ -143,9 +163,10 @@ All commands run from `~/scotus_books` as `.venv/bin/python -m scotus.cli <comma
 | `review KEY` | Extract and clean one opinion and write its review report to `data/review/`. Nothing is rendered. |
 | `build KEY` | Full build of one opinion into `data/build/KEY/` (`video.mp4`, `reading.m4a`, cards, `chapters.txt`, `meta.json`). No upload. |
 | `next [--dry-run] [--privacy P]` | Publish one opinion, by the same priority as `daily` (build + upload). `--dry-run` only says what it would pick. |
-| `daily [--new-only] [--dry-run] [--privacy P]` | What the timers run: scrape, then publish all new releases (up to the budget), or else one from the queue or backfill (`--new-only`: new releases only, for the evening run). Then refresh the opinions page. Holds a lock so two runs can't overlap. |
+| `daily [--new-only] [--dry-run] [--privacy P]` | What the timers run: scrape, then publish all new releases (up to the budget), or else one from the queue or backfill (`--new-only`: new releases only, for the evening run). Then add uploads to their playlists and refresh the opinions page. Holds a lock so two runs can't overlap. |
 | `queue add/list/remove` | Manage `queue.txt` (see [The queue](#the-queue)). |
 | `retry KEY` | Clear an opinion's failure count. |
+| `playlists [--dry-run]` | Add uploaded videos to the playlists they're missing from (see [Playlists](#playlists)). |
 
 Other entry points:
 
@@ -310,7 +331,7 @@ Videos uploaded through the API by a project Google hasn't audited are **locked 
 - the SupremeDork channel
 - a description of the app: it uploads audio readings of Supreme Court opinions to its owner's own channel, about one video a day, and accesses no other users' data
 
-The default quota (10,000 units a day) allows 6 uploads a day (see [Upload budget](#upload-budget)). If that's ever too few, the same form can request more.
+The default quota (10,000 units a day) allows 5 uploads a day plus their playlist additions (see [Upload budget](#upload-budget)). If that's ever too few, the same form can request more.
 
 The channel also needs to stay **verified** (youtube.com/verify, done for SupremeDork). Verification is what allows videos over 15 minutes and custom thumbnails.
 

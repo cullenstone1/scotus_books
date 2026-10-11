@@ -28,6 +28,19 @@ CREATE TABLE IF NOT EXISTS opinions (
   failures    INTEGER DEFAULT 0,  -- build/upload attempts that raised; daily skips after MAX_FAILURES
   last_error  TEXT
 );
+CREATE TABLE IF NOT EXISTS playlists (
+  name        TEXT PRIMARY KEY,   -- "term:25", "justice:kagan" or "per_curiam"
+  title       TEXT,
+  playlist_id TEXT NOT NULL,
+  created     TEXT                -- when we created it; NULL if it already existed on the channel
+);
+CREATE TABLE IF NOT EXISTS playlist_items (
+  key         TEXT NOT NULL,      -- opinions.key
+  playlist    TEXT NOT NULL,      -- playlists.name
+  item_id     TEXT,
+  added       TEXT,
+  PRIMARY KEY (key, playlist)
+);
 """
 MIGRATIONS = {   # columns added after the first release; created on old databases by connect()
     "failures": "INTEGER DEFAULT 0",
