@@ -60,6 +60,10 @@ def year_words(n):
     return number_words(hi) + (" oh " + ONES[lo] if lo < 10 else " " + number_words(lo))
 
 
+def _plural(words):
+    return words[:-1] + "ies" if words.endswith("y") else words + "s"
+
+
 def roman_to_int(s):
     total = 0
     for i, c in enumerate(s):
@@ -137,7 +141,9 @@ def speakable(t):
     t = re.sub(r"(\d)-to-(\d)", r"\1 to \2", t)
     # four-digit numbers 1100-2099 the way people say years (also "§1983" -> "nineteen eighty-three"),
     # not inside dockets, decimals, amounts with commas or "$"
-    t = re.sub(r"(?<![\w$.,/–—-])(1[1-9]\d\d|20\d\d)(?![\w%]|[.,/–—-]\d)", lambda m: year_words(int(m.group(1))), t)
+    # decades: "1880s" -> "eighteen eighties", "1800s" -> "eighteen hundreds"; "pre-1884" and "mid-1800s" too
+    t = re.sub(r"(?<![\w$.,/–—])(?<!\d[-–—])(1[1-9]\d0|20\d0)[’']?s\b", lambda m: _plural(year_words(int(m.group(1)))), t)
+    t = re.sub(r"(?<![\w$.,/–—])(?<!\d[-–—])(1[1-9]\d\d|20\d\d)(?![\w%]|[.,/–—-]\d)", lambda m: year_words(int(m.group(1))), t)
     t = re.sub(r"\[sic\]", "", t)
     t = t.replace("[", "").replace("]", "")
     t = _acronyms(t)
