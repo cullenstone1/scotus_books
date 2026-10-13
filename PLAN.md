@@ -143,6 +143,16 @@ sudo apt install python3-venv python3-pip ffmpeg espeak-ng
 
 `espeak-ng` is used by both Kokoro and Piper for pronunciation. Python packages (PyMuPDF, eyecite, kokoro-onnx, google-api-python-client) go in a project venv. GPU rendering also needs an NVIDIA driver.
 
+## Future: podcast feed
+
+Not started; noted 2026-10-13. Every build already has the audio (`reading.m4a`) and chapter times, so the opinions could also go out as a podcast: an RSS feed listing the audio files. Apple Podcasts, Spotify, Pocket Casts, Overcast, Amazon Music and YouTube Music all take a feed. It's submitted once to each by hand (Apple's review takes a few days), and after that they pick up new episodes on their own. One episode per opinion.
+
+- **Audio hosting.** The files are too big for GitHub Pages (100 MB per file, about 1 GB per site) once the backfill builds up. The plan is the **Internet Archive**: free, no storage limit, suited to public-domain government material, and uploadable from Python (the `internetarchive` package), so the daily run can do it. The fallback is Cloudflare R2: 10 GB free, then cheap, with no bandwidth charges.
+- **Feed.** `docs/feed.xml`, generated from the catalog and pushed like `opinions.html`. It needs square cover art (1400–3000 px), a category (Government or Education), an owner email, and the same synthetic-voice disclosure the video descriptions carry. Chapters can be embedded in the audio files so podcast apps show them.
+- **Pipeline.** A `scotus/podcast.py` (about the size of `playlists.py`) that uploads each new episode's audio and rewrites the feed. `daily` runs it after the playlists step.
+- **Open question.** One feed with every opinion, or one feed per term. The leaning is one feed: apps handle long episode lists fine, and listeners only subscribe once.
+- **Not a fit.** Music distributors such as DistroKid are for music. Audiobook stores (Audible through ACX, Spotify audiobooks) have stricter rules about AI narration and public-domain material, and a book format suits a daily series badly.
+
 ## Open questions
 
 - **Should the syllabus be included?** It's written by the Reporter of Decisions, not the Court. It could be a short intro chapter or skipped.
