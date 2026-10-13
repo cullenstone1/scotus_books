@@ -166,6 +166,7 @@ All commands run from `~/scotus_books` as `.venv/bin/python -m scotus.cli <comma
 | `daily [--new-only] [--dry-run] [--privacy P]` | What the timers run: scrape, then publish all new releases (up to the budget), or else one from the queue or backfill (`--new-only`: new releases only, for the evening run). Then add uploads to their playlists and refresh the opinions page. Holds a lock so two runs can't overlap. |
 | `queue add/list/remove` | Manage `queue.txt` (see [The queue](#the-queue)). |
 | `retry KEY` | Clear an opinion's failure count. |
+| `replace KEY ... [--privacy P]` | Rebuild already-uploaded opinions with the current code (after a pronunciation or cleaning fix), upload the new videos, put them in the old ones' playlist positions and delete the old videos. Each costs about 2,000–2,500 quota units, so do two or three a day. Old links stop working. |
 | `playlists [--dry-run]` | Add uploaded videos to the playlists they're missing from (see [Playlists](#playlists)). |
 
 Other entry points:

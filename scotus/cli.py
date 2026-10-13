@@ -10,6 +10,8 @@
                                                --new-only); then playlists and the website's opinions page
   python -m scotus.cli queue add KEY ...       add opinions to queue.txt; also: queue list, queue remove KEY
   python -m scotus.cli retry KEY               clear an opinion's failure count so daily tries it again
+  python -m scotus.cli replace KEY ...         rebuild uploaded opinions, upload them, move their playlist
+                                               entries over and delete the old videos (after a text/voice fix)
   python -m scotus.cli playlists [--dry-run]   add uploaded videos to their term / Justice / per curiam
                                                playlists (daily does this after uploading)
 
@@ -330,6 +332,42 @@ def cmd_playlists(args, db):
     return 0
 
 
+def replace(db, row, privacy, voice="am_michael", model=None):
+    """Rebuild an uploaded opinion with the current code, upload the new video, move its playlist entries
+    to it, and delete the old video. Returns the new video id."""
+    from .playlists import Client, sync
+    from .upload import upload
+    old = row["youtube_id"]
+    out = build(db, row, voice, model)
+    new = upload(out, privacy)
+    catalog.mark(db, row["key"], uploaded=now(), youtube_id=new, last_error=None)
+    print(f"uploaded {row['key']} ({privacy}): https://youtu.be/{new}; replacing {old}", flush=True)
+    client = Client()
+    for item in db.execute("SELECT * FROM playlist_items WHERE key = ?", (row["key"],)).fetchall():
+        client._call(client.yt.playlistItems().delete(id=item["item_id"]))
+        db.execute("DELETE FROM playlist_items WHERE key = ? AND playlist = ?", (row["key"], item["playlist"]))
+        db.commit()
+    client._call(client.yt.videos().delete(id=old))
+    print(f"deleted old video {old}", flush=True)
+    sync(db)   # the new video takes the old one's place in each playlist
+    return new
+
+
+def cmd_replace(args, db):
+    """Replace uploaded videos with fresh builds (after a pronunciation or cleaning fix)."""
+    rows = [find(db, ref) for ref in args.refs]
+    for row in rows:
+        if not row["youtube_id"]:
+            sys.exit(f"{row['key']} hasn't been uploaded; use build or next")
+    for row in rows:
+        replace(db, row, args.privacy, args.voice, args.model)
+    if not args.dry_run:
+        from . import site
+        site.write(db)
+        site.push()
+    return 0
+
+
 def cmd_retry(args, db):
     row = find(db, args.ref)
     catalog.mark(db, row["key"], failures=0, last_error=None)
@@ -387,11 +425,14 @@ def main(argv=None):
     p.add_argument("action", choices=["add", "list", "remove"])
     p.add_argument("refs", nargs="*")
     p = sub.add_parser("retry"); p.add_argument("ref")
+    p = sub.add_parser("replace"); p.add_argument("refs", nargs="+")
+    p.add_argument("--privacy", default="public", choices=["private", "unlisted", "public"])
+    p.add_argument("--voice", default="am_michael"); p.add_argument("--model"); p.set_defaults(dry_run=False)
     p = sub.add_parser("playlists"); p.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
     db = catalog.connect()
     handler = {"scrape": cmd_scrape, "status": cmd_status, "review": cmd_review, "build": cmd_build,
-               "next": cmd_next, "daily": cmd_daily, "queue": cmd_queue, "retry": cmd_retry,
+               "next": cmd_next, "daily": cmd_daily, "queue": cmd_queue, "retry": cmd_retry, "replace": cmd_replace,
                "playlists": cmd_playlists}[args.cmd]
     sys.exit(handler(args, db) or 0)
 
