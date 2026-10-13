@@ -32,6 +32,16 @@ CASES = [
     ("The law specifies sex. §§18–2–25d(a)(4), (b)(1). The legislature found it necessary. See §§18–2–25d(a)(1), (3), (5).",
      "The law specifies sex. The legislature found it necessary."),
     # statutes used in prose are kept
+    ("Initially enacted in 1940, §1401(a) of Title 8 provides that persons are citizens. Nationality Act of 1940, §201(a), 54 Stat. 1138.",
+     "Initially enacted in 1940, §1401(a) of Title 8 provides that persons are citizens."),
+    ("Scholars focused on the parents’ status, not the child’s, F. Wharton, Conflict of Laws §10, p. 35. Only then.",
+     "Scholars focused on the parents’ status, not the child’s. Only then."),
+    ("The Secretary might take in the future” to implement §2(a). Trump v. New York, 592 U. S., at 133–134. Emphasis on might.",
+     "The Secretary might take in the future” to implement §2(a). Emphasis on might."),
+    ("They alleged it, “in the State wherein they reside.” On January 20, 2025, President Trump issued Executive Order No. 14160, titled Protecting Citizenship.",
+     "They alleged it, “in the State wherein they reside.” On January 20, 2025, President Trump issued Executive Order No. 14160, titled Protecting Citizenship."),
+    ("It was met with shock, see D. Potter, The Impending Crisis, 1848–1861, p. 281; 3 Writings of Abraham Lincoln 55, and abolitionists swore to undo it, see 2 Life and Writings of Frederick Douglass 259, 415, 424.",
+     "It was met with shock, and abolitionists swore to undo it."),
     ("Section 2 of the Voting Rights Act, 52 U. S. C. §10301, prohibits it.",
      "Section 2 of the Voting Rights Act, 52 U. S. C. §10301, prohibits it."),
     # subsequent history glued onto a cite

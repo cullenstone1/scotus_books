@@ -16,7 +16,7 @@ import re
 from dataclasses import dataclass
 
 from eyecite import get_citations
-from eyecite.models import FullCaseCitation, ShortCaseCitation, FullLawCitation
+from eyecite.models import FullCaseCitation, ShortCaseCitation, FullLawCitation, UnknownCitation
 
 # --------------------------------------------------------------- patterns
 
@@ -177,12 +177,16 @@ def find_cites(text):
         cites = []
     for c in cites:
         s, e = c.span()
+        if isinstance(c, UnknownCitation):   # eyecite takes the sentence's period too: "§2(a)."
+            e = s + len(text[s:e].rstrip(".,;"))
         fs = c.full_span()[0] if hasattr(c, "full_span") else s
         fs = min(fs, s)
         # eyecite's full_span end can run past several sentences to a later parenthetical,
         # so find the end ourselves: pin cites, year and explanatory parentheticals.
         end = _extend(text, e)
-        if isinstance(c, FullLawCitation):
+        if isinstance(c, (FullLawCitation, UnknownCitation)):
+            # UnknownCitation is a bare "§1401(a)" or "¶3"; like statutes, it can be part of the sentence
+            # ("Initially enacted in 1940, §1401(a) of Title 8 provides...")
             spans.append(Span(fs, end, soft=True))
         elif isinstance(c, (FullCaseCitation, ShortCaseCitation)):
             if fs == s:
@@ -199,7 +203,8 @@ def find_cites(text):
             spans.append(Span(m.start(), _extend(text, m.end())))
     for rx in SOFT_CITE_RES:
         for m in rx.finditer(text):
-            spans.append(Span(m.start(), _extend(text, m.end()), soft=True))
+            end = m.start() + len(m.group(0).rstrip(".,;"))   # not the sentence's period: "§2(a)."
+            spans.append(Span(m.start(), _extend(text, end), soft=True))
     return _merge(text, spans)
 
 
@@ -287,19 +292,74 @@ def _source_only(sentence):
 ATTRIB_RE = re.compile(r"[”’],?\s+(?P<src>[A-Z\d](?:[^“”;()]|\([^()]*\))*?\d(?:[^“”;()]|\([^()]*\))*?)(?=,\s+(?:and|but|or|which|who|so|because|while|as|the|it|we|that)\b|;|\.\s|\.$|—|$)")
 
 
+MONTH_DAY = re.compile(r"\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\b")
+
+
+def _reads_as_prose(src):
+    """A sentence that only looks like a source: "On January 20, 2025, President Trump issued Executive Order No."
+    / "Secretary of State Hamilton Fish agreed." A past-tense verb or a calendar date outside parentheses."""
+    bare = _strip_parens(src)
+    verbs = [w for w in re.findall(r"\b[a-z]{3,}ed\b", bare) if w not in CITE_WORDS]
+    return bool(verbs or MONTH_DAY.search(bare))
+
+
 def find_attributions(text):
     """Sources cited right after a quotation, mid-sentence: '...law,” 1 H. Tucker, Commentaries 57-58, and ...'"""
     out = []
     for m in ATTRIB_RE.finditer(text):
         src = m.group("src")
-        if len(src) < 200 and _few_lowercase(_strip_parens(src)):
+        if len(src) < 200 and _few_lowercase(_strip_parens(src)) and not _reads_as_prose(src):
             out.append(Span(m.start("src"), _extend(text, m.end("src"))))
+    return out
+
+
+PAGE_RE = re.compile(rf",\s+pp?\.\s+{NUM}(?:,\s*{NUM})*")
+# "3 Writings of Abraham Lincoln 55" / "2 Life and Writings of Frederick Douglass 259, 415, 424"
+VOLUME_CITE = rf"\d+\s+[A-Z][^;:“”()\d]*?\s{NUM}(?:,\s*{NUM})*(?=[;.]|,\s|$)"
+SEE_VOLUME_RE = re.compile(rf"(?<=[,;]\s)(?:but\s+)?see(?:\s+also|\s+generally)?,?\s+({VOLUME_CITE})")
+CHAINED_RE = re.compile(rf";\s+(?:(?:but\s+)?see(?:\s+also)?,?\s+)?(?:{VOLUME_CITE}|(?:\d+\s+)?[A-Z][^;:“”()]*?,\s+pp?\.\s+{NUM}(?:,\s*{NUM})*)")
+
+
+def find_treatises(text):
+    """Books and articles cited by author, title and page: "F. Wharton, Conflict of Laws §10, p. 35" /
+    "2 Lincoln, The Constitutional History of New York ... 1905, p. 152". Walks back from ", p. N" over
+    comma-separated parts with no lowercase prose, stopping at a quotation, ";" or "("."""
+    out = []
+    for m in PAGE_RE.finditer(text):
+        start, parts, end = m.start(), 0, m.start()
+        while True:
+            comma = text.rfind(",", 0, end)
+            stop = max(text.rfind(c, 0, start) for c in ";()“”\"")
+            begin = max(comma, stop) + 1
+            ends = list(re.finditer(r"[a-z]{2,}[.?!][”’]?\s+", text[begin:start]))   # a sentence end, not "F."
+            if ends:
+                begin, stop = begin + ends[-1].end(), comma + 1
+            part = text[begin:start].strip()
+            signal = re.match(r"(?:but\s+)?(?:see(?:\s+also|\s+generally)?(?:,\s+e\.\s?g\.,?)?|cf\.|accord|compare)\s+(?=[A-Z\d])", part)
+            if signal:   # "see D. Potter, ...": the signal goes too (clean_paragraph removes it with the cite)
+                begin += text[begin:start].index(part) + signal.end()
+                part, stop = part[signal.end():], comma + 1
+            if not part or re.search(r"[“”\"]", part) or not part[0].isupper() and not part[0].isdigit() \
+                    or not _few_lowercase(part, 0):
+                break
+            start, parts, end = begin + (len(text[begin:start]) - len(text[begin:start].lstrip())), parts + 1, comma
+            if comma < stop or comma < 0:
+                break
+        if parts >= 2:
+            out.append(Span(start, _extend(text, m.end())))
+    for m in SEE_VOLUME_RE.finditer(text):
+        if _few_lowercase(m.group(1), 0):
+            out.append(Span(m.start(1), _extend(text, m.end())))
+    # sources strung together with ";" after one we found: "…, p. 281; 3 Writings of Abraham Lincoln 55"
+    for sp in out:
+        while (m := CHAINED_RE.match(text, sp.end)) and _few_lowercase(m.group(0), 0):
+            sp.end = _extend(text, m.end())
     return out
 
 
 def clean_paragraph(text):
     """Return a list of (segment, tag) covering text; tag None means kept."""
-    cites = _merge(text, find_cites(text) + find_attributions(text))
+    cites = _merge(text, find_cites(text) + find_attributions(text) + find_treatises(text))
     parens = find_parens(text, cites)
     removals = []   # (start, end, tag)
 
@@ -324,6 +384,9 @@ def clean_paragraph(text):
             if c.soft:
                 continue
             start, end = max(c.start, s0), min(c.end, s1)
+            if c.end > s1:   # the span ran past a real sentence end ("…7 Cranch 116. Expounding"): keep the period
+                m = re.search(r"(?<=[\d)\]])[.?!]\s*$", text[s0:s1])
+                end = min(end, s0 + m.start()) if m else end
             if c.kind == "paren":
                 removals.append((start, end, "paren"))
                 continue
@@ -380,8 +443,10 @@ def tidy(t):
     t = re.sub(r"([,;:])\s*(?=[,.;:])", "", t)          # ", ." -> "."  "; ," -> ","
     t = re.sub(r",([”’\"]),", r",\1", t)                 # ,”, -> ,”
     t = re.sub(r",([”’\"])\.", r".\1", t)               # ,”. -> .”
+    t = re.sub(r",([”’\"])\s*;", r"\1;", t)             # ,”; -> ”;
     t = re.sub(r",([”’\"])\s*—", r"\1—", t)              # ,” — -> ”—
-    t = re.sub(r"\.\s*\.(?!\s*\.)", ".", t)              # stray double period (but keep ". . .")
+    t = re.sub(r"\.\s*\.(?!\s*\.)", ".", t)
+    t = re.sub(r"([.?!][”’'\s]*[”’])\.", r"\1", t)        # .’ ”. -> .’ ”              # stray double period (but keep ". . .")
     t = re.sub(r"^[\s,;:]+", "", t)
     t = re.sub(r"\s{2,}", " ", t)
     return t.strip()
