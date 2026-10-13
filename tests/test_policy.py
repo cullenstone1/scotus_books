@@ -53,3 +53,11 @@ def test_uploads_today_counts_from_pacific_midnight(db):
     yesterday = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat(timespec="seconds")
     catalog.mark(db, "25-2", uploaded=yesterday)
     assert cli.uploads_today(db) == 1
+
+
+def test_scrape_skips_rows_from_another_term():
+    from scotus.scrape import parse_term
+    row = lambda r, href: (f"<tr><td>{r}</td><td>9/25/26</td><td>26A388</td><td><a href=\"{href}\">X v. Y</a></td>"
+                           "<td>PC</td><td></td></tr>")
+    html = "<table>" + row("73", "/opinions/25pdf/26a388_q86b.pdf") + row("1", "/opinions/26pdf/26a1_abcd.pdf") + "</table>"
+    assert [r["key"] for r in parse_term(html, 26)] == ["26-1"]

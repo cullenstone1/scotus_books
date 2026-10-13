@@ -40,6 +40,7 @@ LEXICON = {
     "sotomayor": "sˌoʊtoʊmaɪˈɔːɹ",     # "SOH-toh-my-OR"; espeak says "SAW-duh-may-er"
     "certiorari": "sˌɜːʃioʊɹˈɑːɹi",     # "sur-shee-oh-RAR-ee"; espeak says "sur-tih-RAR-ee"
     "syllabi": "sˈɪləbaɪ",
+    "en banc": "ɑːn bˈɑːŋk",            # French, "on bonk"; espeak says "en bank"
 }
 VOWELS = "aeiouɑɐɒæɔəɘɚɛɜɝɞɤɨɪʉʊʌʏ"
 MAX_CHUNK = 350   # characters; Kokoro handles ~500 phonemes per pass, and shorter chunks cache better

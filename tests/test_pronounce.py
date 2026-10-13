@@ -19,6 +19,8 @@ def synth():
     ("JUSTICE SOTOMAYOR's view", "sˌoʊtoʊmaɪˈɔːɹz"),
     ("We granted certiorari.", "sˌɜːʃioʊɹˈɑːɹi"),
     ("The syllabus", "sˈɪləbəs"),
+    ("rehearing en banc", "ɑːn bˈɑːŋk"),
+    ("The court, sitting En Banc, reversed.", "ɑːn bˈɑːŋk"),
 ])
 def test_lexicon(synth, text, expected):
     assert expected in synth.phonemes(text)

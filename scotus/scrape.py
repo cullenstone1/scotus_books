@@ -1,6 +1,7 @@
 """Scrape supremecourt.gov slip-opinion term pages into the catalog and download PDFs."""
 import hashlib
 import json
+import re
 import time
 from datetime import datetime
 from urllib.parse import urljoin
@@ -45,6 +46,11 @@ def parse_term(html, term):
         if not date.get_text(strip=True):   # placeholder rows on a term page with no opinions yet
             continue
         main = links[0]
+        # before a new term has opinions, its page can show the previous term's list; those rows are
+        # already cataloged under their own term (the PDF path says which: /opinions/25pdf/...)
+        m = re.search(r"/opinions/(\d{2})pdf/", main["href"])
+        if m and int(m.group(1)) != term:
+            continue
         revisions = [urljoin(BASE, a["href"]) for a in links[1:]]
         rnum = rnum.get_text(strip=True)
         yield {

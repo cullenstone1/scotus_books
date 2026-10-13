@@ -49,6 +49,17 @@ def number_words(n):
     return str(n)
 
 
+def year_words(n):
+    """1986 -> "nineteen eighty-six", 1905 -> "nineteen oh five", 1900 -> "nineteen hundred",
+    2008 -> "two thousand eight", 2026 -> "twenty twenty-six"."""
+    hi, lo = divmod(n, 100)
+    if 2000 <= n <= 2009:
+        return "two thousand" + (" " + ONES[lo] if lo else "")
+    if lo == 0:
+        return number_words(hi) + " hundred"
+    return number_words(hi) + (" oh " + ONES[lo] if lo < 10 else " " + number_words(lo))
+
+
 def roman_to_int(s):
     total = 0
     for i, c in enumerate(s):
@@ -124,6 +135,9 @@ def speakable(t):
     t = re.sub(r"\b[IVXL]+(?:[–—-][A-Z0-9]+)+\b", _roman_part, t)
     t = re.sub(r"(?<![\w–—])(\d+)\s?[–—]\s?(\d+)(?![\w–—])", r"\1 to \2", t)   # page/year ranges, not "18–2–25d"
     t = re.sub(r"(\d)-to-(\d)", r"\1 to \2", t)
+    # four-digit numbers 1100-2099 the way people say years (also "§1983" -> "nineteen eighty-three"),
+    # not inside dockets, decimals, amounts with commas or "$"
+    t = re.sub(r"(?<![\w$.,/–—-])(1[1-9]\d\d|20\d\d)(?![\w%]|[.,/–—-]\d)", lambda m: year_words(int(m.group(1))), t)
     t = re.sub(r"\[sic\]", "", t)
     t = t.replace("[", "").replace("]", "")
     t = _acronyms(t)
