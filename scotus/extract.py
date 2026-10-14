@@ -245,7 +245,7 @@ def paragraphs(lines):
                 and not re.search(r"[.?!:][”’)]?$", prev.text.rstrip())):
             new_para = False
         # so does the line after the docket line ("No. 24–1260. Argued ... —Decided June 29, 2026")
-        if cur is not None and prev is not None and DOCKET_RE.match(cur) and re.search(r"\d{4}\s*$", prev.text):
+        if cur is not None and prev is not None and DOCKET_RE.match(cur) and re.search(r"\d{4}\*?\s*$", prev.text):
             new_para = True
         # an opinion's title line always starts one ("Justice Barrett delivered the opinion of the Court.")
         if len(text) < 200 and TITLE_RE.match(text.strip()):
