@@ -198,6 +198,8 @@ def paragraphs(lines):
     margins, rights = {}, {}
     for p, size in {(l.page, round(l.size)) for l in body}:
         same = [l for l in body if l.page == p and round(l.size) == size]
+        if len(same) < 8:   # a page that's mostly footnote: borrow lines from pages with the same layout
+            same = [l for l in body if l.page % 2 == p % 2 and round(l.size) == size]
         xs = [round(l.x0) for l in same]
         x1s = sorted(round(l.x1) for l in same)
         margins[p, size] = max(set(xs), key=xs.count)
@@ -242,6 +244,9 @@ def paragraphs(lines):
         if (prev is not None and ln.x0 > margin + 50 and ln.x1 >= right - 5 and abs(ln.size - prev.size) <= 1
                 and not re.search(r"[.?!:][”’)]?$", prev.text.rstrip())):
             new_para = False
+        # an opinion's title line always starts one ("Justice Barrett delivered the opinion of the Court.")
+        if len(text) < 200 and TITLE_RE.match(text.strip()):
+            new_para = True
         # a line ending in a hyphen never ends a paragraph
         if cur is not None and prev is not None and re.search(r"[A-Za-z][-\u00ad]$", cur.rstrip()) and ln.size == prev.size:
             new_para = False

@@ -13,6 +13,7 @@ EXPECTED = {
     "pdf/23/602us1r30_g3bi.pdf": ["syllabus", "majority", "dissent"],
     "pdf/25/609us1r60_7mip.pdf": ["syllabus", "plurality", "concurrence", "dissent"],
     "pdf/25/609us2r64_7mio.pdf": ["syllabus", "majority", "concurrence", "concurrence", "dissent", "dissent"],
+    "pdf/25/609us2r65_g314.pdf": ["syllabus", "majority", "dissent"],   # opinion starts on a mostly-footnote page
     "pdf/25/24-43_2b35.pdf": ["syllabus", "majority", "concurrence", "concurrence", "dissent", "dissent"],
     "pdf/22-807_3e04.pdf": ["syllabus", "majority", "concurrence", "dissent"],
 }
