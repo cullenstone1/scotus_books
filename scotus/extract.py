@@ -248,8 +248,9 @@ def paragraphs(lines):
         if cur is not None and prev is not None and DOCKET_RE.match(cur) and re.search(r"\d{4}\*?\s*$", prev.text):
             new_para = True
         # an opinion's title line always starts one ("Justice Barrett delivered the opinion of the Court.")
-        if len(text) < 200 and TITLE_RE.match(text.strip()):
-            new_para = True
+        if (len(text) < 200 and TITLE_RE.match(text.strip())
+                and (prev is None or prev.page != ln.page or re.search(r"[.?!:][”’)]?$", prev.text.rstrip()))):
+            new_para = True   # (but not the second line of a wrapped one: "... Sotomayor and / Justice Kagan join, dissenting.")
         # a line ending in a hyphen never ends a paragraph
         if cur is not None and prev is not None and re.search(r"[A-Za-z][-\u00ad]$", cur.rstrip()) and ln.size == prev.size:
             new_para = False
