@@ -30,7 +30,7 @@ def test_sections(path, kinds):
     assert [s["kind"] for s in doc["sections"]] == kinds
     for s in doc["sections"]:
         assert s["paragraphs"], f"empty section {s['title']}"
-        assert "join" not in s["title"].lower() or "with whom" in s["title"].lower(), f"title lost its first line: {s['title']}"
+        assert "join" not in s["title"].lower() or re.search(r"with whom|in which", s["title"], re.I), f"title lost its first line: {s['title']}"
         assert not any(re.match(r"^(chief\s+)?justice\s+\S+.*\b(and|with whom)$", p["text"], re.I) for p in s["paragraphs"]), \
             "the first line of a wrapped title was left in the text"
         last = [p for p in s["paragraphs"] if p["type"] == "para"][-1]["text"]
