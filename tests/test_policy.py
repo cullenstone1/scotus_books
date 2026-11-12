@@ -61,3 +61,9 @@ def test_scrape_skips_rows_from_another_term():
                            "<td>PC</td><td></td></tr>")
     html = "<table>" + row("73", "/opinions/25pdf/26a388_q86b.pdf") + row("1", "/opinions/26pdf/26a1_abcd.pdf") + "</table>"
     assert [r["key"] for r in parse_term(html, 26)] == ["26-1"]
+
+
+def test_scrape_reads_two_and_four_digit_years():
+    from scotus.scrape import parse_date
+    assert parse_date("11/09/26") == "2026-11-09"
+    assert parse_date("10/14/2026") == "2026-10-14"

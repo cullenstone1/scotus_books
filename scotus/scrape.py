@@ -32,6 +32,12 @@ def get(url):
     return r
 
 
+def parse_date(text):
+    """"11/09/26" -> "2026-11-09". The Court's pages occasionally use a four-digit year ("10/14/2026")."""
+    fmt = "%m/%d/%Y" if re.fullmatch(r"\d+/\d+/\d{4}", text) else "%m/%d/%y"
+    return datetime.strptime(text, fmt).date().isoformat()
+
+
 def parse_term(html, term):
     """Yield one dict per opinion row on a term page."""
     soup = BeautifulSoup(html, "html.parser")
@@ -57,7 +63,7 @@ def parse_term(html, term):
             "key": f"{term:02d}-{rnum}",
             "term": term,
             "rnum": rnum,
-            "date": datetime.strptime(date.get_text(strip=True), "%m/%d/%y").date().isoformat(),
+            "date": parse_date(date.get_text(strip=True)),
             "docket": docket.get_text(strip=True),
             "name": main.get_text(strip=True),
             "author": author.get_text(strip=True),
