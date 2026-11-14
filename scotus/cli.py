@@ -170,7 +170,10 @@ def _uploaded(db, ref):
     return row is not None and row["uploaded"] is not None
 
 
-OK = "uploaded IS NULL AND coalesce(failures, 0) < ?"
+# not uploaded, not given up on, and an opinion: the term pages also list decrees (author "D"), which
+# are pages of decree terms and tables with no opinion to read
+OK = "uploaded IS NULL AND coalesce(failures, 0) < ? AND author IS NOT 'D'"
+BACKLOG_TRIES = 3       # when a queue/backfill pick fails, daily tries this many before giving up for the day
 
 
 def new_releases(db):
@@ -179,15 +182,17 @@ def new_releases(db):
                           ORDER BY date, rnum""", (MAX_FAILURES, f"-{NEW_RELEASE_DAYS} days")).fetchall()
 
 
-def pick_backlog(db):
-    """One opinion from queue.txt (in order), else backfill (newest first)."""
+def pick_backlog(db, skip=()):
+    """One opinion from queue.txt (in order), else backfill (newest first), passing over keys in skip."""
     for ref in queue_refs():
         row = db.execute(f"SELECT * FROM opinions WHERE (key = ? OR lower(docket) = lower(?)) AND {OK}",
                          (ref, ref, MAX_FAILURES)).fetchone()
-        if row:
+        if row and row["key"] not in skip:
             return row, "queue.txt"
-    row = db.execute(f"SELECT * FROM opinions WHERE {OK} ORDER BY date DESC, rnum DESC", (MAX_FAILURES,)).fetchone()
-    return row, "backfill"
+    for row in db.execute(f"SELECT * FROM opinions WHERE {OK} ORDER BY date DESC, rnum DESC", (MAX_FAILURES,)):
+        if row["key"] not in skip:
+            return row, "backfill"
+    return None, "backfill"
 
 
 def pick_next(db):
@@ -310,17 +315,23 @@ def _daily(args, db):
         if args.new_only:
             print("no new releases")
             return 0
-        # no new releases: one from the queue or backfill; reach one term further back when it runs dry
-        row, why = pick_backlog(db)
-        while row is None:
-            oldest = db.execute("SELECT min(term) t FROM opinions").fetchone()["t"]
-            if oldest is None or oldest <= OLDEST_TERM:
-                print("nothing left to publish")
+        # no new releases: one from the queue or backfill; reach one term further back when it runs dry.
+        # If one fails (a document we can't read), try the next rather than publish nothing today.
+        tried = []
+        while len(tried) < BACKLOG_TRIES:
+            row, why = pick_backlog(db, skip=tried)
+            while row is None:
+                oldest = db.execute("SELECT min(term) t FROM opinions").fetchone()["t"]
+                if oldest is None or oldest <= OLDEST_TERM:
+                    print("nothing left to publish")
+                    return 1 if tried else 0
+                args.terms = [oldest - 1]
+                cmd_scrape(args, db)
+                row, why = pick_backlog(db, skip=tried)
+            if _publish_and_report(db, row, why, args):
                 return 0
-            args.terms = [oldest - 1]
-            cmd_scrape(args, db)
-            row, why = pick_backlog(db)
-        return 0 if _publish_and_report(db, row, why, args) else 1
+            tried.append(row["key"])
+        return 1
     except QuotaExceeded as e:
         print(f"YouTube quota used up; the rest go out tomorrow ({e})", file=sys.stderr)
         return 1

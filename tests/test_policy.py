@@ -42,6 +42,26 @@ def test_failed_opinions_are_skipped(db):
     assert [r["key"] for r in cli.new_releases(db)] == ["25-4", "25-5"]
 
 
+
+def test_decrees_are_never_published(db):
+    catalog.upsert(db, _row("25-D1", 0, author="D"))
+    db.commit()
+    assert "25-D1" not in [r["key"] for r in cli.new_releases(db)]
+    cli.QUEUE.write_text("25-D1\n")
+    assert cli.pick_backlog(db)[0]["key"] == "25-5"
+
+
+def test_daily_tries_the_next_backlog_pick_after_a_failure(db, monkeypatch):
+    import argparse
+    for key in ("25-3", "25-4", "25-5"):
+        catalog.mark(db, key, uploaded=(datetime.now(timezone.utc) - timedelta(days=2)).isoformat(timespec="seconds"))
+    tried = []
+    monkeypatch.setattr(cli, "cmd_scrape", lambda args, db: None)
+    monkeypatch.setattr(cli, "_publish_and_report", lambda db, row, why, args: tried.append(row["key"]) or row["key"] == "25-1")
+    args = argparse.Namespace(new_only=False, dry_run=False, terms=[])
+    assert cli._daily(args, db) == 0
+    assert tried == ["25-2", "25-1"]
+
 def test_pick_next_puts_new_releases_before_queue(db):
     cli.QUEUE.write_text("25-1\n")
     row, why = cli.pick_next(db)
